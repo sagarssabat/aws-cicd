@@ -1,0 +1,35 @@
+@import "_waf-icon-font";
+
+@font-face {
+    font-family: 'NoirProMedium';
+    src: url('../fonts/NoirProMedium.eot');
+    src: url('../fonts/NoirProMedium.eot') format('embedded-opentype'), url('../fonts/NoirProMedium.woff2') format('woff2'), url('../fonts/NoirProMedium.woff') format('woff'), url('../fonts/NoirProMedium.ttf') format('truetype'), url('../fonts/NoirProMedium.svg#NoirProMedium') format('svg');
+}
+
+@font-face {
+    font-family: 'NoirProLight';
+    src: url('../fonts/NoirProLight.eot');
+    src: url('../fonts/NoirProLight.eot') format('embedded-opentype'), url('../fonts/NoirProLight.woff2') format('woff2'), url('../fonts/NoirProLight.woff') format('woff'), url('../fonts/NoirProLight.ttf') format('truetype'), url('../fonts/NoirProLight.svg#NoirProLight') format('svg');
+}
+
+@font-face {
+    font-family: 'NoirProBold';
+    src: url('../fonts/NoirProBold.eot');
+    src: url('../fonts/NoirProBold.eot') format('embedded-opentype'), url('../fonts/NoirProBold.woff2') format('woff2'), url('../fonts/NoirProBold.woff') format('woff'), url('../fonts/NoirProBold.ttf') format('truetype'), url('../fonts/NoirProBold.svg#NoirProBold') format('svg');
+}
+
+@font-face {
+    font-family: 'NoirProRegular';
+    src: url('../fonts/NoirProRegular.eot');
+    src: url('../fonts/NoirProRegular.eot') format('embedded-opentype'), url('../fonts/NoirProRegular.woff2') format('woff2'), url('../fonts/NoirProRegular.woff') format('woff'), url('../fonts/NoirProRegular.ttf') format('truetype'), url('../fonts/NoirProRegular.svg#NoirProRegular') format('svg');
+}
+
+@font-face {
+    font-family: 'NoirProSemiBold';
+    src: url('../fonts/NoirProSemiBold.eot');
+    src: url('../fonts/NoirProSemiBold.eot') format('embedded-opentype'),
+        url('../fonts/NoirProSemiBold.woff2') format('woff2'),
+        url('../fonts/NoirProSemiBold.woff') format('woff'),
+        url('../fonts/NoirProSemiBold.ttf') format('truetype'),
+        url('../fonts/NoirProSemiBold.svg#NoirProSemiBold') format('svg');
+}

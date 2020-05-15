@@ -1,0 +1,504 @@
+@import "../../../../../../widget-library/search/sass/widget-layout-14.scss";
+@import "../../_variables";
+
+.waf-search.widget-layout-14 {
+    background-image: url('../../../../static-assets/images/cssimages/search-bg.png');
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: 100%;
+
+    .icon-player {
+        &:before {
+            content: '\e9f4';
+        }
+    }
+
+    input {
+        &:focus {
+            box-shadow: none;
+        }
+    }
+
+    mark,
+    .mark {
+        background-color: transparent;
+        color: $golden-color;
+        display: inline-block;
+        padding: 0;
+
+        &.highlight {
+            color: $primary-color;
+            text-shadow: 0px 0px 1px rgba(0, 0, 0, 0.5);
+        }
+    }
+
+    .layout-wrapper {
+        width: calc(100% - 80px);
+        margin-left: auto;
+        transition: 0.4s;
+
+        /*when hide class is appended on .waf-tab fluid will append on same time on layout-wrapper*/
+        &.fluid {
+            width: 100%;
+        }
+    }
+
+    .search-head {
+        position: relative;
+
+        .img-box {
+            width: 10%;
+            margin: 0 auto;
+        }
+
+        .title {
+            font-size: 22px;
+            color: $primary-color;
+            font-family: $medium_font-family;
+            text-align: center;
+            margin: 15px 0;
+        }
+    }
+
+    .item-type-article,
+    .item-type-photo {
+        .item-type-icon {
+            display: none;
+        }
+    }
+
+    .item-type-video {
+        .item-type-icon {
+            width: 30px;
+            height: 30px;
+        }
+    }
+
+    .card-list,
+    .article-list {
+        @include flexbox();
+        flex-wrap: wrap;
+        margin-left: -10px;
+        margin-right: -10px;
+    }
+
+    .card-item,
+    .article-item {
+        flex-basis: 25%;
+        padding-right: 10px;
+        padding-left: 10px;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .card-item {
+        text-align: center;
+        align-self: flex-end; // align-items: flex-end;
+
+        .card-thumbnail {
+            position: relative;
+
+            &:after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                margin: 0 auto;
+                width: 80%;
+                border-bottom: 1px solid $primary-color;
+            }
+        }
+
+        .card-title {
+            max-width: 60%;
+            margin: 10px auto;
+            text-transform: uppercase;
+            font-family: $bold_font-family;
+            font-size: 24px;
+            line-height: 1;
+            min-height: 48px;
+        }
+
+        .card-label {
+            text-transform: uppercase;
+            font-family: $medium_font-family;
+            font-size: 16px;
+        }
+    }
+
+    .article-content {
+        background-color: $primary-color;
+        color: $complementary-color;
+        padding: 10px;
+        border-bottom: 2px solid $golden-color;
+    }
+
+    .article-title {
+        .title {
+            font-size: 16px;
+            height: 44px;
+            margin-top: 5px;
+            font-family: $medium_font-family;
+        }
+    }
+
+    .search-results {
+        width: 60%;
+        margin: 0 auto;
+        padding: 50px 0;
+    }
+
+    .search-list {
+        @include flexbox();
+        @include align-items(center);
+        border: 1px solid #cccccc;
+        border-radius: 10px;
+        box-shadow: 0 1px 2px 0 rgba(60, 64, 67, .30);
+        overflow: hidden;
+        color: $secondary-color;
+
+        &:before {
+            width: 48px;
+            height: 48px;
+            @include flexbox();
+            @include justify-content(center);
+            @include align-items(center);
+            cursor: pointer;
+        }
+
+        .form-group {
+            flex: 1;
+        }
+
+        .form-control {
+            height: 48px;
+            padding: 0; // color: $secondary-color;
+        }
+
+        .icon-close {
+            display: none;
+
+            &.active {
+                display: block;
+            }
+        }
+    }
+
+    .search-content {
+        margin: 20px 0;
+        color: $secondary-color;
+        position: relative;
+
+        &:before,
+        &:after {
+            content: '';
+            position: absolute;
+            background-repeat: no-repeat;
+            width: 100px;
+            height: 100px;
+            background-size: contain;
+            z-index: 1;
+            top: 0;
+        }
+
+        &:before {
+            background-image: url('../../../images/cssimages/players-left.png');
+            left: -100px;
+            right: auto;
+        }
+
+        &:after {
+            background-image: url('../../../images/cssimages/players-right.png');
+            right: -100px;
+            left: auto;
+        }
+
+        .title {
+            font-size: 22px;
+            font-family: $medium_font-family;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+            position: relative;
+
+            &:after {
+                content: '';
+                /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#d1ab3e+0,d1ab3e+100&1+40,0+100 */
+                background: -moz-linear-gradient(left, rgba(209, 171, 62, 1) 0%, rgba(209, 171, 62, 1) 40%, rgba(209, 171, 62, 0) 100%);
+                /* FF3.6-15 */
+                background: -webkit-linear-gradient(left, rgba(209, 171, 62, 1) 0%, rgba(209, 171, 62, 1) 40%, rgba(209, 171, 62, 0) 100%);
+                /* Chrome10-25,Safari5.1-6 */
+                background: linear-gradient(to right, rgba(209, 171, 62, 1) 0%, rgba(209, 171, 62, 1) 40%, rgba(209, 171, 62, 0) 100%);
+                /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+                filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#d1ab3e', endColorstr='#00d1ab3e', GradientType=1);
+                /* IE6-9 */
+                width: 100%;
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                height: 1px;
+            }
+        }
+
+        .count {
+            font-size: 18px;
+        }
+    }
+
+    .search-section {
+        @include flexbox();
+        margin: 0 -10px;
+        position: relative;
+
+        .waf-tab,
+        .waf-tab-content {
+            padding: 0 10px;
+        }
+
+        .waf-tab {
+            @include flexbox();
+            flex-direction: column;
+            width: 80px;
+            position: fixed;
+            top: 89px;
+            left: 0;
+            height: calc(100% - 89px);
+            transition: 0.4s;
+            z-index: 2;
+            /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#001848+0,030014+100 */
+            background: rgb(0, 24, 72);
+            /* Old browsers */
+            background: -moz-linear-gradient(top, rgba(0, 24, 72, 1) 0%, rgba(3, 0, 20, 1) 100%);
+            /* FF3.6-15 */
+            background: -webkit-linear-gradient(top, rgba(0, 24, 72, 1) 0%, rgba(3, 0, 20, 1) 100%);
+            /* Chrome10-25,Safari5.1-6 */
+            background: linear-gradient(to bottom, rgba(0, 24, 72, 1) 0%, rgba(3, 0, 20, 1) 100%);
+            /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#001848', endColorstr='#030014', GradientType=0);
+
+            /* IE6-9 */
+            &.hide {
+                transform: translateX(-80px);
+            }
+
+            li {
+                flex: 1;
+                @include flexbox();
+                @include justify-content(center);
+                @include align-items(center);
+                flex-direction: (column);
+                color: $complementary-color;
+                transition: 0.4s;
+                text-transform: uppercase;
+                font-size: 14px;
+                font-family: $medium_font-family;
+
+                &>a {
+                    padding-top: 5px;
+                }
+
+                &+li {
+                    border-top: 1px solid rgba($complementary-color, 0.5);
+                }
+
+                &:hover {
+                    color: $golden-color;
+                }
+
+                &.active {
+                    color: $golden-color;
+                }
+            }
+        }
+
+        .waf-tab-content {
+            width: 100%;
+        }
+    }
+}
+
+.sticky {
+    .waf-search.widget-layout-14 .search-section .waf-tab {
+        height: calc(100% - 50px);
+        top: 50px;
+    }
+}
+
+@media screen and (max-width: $media-tablet-max) {
+    .waf-search.widget-layout-14 {
+        .layout-wrapper {
+            width: 100%;
+        }
+
+        .search-results {
+            width: 70%;
+        }
+
+        .card-item,
+        .article-item {
+            flex-basis: 33.33%;
+        }
+
+        .search-section {
+            .waf-tab {
+                top: auto;
+                bottom: 0;
+                height: 80px;
+                width: 100%;
+                flex-direction: row;
+
+                li {
+                    &+li {
+                        border-top: none;
+                        border-left: 1px solid rgba($complementary-color, .5);
+                    }
+
+                    &:hover {
+                        color: $complementary-color;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 375px) and (max-width: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape) {
+    .waf-search.widget-layout-14 {
+        .search-section {
+            .waf-tab {
+                padding: 0px;
+                overflow-x: scroll;
+                height: 50px;
+
+                &.hide {
+                    transform: translate(0px, 50px);
+                }
+
+                li {
+                    flex-basis: 25%;
+                    padding: 0 20px;
+                    font-size: 12px;
+
+                    &>a {
+                        padding-top: 0px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: $media-phone-max) {
+    .waf-search.widget-layout-14 {
+        .search-results {
+            width: 100%;
+            padding: 20px 0px;
+        }
+
+        .search-head {
+            .img-box {
+                width: 25%;
+            }
+
+            .title {
+                font-size: 18px;
+            }
+        }
+
+        .search-content {
+
+            &:before,
+            &:after {
+                display: none;
+            }
+
+            .title {
+                font-size: 16px;
+            }
+
+            .count {
+                font-size: 12px;
+            }
+        }
+
+        .search-section {
+            .waf-tab {
+                padding: 0px;
+                overflow-x: scroll;
+                height: 50px;
+
+                &.hide {
+                    transform: translate(0px, 50px);
+                }
+
+                li {
+                    flex-basis: 25%;
+                    padding: 0 20px;
+                    font-size: 12px;
+
+                    &>a {
+                        padding-top: 0px;
+                    }
+                }
+            }
+        }
+
+        .article-item {
+            flex-basis: 100%;
+            margin-bottom: 10px;
+
+            .article-wrap {
+                @include flexbox();
+                flex-direction: row-reverse;
+                border-radius: 6px;
+                overflow: hidden;
+            }
+
+            .article-thumbnail {
+                flex-basis: 35%;
+            }
+
+            .article-content {
+                flex: 1;
+                border-bottom: none;
+            }
+        }
+
+        .article-title {
+            .title {
+                font-size: 14px;
+                height: 56px;
+            }
+        }
+
+        .loadmore {
+            width: 100%;
+            border-radius: 6px;
+        }
+
+        .waf-tab-pane {
+            &+.waf-tab-pane {
+                margin-top: 30px;
+            }
+        }
+
+        .card-item {
+            flex-basis: 50%;
+
+            img {
+                width: 100%;
+            }
+
+            .card-title {
+                max-width: 90%;
+                font-size: 16px;
+                min-height: 34px;
+                margin-bottom: 0px;
+            }
+
+            .card-label {
+                font-size: 12px;
+            }
+        }
+    }
+}

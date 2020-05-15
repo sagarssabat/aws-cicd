@@ -1,0 +1,33 @@
+/*animate mitv icon in postlisting/widget-layout-129*/
+@keyframes mitv {
+    from {
+        -webkit-transform: scale(1);
+        transform: scale(1, 1, 1);
+    }
+
+    10%,
+    20% {
+        -webkit-transform: scale(0.9) rotate(-5deg);
+        transform: scale(0.9) rotate(-5deg);
+    }
+
+    30%,
+    50%,
+    70%,
+    90% {
+        -webkit-transform: scale(1.1) rotate(5deg);
+        transform: scale(1.1) rotate(5deg);
+    }
+
+    40%,
+    60%,
+    80% {
+        -webkit-transform: scale(1.1) rotate(-5deg);
+        transform: scale(1.1) rotate(-5deg);
+    }
+
+    to {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+}

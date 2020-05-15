@@ -1,0 +1,34 @@
+@import "../../../../../../widget-library/postlisting/sass/widget-layout-140.scss";
+@import "../../_variables";
+// @import "../../_listing";
+
+.waf-listing.widget-layout-140 {
+    .article-video-thumbnail {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        transition: 0.4s;
+        opacity: 1;
+    }
+
+    .show-video {
+        .article-video-thumbnail {
+            opacity: 0;
+            z-index: 0;
+        }
+    }
+}
+
+@media screen and (max-width: $media-tablet-max) {
+    .waf-listing.widget-layout-140 {
+        .show-video {
+            .article-content {
+                opacity: 1;
+                z-index: 0;
+            }
+        }
+    }
+}
+
+// @media screen and (max-width: $media-phone-max) {}

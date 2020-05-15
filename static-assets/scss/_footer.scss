@@ -1,0 +1,255 @@
+.site-footer {
+    padding-top: 40px;
+}
+
+.partner-title {
+    font-family: $medium_font-family;
+    text-transform: uppercase;
+    font-size: 18px;
+    text-align: center;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgba($primary-color, 0.5);
+}
+
+.partner-list {
+    @include flexbox ();
+    @include justify-content(center);
+    flex-wrap: wrap;
+}
+
+.partner-strip {
+    .item {
+        padding: 0 20px;
+        text-align: center;
+        margin-bottom: 30px;
+        flex-basis: 16.66%;
+
+        img {
+            height: 100%;
+        }
+    }
+
+    &.principal {
+        .item {
+            height: 100px;
+        }
+    }
+
+    &.associate {
+        .item {
+            height: 80px;
+        }
+    }
+
+    &.official {
+        .item {
+            height: 60px;
+        }
+
+        .partner-list {
+            padding: 0 150px;
+        }
+    }
+}
+
+.partner-strip+.partner-strip {
+    padding-top: 20px;
+}
+
+.footer-bottom {
+    padding: 20px 0;
+    background-color: $secondary-color;
+    color: $complementary-color;
+    font-size: 14px;
+    text-transform: capitalize;
+
+    .content-box {
+        @include flexbox ();
+        @include justify-content(flex-start);
+    }
+
+    .quick-links {
+        @include flexbox ();
+        @include justify-content(flex-start);
+
+        li {
+            padding: 0 20px;
+
+            &:nth-last-of-type(-n+2) {
+                a {
+                    text-decoration: underline;
+                }
+            }
+        }
+
+
+    }
+}
+
+.footer-middle {
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#001848+0,030014+100 */
+    background: rgb(0, 24, 72);
+    /* Old browsers */
+    background: -moz-linear-gradient(top, rgba(0, 24, 72, 1) 0%, rgba(3, 0, 20, 1) 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba(0, 24, 72, 1) 0%, rgba(3, 0, 20, 1) 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(0, 24, 72, 1) 0%, rgba(3, 0, 20, 1) 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#001848', endColorstr='#030014', GradientType=0);
+    /* IE6-9 */
+    color: $complementary-color;
+    text-transform: capitalize;
+    padding: 50px 0;
+    font-size: 16px;
+
+    .mi-logo {
+        width: 20%;
+        padding-right: 20px;
+
+        .img-box {
+            width: 50%;
+            margin: 0 auto;
+        }
+    }
+
+    .site-map-wrap {
+        @include flexbox();
+        flex: 1;
+    }
+
+    .content-box {
+        @include flexbox();
+        widows: 100%;
+    }
+
+    .site-map {
+        flex: 1;
+
+        &>li+li {
+            padding-top: 15px;
+        }
+    }
+
+    .social {
+        flex-wrap: wrap;
+    }
+}
+
+// @media screen and (max-width: $media-desktop-max) {}
+@media screen and (max-width: $media-tablet-max) {
+    .partner-strip {
+        .item {
+            flex-basis: 20%;
+        }
+
+        &.principal {
+            .item {
+                height: 80px;
+            }
+        }
+
+        &.associate {
+            .item {
+                height: 70px;
+            }
+        }
+
+        &.official {
+            .partner-list {
+                padding: 0;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: $media-phone-max) {
+    .partner-strip {
+        .item {
+            padding: 0 10px;
+            margin-bottom: 15px;
+            flex-basis: 50%;
+            @include justify-content(space-around);
+        }
+
+        &.associate {
+            .item {
+                flex-basis: 33%;
+                height: 50px;
+            }
+        }
+
+        &.official {
+            .item {
+                height: 40px;
+            }
+        }
+    }
+
+    .footer-bottom {
+        .content-box {
+            @include flexbox();
+            @include align-items(center);
+            flex-direction: column;
+        }
+
+        .copyrights {
+            margin-bottom: 10px;
+        }
+
+        .quick-links {
+            flex-direction: column;
+            align-items: center;
+
+            li {
+                padding: 0 10px;
+
+                &+li {
+                    margin-top: 10px;
+                }
+            }
+        }
+    }
+
+    .footer-middle {
+        padding: 20px 10px;
+        font-size: 14px;
+
+        .content-box {
+            flex-direction: column;
+        }
+
+        .mi-logo {
+            padding-right: 0px;
+            width: 70%;
+            margin: 0 auto;
+        }
+
+        .site-map-wrap {
+            flex-wrap: wrap;
+        }
+
+        .site-map {
+            flex: unset;
+            width: 50%;
+            padding-top: 15px;
+        }
+
+        .social {
+            li {
+                a {
+                    margin: 0;
+
+                    &:before {
+                        @include justify-content(flex-start);
+                    }
+                }
+
+                &+li {
+                    margin-left: 10px;
+                }
+            }
+        }
+    }
+}

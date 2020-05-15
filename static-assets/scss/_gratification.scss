@@ -1,0 +1,65 @@
+@import "../scss/animation/gratify";
+
+.waf-gratify {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 0;
+    z-index: 4;
+    background-color: rgba($default-color, 0.7);
+
+    .content-wrapper {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
+
+
+.scratch-container {
+    // &:before {
+    //     content: '';
+    //     background-image: url('../images/cssimages/gratify/right-top.svg');
+    //     width: 190px;
+    //     height: 230px;
+    //     position: absolute;
+    //     top: -60px;
+    //     left: -90px;
+    //     background-size: contain;
+    //     background-repeat: no-repeat;
+    //     transition: 0.9s;
+    //     transition-delay: 0.9s;
+    //     transform: scale(0);
+    // }
+
+    &.usergratify {
+        animation: gratify 1s alternate;
+
+        // &:before {
+        //     transform: scale(1);
+        //     transform-origin: bottom right;
+        // }
+    }
+}
+
+.scratchpad {
+    width: 300px;
+    height: 300px;
+    margin: 0 auto;
+
+    .img-box {
+        background-color: transparent;
+    }
+}
+
+
+@media screen and (max-width: $media-phone-max) {
+    .scratchpad {
+        width: 250px;
+        height: 150px;
+    }
+}

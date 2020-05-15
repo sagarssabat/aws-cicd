@@ -1,0 +1,78 @@
+@import "../../../../../../widget-library/detail/sass/widget-layout-11.scss";
+@import "../../_variables";
+@import "../../detail";
+
+.waf-detail.widget-layout-11 {
+    .detail-wrapper {
+        max-width: 1190px;
+        margin: 0 auto;
+    }
+
+    &.import-original {
+        background-color: #f1f1f1;
+
+        .img-21by9,
+        .img-4by3 {
+            .img-box {
+                padding-bottom: unset;
+                background-color: transparent;
+            }
+
+            img {
+                position: relative;
+                width: auto;
+                height: 100%;
+                margin: 0 auto;
+                display: block;
+            }
+        }
+
+        .img-21by9 {
+            .img-box {
+                height: 550px;
+            }
+        }
+    }
+}
+
+// @media screen and (max-width: 1440px) {
+//     .waf-detail.widget-layout-11 {
+//         &.import-original {
+//             .img-21by9 {
+//                 .img-box {
+//                     height: calc(100vh - 91px);
+//                 }
+//             }
+//         }
+//     }
+// }
+
+@media screen and (max-width: $media-tablet-max) {
+    .waf-detail.widget-layout-11 {
+        &.import-original {
+            .img-21by9 {
+                .img-box {
+                    height: 500px;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: $media-phone-max) {
+    .waf-detail.widget-layout-11 {
+        &.import-original {
+            .img-4by3 {
+                .img-box {
+                    width: 100%;
+                    height: auto;
+
+                    img {
+                        width: 100%;
+                        height: auto;
+                    }
+                }
+            }
+        }
+    }
+}

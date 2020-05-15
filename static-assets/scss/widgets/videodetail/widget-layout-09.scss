@@ -1,0 +1,15 @@
+@import "../../../../../../widget-library/videodetail/sass/widget-layout-09.scss";
+@import "../../_variables";
+@import "../../detail";
+
+
+.waf-detail.widget-layout-09 {
+    .detail-wrapper {
+        max-width: 1190px;
+        margin: 0 auto;
+    }
+}
+
+// @media screen and (max-width: $media-tablet-max) {}
+
+// @media screen and (max-width: $media-phone-max) {}

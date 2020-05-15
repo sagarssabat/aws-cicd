@@ -1,0 +1,163 @@
+@import "_variables";
+@import "../../../../sass/mixins";
+@import "../../../../sass/variables";
+
+.waf-error-page {
+    background-image: url('../images/cssimages/error-bg.png');
+    background-repeat: no-repeat;
+    background-color: $complementary-color;
+    height: calc(100vh - 89px);
+    background-size: 100% auto;
+    margin: 0px -10px;
+
+
+    .error-wrapper {
+        max-width: 750px;
+        margin: auto;
+        position: absolute;
+        left: 0px;
+        right: 0px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .error-inn-wrapper {
+        @include flexbox;
+        background: url('../images/cssimages/grass-img.png') center bottom;
+        background-repeat: no-repeat;
+        height: 100%;
+        background-size: 100% auto;
+    }
+
+    .error-no {
+        .title {
+            @include flexbox();
+            @include align-items(center);
+            font-size: 140px;
+            line-height: 1.1;
+            color: #001549;
+            font-family: $bold_font-family;
+        }
+
+        .ball-img {
+            width: 115px;
+            height: auto;
+            display: block;
+
+            img {
+                width: 100%;
+                display: block;
+            }
+        }
+    }
+
+    .error-msg {
+        font-size: 35px;
+        color: #001549;
+        line-height: 1.1;
+        font-family: $bold_font-family;
+        text-transform: uppercase;
+    }
+
+    .erro-img-wrap {
+        position: relative;
+        @include flexbox();
+        @include align-items(flex-end);
+    }
+
+    .man-img {
+        width: 130px;
+        height: auto;
+        position: relative;
+
+        img {
+            width: 100%;
+            display: block;
+        }
+    }
+
+    .road-roller-img {
+        width: 195px;
+        height: auto;
+        position: relative;
+        left: 30px;
+
+        img {
+            width: 100%;
+            display: block;
+        }
+    }
+
+}
+
+@media screen and (max-width: $media-tablet-max) {}
+
+@media screen and (max-width: $media-phone-max) {
+    .waf-error-page {
+        .error-wrapper {
+            max-width: 550px;
+        }
+
+        .erro-img-wrap {
+            position: relative;
+            right: 100px;
+        }
+
+        .error-no {
+            .title {
+                font-size: 110px;
+            }
+
+            .ball-img {
+                width: 90px;
+            }
+        }
+
+        .error-msg {
+            font-size: 25px;
+        }
+    }
+}
+
+@media screen and (max-width: 575px) {
+    .waf-error-page {
+        .error-inn-wrapper {
+            flex-wrap: wrap;
+            @include justify-content(center);
+        }
+
+        .erro-img-wrap {
+            right: 0px;
+        }
+
+        .error-wrapper {
+            max-width: 300px;
+        }
+
+        .road-roller-img {
+            width: 135px;
+        }
+
+        .man-img {
+            width: 90px;
+        }
+
+        .error-no {
+            .title {
+                font-size: 80px;
+            }
+
+            .ball-img {
+                width: 70px;
+            }
+        }
+
+        .error-msg {
+            font-size: 20px;
+        }
+
+        .error-msg-wrap {
+            margin-bottom: 10px;
+        }
+    }
+}

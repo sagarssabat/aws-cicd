@@ -1,0 +1,118 @@
+@import "../../../../../../widget-library/postlisting/sass/widget-layout-131.scss";
+@import "../../_variables";
+// @import "../../_listing";
+// @import "../../_swiper";
+
+.waf-listing.widget-layout-131 {
+    // margin: 0 -10px;
+
+    .slider-nav,
+    .swiper-pagination {
+        display: none;
+    }
+
+    // .head-wrap {
+    //     padding: 0 10px;
+    // }
+
+    // .article-content {
+    //     position: absolute;
+    //     width: 30%;
+    //     background-color: rgba($primary-color, 0.9);
+    //     top: 0;
+    //     left: 0;
+    //     height: 100%;
+    //     z-index: 1;
+
+    //     .content-wrap {
+    //         color: $complementary-color;
+    //         padding: 25px;
+    //     }
+    // }
+
+    // .article-title {
+    //     .title {
+    //         margin: 10px 0;
+    //         max-height: 100px;
+    //     }
+    // }
+
+    // .article-description {
+    //     height: 72px;
+    //     overflow: hidden;
+    // }
+
+    .article-count {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        height: 60px;
+        z-index: 1;
+        padding: 0 20px;
+        @include flexbox();
+        @include justify-content(center);
+        @include align-items(center);
+        /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#001848+0,001848+100&0+0,1+25 */
+        background: -moz-linear-gradient(left, rgba(0, 24, 72, 0) 0%, rgba(0, 24, 72, 1) 65%, rgba(0, 24, 72, 1) 100%);
+        /* FF3.6-15 */
+        background: -webkit-linear-gradient(left, rgba(0, 24, 72, 0) 0%, rgba(0, 24, 72, 1) 65%, rgba(0, 24, 72, 1) 100%);
+        /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(to right, rgba(0, 24, 72, 0) 0%, rgba(0, 24, 72, 1) 65%, rgba(0, 24, 72, 1) 100%);
+        /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00001848', endColorstr='#001848', GradientType=1);
+        color: $complementary-color;
+        font-family: $medium_font-family;
+
+        /* IE6-9 */
+        &:before {
+            content: '';
+        }
+    }
+}
+
+@media screen and (max-width: $media-tablet-max) {
+    .waf-listing.widget-layout-131 {
+        // .article-title {
+        //     .title {
+        //         max-height: 66px;
+        //     }
+        // }
+
+        // .article-description {
+        //     font-size: 12px;
+        //     height: 72px;
+        // }
+    }
+}
+
+@media screen and (max-width: $media-phone-max) {
+    .waf-listing.widget-layout-131 {
+        // .article-content {
+        //     position: relative;
+        //     top: 0;
+        //     width: 100%;
+
+        //     .content-wrap {
+        //         padding: 15px;
+        //     }
+        // }
+
+        // .article-title {
+        //     .title {
+        //         height: 44px;
+        //         margin: 5px 0;
+        //     }
+        // }
+
+        .article-count {
+            top: 0;
+            bottom: auto;
+            height: 40px;
+            padding: 0 20px;
+
+            .count {
+                font-size: 12px;
+            }
+        }
+    }
+}

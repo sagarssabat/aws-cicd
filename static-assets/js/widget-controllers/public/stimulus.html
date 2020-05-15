@@ -1,0 +1,104 @@
+<html>
+
+<head>
+    <script src="https://unpkg.com/stimulus/dist/stimulus.umd.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cash/3.0.0-beta.3/cash.min.js"></script>
+    <script>
+        var Application = Stimulus.Application.start();
+        class si_test extends Stimulus.Controller{
+            static get targets() {
+                return [ "name" ]
+            }
+            greet(){
+                const element = this.nameTarget
+                const val = element.value
+                console.log(`hello, ${val}!`);
+            }
+
+        }
+        class clipBoard extends Stimulus.Controller{
+            static get targets() {
+                return [ "source" ]
+            }
+            copy(){
+                    this.sourceTarget.select()
+                    document.execCommand("copy");
+            }
+        }
+        class galleryFilter extends Stimulus.Controller{
+            static get targets(){
+                return [ "tab" , "show"]
+            }
+            showTab(e){
+               let currentSelected = e.currentTarget.dataset.id;
+               const element = this.showTarget
+               //alert(element);
+               $(this.tabTargets).hide().filter(`[data-id='${ currentSelected }']`).show();
+              let showMoreUrl = $(e.currentTarget).data("show-more-url");
+              $(this.showTarget).attr()
+               if(currentSelected == "2" || currentSelected == "3" )
+               {
+                $(element).show()
+               }
+               else
+               {
+                $(element).hide()
+               }
+            }
+        }
+        Application.register('galleryFilter',galleryFilter)
+        Application.register('clipBoard',clipBoard)
+        Application.register('hello',si_test);
+
+</script>
+    <style>
+        .styleFld{
+    margin-top: 20px;
+}
+</style>
+</head>
+
+<body>
+    <div class="container" data-controller="galleryFilter">
+        <div class="waf-filter">
+            <button data-action="click->galleryFilter#showTab" data-id="1" data-show-more-url=""><span>ALL</span></button>
+            <button data-action="click->galleryFilter#showTab" data-id="2" data-show-more-url="/photos"><span>Photos</span></button>
+            <button data-action="click->galleryFilter#showTab" data-id="3" data-show-more-url="/videos"><span>Videos</span></button>
+            <a href="javascript:void(0)" data-target="galleryFilter.show"><span>Show more</span></a>
+        </div>
+        <div data-target="galleryFilter.tab" data-id="1">
+            <h1>ALL</h1>
+            <ul>
+                <li>photo 1</li>
+                <li>Video 1</li>
+                <li>photo 1</li>
+            </ul>
+        </div>
+        <div data-target="galleryFilter.tab" data-id="2">
+            <h1>Photos</h1>
+            <ul>
+                <li>photo 1</li>
+                <li>photo 2</li>
+                <li>photo 3</li>
+            </ul>
+        </div>
+        <div data-target="galleryFilter.tab" data-id="3">
+            <h1>Videos</h1>
+            <ul>
+                <li>Video 1</li>
+                <li>Video 1</li>
+                <li>Video 1</li>
+            </ul>
+        </div>
+    </div>
+    <div data-controller="hello">
+        <input data-target="hello.name" type="text" />
+        <button data-action="click->hello#greet">Greet</button>
+    </div>
+    <div class="styleFld" data-controller="clipBoard">
+        PIN: <input data-target="clipBoard.source" type="text" value="1234" readonly />
+        <button data-action="click->clipBoard#copy">Copy to Clipboard</button>
+    </div>
+</body>
+
+</html>

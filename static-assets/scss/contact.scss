@@ -1,0 +1,61 @@
+@import "_variables";
+@import "../../../../sass/mixins";
+@import "../../../../sass/variables";
+
+.waf-contactus {
+    .contact-details {
+        .email-info {
+            margin-bottom: 50px;
+        }
+
+        .label {
+            font-family: $medium_font-family;
+            text-transform: capitalize;
+        }
+
+        .info {
+            font-size: 20px;
+            color: $primary-color;
+
+            &+.info {
+                margin-top: 15px;
+            }
+        }
+    }
+
+    .head-wrap {
+        @include justify-content(center);
+    }
+}
+
+// @media screen and (max-width: $media-desktop-max) {}
+
+@media screen and (max-width: $media-tablet-max) {
+    .waf-contactus {
+        .contact-details {
+            .info {
+                font-size: 16px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: $media-phone-max) {
+    .waf-contactus {
+        .contact-details {
+            .label {
+                display: block;
+            }
+
+            .info {
+                font-size: 14px;
+            }
+        }
+
+        .form-group {
+            .form-element {
+                width: 100%;
+            }
+        }
+    }
+}

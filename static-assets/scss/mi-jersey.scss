@@ -1,0 +1,185 @@
+@import "_variables";
+@import "../../../../sass/mixins";
+@import "../../../../sass/variables";
+
+.mi-jersey {
+    position: relative;
+    margin: 0 -10px;
+
+    .layout-wrapper {
+        align-items: center;
+    }
+
+    .jersey-img {
+        img {
+            width: 100%;
+        }
+    }
+
+    .jersey-detail {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        .number {
+            font-size: 70px;
+            font-family: $bold_font-family;
+            background: -webkit-linear-gradient(right, #f9d04a, #F4E7B0, #c29431);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: #fff;
+            text-shadow: none;
+            display: block;
+            text-align: center;
+            line-height: 1;
+        }
+
+        .name {
+            font-size: 24px;
+            font-family: $bold_font-family;
+            display: block;
+            text-align: center;
+            background: -webkit-linear-gradient(right, #f9d04a, #F4E7B0, #c29431);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: #fff;
+            text-shadow: none;
+            line-height: 1;
+            text-transform: uppercase;
+        }
+    }
+
+    .title {
+        font-family: $bold_font-family;
+        font-size: 28px;
+        color: $golden-color;
+        line-height: 1;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    p {
+        font-size: 20px;
+        font-family: $bold_font-family;
+        color: $complementary-color;
+        line-height: 1;
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    form {
+        padding: 0 150px;
+
+        .label {
+            color: $complementary-color;
+            font-family: $regular_font-family;
+            font-size: 18px;
+        }
+
+        input {
+            border-radius: 25px;
+            padding-left: 15px;
+            padding-right: 15px;
+            margin-bottom: 5px;
+        }
+
+        .form-group {
+            .form-element {
+                margin: 0 0 30px;
+            }
+        }
+
+        .btn-download {
+            display: inline-block;
+
+            &:after {
+                content: "\e851";
+                font-family: $waf-icon;
+                position: relative;
+                right: -10px;
+            }
+        }
+    }
+
+    &:before {
+        content: "";
+        background-image: url('../images/cssimages/jersey-bg-web.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-position: top center;
+    }
+}
+
+@media screen and (max-width: $media-tablet-max) {
+    .mi-jersey {
+        .jersey-detail {
+            .number {
+                font-size: 50px;
+            }
+
+            .name {
+                font-size: 22px;
+            }
+        }
+
+        .title {
+            font-size: 22px;
+        }
+
+        p {
+            font-size: 16px;
+            margin-bottom: 25px;
+        }
+
+        form {
+            padding: 0 100px;
+
+            .label {
+                font-size: 16px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: $media-phone-max) {
+    .mi-jersey {
+        form {
+            padding: 0 50px;
+        }
+
+        .title {
+            font-size: 20px;
+        }
+
+        p {
+            font-size: 14px;
+        }
+
+        form {
+            .label {
+                font-size: 15px;
+            }
+        }
+
+        .jersey-detail {
+            .number {
+                font-size: 40px;
+            }
+
+            .name {
+                font-size: 18px;
+            }
+        }
+
+        &:before {
+            content: "";
+            background-image: url('../images/cssimages/jersey-bg-mob.jpg');
+        }
+    }
+}

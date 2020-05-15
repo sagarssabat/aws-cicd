@@ -1,0 +1,672 @@
+.gif-icon-wrap {
+  padding: 20px 0;
+  position: relative;
+  @include flexbox();
+  @include align-items(center);
+  @include justify-content(center);
+
+  .social-icons {
+    @include flexbox();
+    @include align-items(center);
+    width: 45px;
+    background-color: $golden-color;
+    -webkit-transition: width 2s;
+    transition: width 2s;
+    overflow: hidden;
+    border-radius: 25px;
+
+
+    .icon-share {
+      margin: 0;
+    }
+
+    .share-icons {
+      @include flexbox();
+      @include align-items(center);
+      @include justify-content(center);
+      opacity: 0;
+      transition-delay: 0.6s;
+
+      li {
+        a {
+          color: #001848;
+          font-size: 20px;
+          padding: 5px;
+        }
+      }
+    }
+
+    &.active {
+      width: 165px;
+      overflow: visible;
+      border-radius: 25px;
+
+      .share-icons {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.waf-gifcardon {
+  margin: 0 -10px;
+  padding: 0;
+
+  .waf-head {
+    background: url(../images/cssimages/gif-cardon/head-bg.png) no-repeat top left;
+    background-size: cover;
+    text-align: center;
+    padding: 80px 0 50px;
+    @include flexbox();
+    @include align-items(center);
+    @include justify-content(center);
+  }
+
+  .head-title {
+    font-size: 54px;
+    text-transform: uppercase;
+    background: linear-gradient(to right, #103d73, #1268af 70%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: $bold_font-family;
+    filter: drop-shadow(2px 1px #D0AA38);
+    position: relative;
+    line-height: 1;
+  }
+
+  .head-img {
+    position: relative;
+    padding-left: 50px;
+
+    &:before {
+      content: "";
+      position: absolute;
+      height: 90%;
+      left: 35px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 1px;
+      background: -moz-linear-gradient(top, rgba(30, 87, 153, 0) 0%, rgba(30, 87, 153, 0.88) 29%, rgba(32, 97, 165, 1) 33%, rgba(41, 137, 216, 1) 50%, rgba(33, 101, 170, 1) 66%, rgba(30, 87, 153, 0.8) 72%, rgba(30, 87, 153, 0) 100%);
+      background: -webkit-linear-gradient(top, rgba(30, 87, 153, 0) 0%, rgba(30, 87, 153, 0.88) 29%, rgba(32, 97, 165, 1) 33%, rgba(41, 137, 216, 1) 50%, rgba(33, 101, 170, 1) 66%, rgba(30, 87, 153, 0.8) 72%, rgba(30, 87, 153, 0) 100%);
+      background: linear-gradient(to bottom, rgba(30, 87, 153, 0) 0%, rgba(30, 87, 153, 0.88) 29%, rgba(32, 97, 165, 1) 33%, rgba(41, 137, 216, 1) 50%, rgba(33, 101, 170, 1) 66%, rgba(30, 87, 153, 0.8) 72%, rgba(30, 87, 153, 0) 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#001e5799', endColorstr='#001e5799', GradientType=0);
+
+    }
+  }
+
+  .gif-steps {
+    background-color: #00154A;
+    padding: 25px 0;
+    @include flexbox();
+    @include align-items(center);
+    @include justify-content(center);
+    color: $complementary-color;
+
+    .steps {
+      flex-direction: column;
+      @include flexbox();
+      @include align-items(center);
+      @include justify-content(center);
+      text-transform: uppercase;
+      font-size: 20px;
+      padding: 0 50px;
+      position: relative;
+
+      &:before {
+        font-size: 30px;
+        color: $primary-color;
+        background-color: #D0AA38;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        @include flexbox();
+        @include align-items(center);
+        @include justify-content(center);
+        margin-bottom: 12px;
+        z-index: 1;
+      }
+
+      &:after {
+        content: "\eb5e";
+        font-family: "waf-icon-font";
+        position: absolute;
+        font-size: 118px;
+        color: $golden-color;
+        top: 27%;
+        transform: translateY(-50%);
+        right: -50px;
+        z-index: 0;
+      }
+
+      &:last-child {
+        padding: 0 50px 0 35px;
+
+        &:after {
+          content: none;
+        }
+      }
+
+    }
+  }
+
+  .tabs-wrapper {
+    max-width: 1190px;
+    margin: 0 auto;
+  }
+
+  .tabs {
+    max-width: 400px;
+    margin: 40px auto;
+    @include flexbox();
+    @include justify-content(center);
+    @include align-items(center);
+    text-align: center;
+    background-color: #073f88;
+    border-radius: 30px;
+    text-transform: uppercase;
+
+    li {
+      flex-basis: 50%;
+      padding: 10px;
+      color: $complementary-color;
+      border-radius: 30px;
+      font-size: 20px;
+      font-family: $medium_font-family;
+      cursor: pointer;
+
+      &.active {
+        background-color: #D0AA38;
+        color: #001747;
+      }
+    }
+  }
+
+  .tab-container {
+    max-width: 90%;
+    margin: 0 auto;
+  }
+
+  .mygif-tabs {
+    @include flexbox();
+    @include justify-content(center);
+    @include align-items(center);
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 45px;
+    padding: 0 15px;
+
+    li {
+      flex-basis: 33.33%;
+      font-size: 20px;
+      color: #001848;
+      padding: 10px;
+      font-family: $medium_font-family;
+      border-bottom: 1px solid #00154a;
+      cursor: pointer;
+
+      span {
+        text-transform: none;
+      }
+
+      &.active {
+        color: #D0AA38;
+        border-bottom: 3px solid #D0AA38;
+      }
+    }
+  }
+
+  .gif-list {
+    @include flexbox();
+    @include align-items(center);
+    flex-wrap: wrap;
+    text-align: center;
+
+    .gif-img {
+      min-height: 390px;
+      border: 5px solid #1A3976;
+    }
+
+    .gif-item {
+      flex-basis: calc(33.33% - 30px);
+      position: relative;
+      padding: 10px 10px 30px 0px;
+      @include transition(0.2s all ease-in-out);
+      margin: 15px;
+
+      img {
+
+        width: 100%;
+      }
+    }
+  }
+
+  .mitv {
+    position: absolute;
+    left: 15px;
+    top: 24px;
+    background: #DACBA5;
+    padding: 8px;
+    border-radius: 50%;
+    font-size: 20px;
+  }
+
+  .migif-wrap {
+    .gif-list {
+      .gif-img {
+        min-height: 150px;
+      }
+    }
+
+    .mitv {
+      display: none;
+    }
+  }
+
+  .gif-icon-wrap {
+    padding: 20px 0;
+    position: relative;
+
+  }
+
+  .icon {
+    background-color: $golden-color;
+    padding: 8px;
+    color: #001848;
+    border-radius: 50%;
+    font-size: 20px;
+    margin: 0 25px;
+  }
+
+
+  .nogif {
+    .gif-item {
+      flex-basis: 100%;
+      @include flexbox();
+      @include align-items(center);
+      background-color: #f6f6f6;
+      padding: 20px;
+      margin-bottom: 30px;
+      -moz-box-shadow: 0px 15px 10px -15px #ccc;
+      -webkit-box-shadow: 0px 15px 10px -15px #ccc;
+      box-shadow: 0px 15px 10px -15px #ccc;
+    }
+
+    .gif-img {
+      flex-basis: 30%;
+      filter: grayscale(1);
+      pointer-events: none;
+      width: 100%;
+    }
+
+    .gif-text {
+      flex-basis: 70%;
+      max-width: 35%;
+      margin: auto;
+      color: $primary-color;
+      font-size: 18px;
+      position: relative;
+      padding: 20px 10px;
+
+      &:after {
+        content: "";
+        width: 75%;
+        height: 1px;
+        border-bottom: 1px solid $golden-color;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 5px;
+      }
+    }
+  }
+
+  .pending-container {
+    &.nogif {
+      .gif-img {
+        filter: grayscale(0);
+      }
+    }
+  }
+
+  .login-wrap {
+    position: relative;
+
+    .login-img {
+      img {
+        max-width: 100%;
+      }
+    }
+
+    .text {
+      color: #001549;
+      font-size: 28px;
+      position: absolute;
+      top: 40%;
+      transform: translateY(-50%);
+      right: 95px;
+      font-family: $medium_font-family;
+      max-width: 45%;
+
+      a {
+        color: #D0AA38;
+        text-transform: uppercase;
+      }
+
+      &:after {
+        content: "";
+        width: 200px;
+        height: 1px;
+        border: 1px solid #d0aa38;
+        bottom: -10px;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+  }
+
+}
+
+.modal-gifcordon {
+  span.skip {
+    font-size: 18px;
+    top: 10px;
+    right: 10px;
+  }
+
+  .modal-content {
+    background-color: $complementary-color;
+    position: relative;
+    background-image: url("../images/cssimages/gif-cardon/modal-bg.png");
+  }
+
+  .content-wrap {
+    position: relative;
+  }
+
+  .gif-list {
+    padding-top: 30px;
+    @include flexbox();
+    @include justify-content(center);
+    text-align: center;
+    flex-direction: column;
+
+    img {
+      border: 5px solid #1A3976;
+      max-width: 100%;
+    }
+
+    .gif-item {
+      margin: 10px;
+      padding: 0;
+      flex-basis: auto;
+      max-width: 100%;
+    }
+  }
+
+  .gif-logo {
+    text-align: center;
+    display: none;
+    @include transition(0.3s all ease-in-out);
+
+    img {
+      width: 180px;
+      max-width: 100%;
+    }
+  }
+
+  &.gif-loaded {
+    .gif-logo {
+      display: block;
+      padding-top: 20px;
+    }
+  }
+
+  .gif-details {
+    padding: 20px 0 0;
+
+    .date {
+      color: $primary-color;
+      font-size: 20px;
+    }
+
+    .gif-icon-wrap {
+      padding: 30px 0 20px;
+      position: relative;
+
+      &:before {
+        position: absolute;
+        content: "";
+        border-bottom: 1px solid #afb6c5;
+        width: 100%;
+        height: 1px;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 10px;
+      }
+    }
+
+    .icon {
+      background-color: $golden-color;
+      padding: 5px;
+      color: #001848;
+      border-radius: 50%;
+      font-size: 22px;
+      margin: 0 8px;
+
+      &.icon-share {
+        margin: 0;
+      }
+    }
+  }
+}
+
+@media screen and (max-width:$media-tablet-max) {
+  .waf-gifcardon {
+    .gif-list {
+      .gif-item {
+        flex-basis: calc(50% - 30px);
+      }
+    }
+
+    .nogif {
+      .gif-list {
+        .gif-item {
+          flex-basis: 100%;
+        }
+      }
+    }
+
+    .login-wrap {
+      .text {
+        right: 53px;
+        max-width: 45%;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $media-phone-max) {
+  .waf-gifcardon {
+
+    .tab-container {
+      max-width: 100%;
+    }
+
+    .waf-head {
+      padding: 50px 15px 30px;
+
+      .head-title {
+        font-size: 30px;
+      }
+
+      .head-img {
+        padding-left: 20px;
+
+        img {
+          width: 100%;
+          max-width: 90%;
+        }
+
+        &:before {
+          left: 15px;
+        }
+      }
+    }
+
+    .gif-steps {
+      .steps {
+        padding: 0 15px;
+        font-size: 16px;
+
+        &:before {
+          font-size: 20px;
+          width: 45px;
+          height: 45px;
+        }
+
+        &:after {
+          font-size: 75px;
+          right: -12px;
+        }
+
+        &:last-child {
+          padding: 0 5px 0 0;
+        }
+
+      }
+    }
+
+    .mygif-tabs {
+      margin-bottom: 25px;
+      white-space: nowrap;
+
+      li {
+        font-size: 17px;
+      }
+    }
+
+    .nogif {
+      .gif-list {
+        .gif-item {
+          flex-direction: column;
+          padding: 15px;
+          margin: 0 0 30px;
+        }
+      }
+
+      .gif-img {
+        flex-basis: 100%;
+      }
+
+      .gif-text {
+        flex-basis: 100%;
+        max-width: 100%;
+        font-size: 16px;
+      }
+    }
+
+    .tabs {
+      max-width: 90%;
+      margin: 40px auto 30px;
+
+      li {
+        font-size: 17px;
+      }
+    }
+
+    .gif-list {
+      @include justify-content(center);
+
+      .gif-img {
+        min-height: 370px;
+      }
+
+      .gif-item {
+        padding: 10px 0 30px;
+        flex-basis: 100%;
+        margin: 0 15px;
+
+        .mitv {
+          left: 15px;
+        }
+      }
+    }
+
+    .login-wrap {
+      .login-img {
+        img {
+          max-width: 98%;
+          margin: auto;
+        }
+      }
+
+      .text {
+        top: auto;
+        font-size: 16px;
+        left: 50%;
+        transform: translate(-50%, 0);
+        right: auto;
+        bottom: 20px;
+        width: 98%;
+        text-align: center;
+        padding: 10px;
+        max-width: 100%;
+
+        &:after {
+          width: 100px;
+          bottom: 0;
+        }
+      }
+    }
+  }
+
+  .modal-gifcordon {
+    .gif-logo {
+      img {
+        width: 150px;
+      }
+    }
+
+    .gif-list {
+      .gif-item {
+        padding-bottom: 0;
+
+        img {
+          max-width: 100%;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width:320px) {
+  .waf-gifcardon {
+
+    // padding: 20px 0;
+    .waf-head {
+      .head-title {
+        font-size: 26px;
+      }
+    }
+
+    .gif-steps {
+      .steps {
+        padding: 0 10px;
+        font-size: 14px;
+      }
+    }
+
+    .login-wrap {
+      .text {
+        font-size: 14px;
+        padding: 0 5px;
+
+        &:after {
+          bottom: -10px;
+        }
+      }
+    }
+
+  }
+}

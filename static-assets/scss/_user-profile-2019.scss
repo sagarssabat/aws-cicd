@@ -1,0 +1,264 @@
+.waf-mi-bg {
+    background-image: url('../images/cssimages/profile-bg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom center;
+    margin: 0 -10px;
+
+    .layout-wrapper {
+        margin: 0 40px;
+        padding: 40px 80px;
+        /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+20,ffffff+80&0+0,1+20,0.8+80,0+100 */
+        background: -moz-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 20%, rgba(255, 255, 255, 0.8) 80%, rgba(255, 255, 255, 0) 100%);
+        /* FF3.6-15 */
+        background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 20%, rgba(255, 255, 255, 0.8) 80%, rgba(255, 255, 255, 0) 100%);
+        /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 20%, rgba(255, 255, 255, 0.8) 80%, rgba(255, 255, 255, 0) 100%);
+        /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00ffffff', endColorstr='#00ffffff', GradientType=0);
+        /* IE6-9 */
+    }
+}
+
+.waf-user-profile {
+    .user-profile {
+        margin: 30px 0 40px;
+
+        .img-box {
+            width: 80px;
+            height: 80px;
+            background-color: #787878;
+            margin: 0 auto;
+            position: relative;
+
+            img {
+                border-radius: 50%;
+            }
+
+            .avtar-edit {
+                width: 20px;
+                height: 20px;
+                position: absolute;
+                bottom: 15%;
+                left: 0;
+                cursor: pointer;
+
+                &:before {
+                    content: 'Please upload your profile photo in either JPG or PNG format. File size should not be more than 5MB.';
+                    position: absolute;
+                    width: 250px;
+                    height: 65px;
+                    background-color: $golden-color;
+                    padding: 10px;
+                    top: 10px;
+                    border-radius: 5px;
+                    font-size: 12px;
+                    font-weight: normal;
+                    line-height: 14px;
+                    right: 20px;
+                    opacity: 0;
+                    visibility: hidden;
+                    transition: 0.4s;
+                    z-index: 1;
+                }
+
+                &:hover {
+                    &:before {
+                        visibility: visible;
+                        opacity: 1;
+                    }
+                }
+
+                input {
+                    display: none;
+                    padding: 0;
+                    z-index: 0;
+                }
+
+                label,
+                input {
+                    width: 100%;
+                    position: absolute;
+                    height: 100%;
+                    margin: 0;
+                    cursor: pointer;
+                }
+
+                label {
+                    border-radius: 50%;
+                    font-size: 12px;
+                    @include flexbox();
+                    @include justify-content(center);
+                    @include align-items(center);
+                    background-color: $golden-color;
+                    color: $primary-color;
+                    font-family: $medium_font-family;
+                    z-index: 2;
+                }
+
+            }
+        }
+    }
+
+    .button-group {
+        text-align: center;
+
+        // .form-element {
+        //     @include flexbox();
+        //     @include justify-content(space-between);
+        // }
+
+        .btn-gold {
+            left: auto;
+            transform: translateX(0);
+        }
+    }
+
+    .progress-bar {
+        @include flexbox();
+        @include justify-content(space-between);
+        width: 60%;
+        margin: 100px auto 0;
+        position: relative;
+
+        .progress-status {
+            position: absolute;
+            width: calc(10% - 10px);
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: $golden-color;
+            height: 4px;
+            transition: 0.4s;
+        }
+
+        &:before {
+            content: '';
+            position: absolute;
+            width: calc(100% - 10px);
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: #d8d8d8;
+            height: 4px;
+        }
+
+        p {
+            position: relative;
+            padding-top: 15px;
+            line-height: 1;
+            font-size: 16px;
+
+            &.active {
+                &:before {
+                    background-color: $golden-color;
+                }
+            }
+
+            &:before {
+                content: '';
+                position: absolute;
+                top: -6px;
+                left: 50%;
+                width: 15px;
+                height: 15px;
+                border-radius: 50%;
+                background-color: #d8d8d8;
+                transform: translateX(-50%);
+                z-index: 1;
+            }
+
+            &:after {
+                content: '';
+                background-size: 100%;
+                width: 60px;
+                height: 60px;
+                background-position: center;
+                background-repeat: no-repeat;
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                top: -80px;
+            }
+
+            &:nth-child(2) {
+                &::after {
+                    content: '';
+                    background-image: url('../images/cssimages/progress-1.png');
+                }
+            }
+
+            &:nth-child(3) {
+                &::after {
+                    content: '';
+                    background-image: url('../images/cssimages/progress-2.png');
+                }
+            }
+
+            &:nth-child(4) {
+                &::after {
+                    content: '';
+                    background-image: url('../images/cssimages/progress-3.png');
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: $media-tablet-max) {
+    .waf-mi-bg {
+        .layout-wrapper {
+            margin: 0;
+            padding: 20px;
+        }
+    }
+}
+
+@media screen and (max-width: $media-phone-max) {
+    .waf-mi-bg {
+        .layout-wrapper {
+            margin: 0;
+        }
+    }
+
+    .waf-user-profile {
+        .user-profile {
+            .img-box {
+                .avtar-edit {
+                    &:before {
+                        left: 50%;
+                        transform: translateX(-50%);
+                    }
+                }
+            }
+        }
+
+        .progress-bar {
+            width: 90%;
+
+            .progress-status {
+                height: 2px;
+            }
+
+            &:before {
+                height: 2px;
+            }
+
+            p {
+                font-size: 12px;
+
+                &:after {
+                    top: -50px;
+                    width: 40px;
+                    height: 40px;
+                }
+
+                &:before {
+                    width: 10px;
+                    height: 10px;
+                    top: -4px;
+                }
+            }
+        }
+    }
+}

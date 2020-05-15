@@ -1,0 +1,215 @@
+@import "../../../../../../widget-library/gallery/sass/widget-layout-16.scss";
+@import "../../_variables";
+@import "../../detail";
+@import "../../_swiper";
+.waf-detail.widget-layout-16 {
+    margin: 0 -10px; // padding: 20px 0;
+    figcaption {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        width: 40%;
+        height: auto;
+        background-color: rgba($primary-color, 0.5);
+        color: $complementary-color;
+        padding: 15px;
+        overflow: hidden;
+        display: none;
+    }
+    .show-more {
+        position: absolute;
+        bottom: 0;
+        font-size: 12px;
+        z-index: 3;
+        background-color: $primary-color;
+        color: $complementary-color;
+        padding: 5px;
+        @include flexbox();
+        @include align-items(center);
+        flex-direction: column;
+        cursor: pointer;
+        transition: 0.4s;
+        span {
+            display: none;
+        }
+        &:before {
+            content: '\e9d0';
+            font-family: $waf-icon;
+            line-height: 1;
+        }
+        &.active {
+            &:before {
+                transform: rotate(-180deg);
+                transition: 0.4s;
+            }
+        }
+    }
+    .gallery-slider {
+        position: relative;
+        overflow: hidden;
+    }
+    .preview-slider {
+        max-width: 1190px;
+        padding-right: 10px;
+        padding-left: 10px;
+        margin-right: auto;
+        margin-left: auto;
+        position: relative;
+    }
+    .gallery-slide-count {
+        position: absolute;
+        top: 0px;
+        padding: 20px 40px;
+        z-index: 1;
+        color: $complementary-color;
+        right: 10px;
+        /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#001848+0,001848+100&0+0,1+25 */
+        background: -moz-linear-gradient(left, rgba(0, 24, 72, 0) 0%, rgba(0, 24, 72, 1) 65%, rgba(0, 24, 72, 1) 100%);
+        /* FF3.6-15 */
+        background: -webkit-linear-gradient(left, rgba(0, 24, 72, 0) 0%, rgba(0, 24, 72, 1) 65%, rgba(0, 24, 72, 1) 100%);
+        /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(to right, rgba(0, 24, 72, 0) 0%, rgba(0, 24, 72, 1) 65%, rgba(0, 24, 72, 1) 100%);
+        /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00001848', endColorstr='#001848', GradientType=1);
+    }
+    .thumbnail-slider {
+        position: absolute;
+        bottom: -100%;
+        width: 100%;
+        z-index: 2;
+        transition: 0.3s;
+        padding: 10px 0;
+        background-color: rgba($default-color, 0.7);
+        /* IE6-9 */
+        .slider-nav,
+        .gallery-slide-count {
+            display: none;
+        }
+        &.active {
+            bottom: 0px;
+        }
+    }
+    .content-wrap {
+        max-width: 1190px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+    .item-type-icon {
+        &:before {
+            content: '\e9f7';
+            font-family: $waf-icon;
+            font-size: 20px;
+        }
+    }
+    &.import-original {
+        .gallery-slider {
+            .preview-slider,
+            .thumbnail-slider {
+                img {
+                    margin: 0 auto;
+                    position: relative;
+                    height: 500px;
+                    width: 100%;
+                    object-fit: contain;
+                    display: block;
+                }
+                .slider-item {
+                    .img-box {
+                        padding-bottom: 0;
+                        background-color: transparent;
+                    }
+                }
+                .slider-nav {
+                    &.swiper-button-prev,
+                    &.swiper-button-next {
+                        &:before {
+                            color: $primary-color;
+                        }
+                    }
+                }
+            }
+            .thumbnail-slider {
+                img {
+                    height: 120px;
+                    width: 100%;
+                }
+            }
+        }
+    }
+
+    .slider-wrap {
+        .slider-nav {
+            color: $golden-color;
+        }
+    }
+}
+
+@media screen and (max-width: $media-tablet-max) {
+    .waf-detail.widget-layout-16 {
+        padding: 0px;
+        .show-more {
+            display: none;
+        }
+        figcaption {
+            font-size: 14px;
+            position: relative;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: $primary-color;
+        }
+        .preview-slider {
+            padding: 0px;
+        }
+        .thumbnail-slider {
+            padding: 10px 0;
+        }
+        .gallery-slide-count {
+            right: 0;
+            padding: 15px 20px;
+            font-size: 14px;
+        }
+        &.import-original {
+            .gallery-slider {
+                overflow: visible;
+                .preview-slider {
+                    img {
+                        height: 300px;
+                        width: 100%;
+                    }
+                }
+                .thumbnail-slider {
+                    position: relative;
+                    bottom: auto;
+                    img {
+                        height: 80px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: $media-phone-max) {
+    .waf-detail.widget-layout-16 {
+        .item-type-icon {
+            &:before {
+                font-size: 16px;
+            }
+        }
+        .slider-wrap {
+            .slider-nav {
+                top: 50%;
+            }
+        }
+        &.import-original {
+            .gallery-slider {
+                .preview-slider {
+                    img {
+                        height: 250px;
+                    }
+                }
+            }
+        }
+    }
+}

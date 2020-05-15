@@ -1,0 +1,210 @@
+@import "../../../../../../widget-library/postlisting/sass/widget-layout-129.scss";
+@import "../../_variables";
+// @import "../../_swiper";
+@import "../../animation/mitv-icon-animate";
+
+.waf-listing.widget-layout-129 {
+  background-image: url("../../../../static-assets/images/cssimages/mitv-bg.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: 0 -10px;
+  background-size: cover;
+  padding: 20px 0;
+
+  &.spotlight {
+    .article-video {
+      width: 100%;
+    }
+  }
+
+  .waf-head {
+    display: block;
+  }
+
+  .slider-nav {
+    display: none;
+  }
+
+  .article-wrap {
+    position: relative;
+  }
+
+  .article-video-thumbnail {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    transition: 0.4s;
+    opacity: 1;
+    cursor: pointer;
+  }
+
+  .swiper-pagination {
+    display: block;
+    position: relative;
+    bottom: auto;
+    padding: 10px 0;
+  }
+
+  .article-content {
+    width: 40%;
+    opacity: 0;
+    visibility: hidden;
+    z-index: -1;
+  }
+
+  .show-video {
+
+    .swiper-pagination,
+    .article-content,
+    .article-video-thumbnail {
+      opacity: 0;
+      z-index: 0;
+    }
+  }
+
+  .article-item {
+    &:hover {
+      .article-content {
+        opacity: 1;
+        visibility: visible;
+        z-index: 1;
+      }
+    }
+
+    &.show-video {
+      &:hover {
+        .article-content {
+          opacity: 0;
+        }
+      }
+    }
+  }
+
+  .head-wrap {
+    padding: 0 10px;
+
+    .title {
+      position: relative;
+      width: 100px;
+      height: 100px;
+      text-indent: -9999px;
+
+      &:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url("../../../../static-assets/images/cssimages/mi-tv.png");
+        background-size: 100%;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+    }
+
+    .more-section {
+      background-color: $golden-color;
+      padding: 8px 18px;
+      border-radius: 20px;
+      @include flexbox();
+      @include align-items(center);
+      line-height: 1;
+
+      &:after {
+        content: "\e9f3";
+        font-size: 20px;
+        display: inline-block;
+        animation: mitv 1s ease 2s forwards infinite alternate;
+      }
+    }
+  }
+
+  .slider-navigation {
+    display: none;
+  }
+
+  .swiper-slide-prev,
+  .swiper-slide-next {
+    opacity: 0.6;
+  }
+
+}
+
+@media screen and (max-width: $media-tablet-max) {
+  .waf-listing.widget-layout-129 {
+    .head-wrap {
+      .title {
+        width: 80px;
+        height: 80px;
+      }
+    }
+
+    .article-content {
+      width: 100%;
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .article-item {
+      &.show-video {
+        &:hover {
+          .article-content {
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $media-phone-max) {
+  .waf-listing.widget-layout-129 {
+    background-image: url("../../../../static-assets/images/cssimages/mitv-bg-mob.jpg");
+    background-size: cover;
+    background-position: top center;
+
+    .slider-pagination {
+      display: none;
+    }
+
+    .article-content {
+      position: relative;
+      width: 100%;
+    }
+
+    .show-video {
+      .article-content {
+        opacity: 1;
+      }
+    }
+
+    .head-wrap {
+      .title {
+        width: 60px;
+        height: 60px;
+      }
+
+      .more-section {
+        font-size: 12px;
+
+        &:after {
+          font-size: 16px;
+        }
+      }
+    }
+
+    .item-type-video {
+      .article-video-thumbnail {
+        .item-type-icon {
+          top: 50%;
+        }
+      }
+    }
+
+    .swiper-pagination {
+      display: none;
+    }
+  }
+}

@@ -1,0 +1,592 @@
+.waf-mi-bg {
+    background-image: url('../images/cssimages/profile-bg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom center;
+    margin: 0 -10px;
+
+    .layout-wrapper {
+        margin: 0 40px;
+        padding: 40px 80px;
+        /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+20,ffffff+80&0+0,1+20,0.8+80,0+100 */
+        background: -moz-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 20%, rgba(255, 255, 255, 0.8) 80%, rgba(255, 255, 255, 0) 100%);
+        /* FF3.6-15 */
+        background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 20%, rgba(255, 255, 255, 0.8) 80%, rgba(255, 255, 255, 0) 100%);
+        /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 20%, rgba(255, 255, 255, 0.8) 80%, rgba(255, 255, 255, 0) 100%);
+        /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00ffffff', endColorstr='#00ffffff', GradientType=0);
+        /* IE6-9 */
+    }
+}
+
+.user-membership {
+    padding: 30px;
+    text-align: center;
+    background-image: url('../images/cssimages/membership/membership-bg.jpg');
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: cover;
+    min-height: calc(100vh - 96px);
+    @include flexbox();
+    @include align-items(center);
+    @include justify-content(center);
+
+    .invoice {
+        &.btn-gold {
+            color: $primary-color;
+        }
+
+        &:before {
+            margin-right: 5px;
+        }
+    }
+
+    .card-title {
+        text-transform: uppercase;
+        font-family: $medium_font-family;
+        color: $golden-color;
+        font-size: 30px;
+        margin-bottom: 20px;
+    }
+
+    .card-img {
+        position: relative;
+        width: 300px;
+        margin: 0 auto;
+
+        &:before {
+            content: "";
+            background: url(../images/cssimages/membership/glitter.png) no-repeat;
+            width: 700px;
+            height: 400px;
+            position: absolute;
+            left: 32%;
+            transform: translateX(-50%);
+            bottom: -20px;
+        }
+
+        img {
+            width: 100%;
+            position: relative;
+        }
+
+        .card-expiry {
+            position: absolute;
+            right: 34px;
+            bottom: 21px;
+            font-size: 12px;
+        }
+
+        .card-name {
+            font-family: $bold_font-family;
+            position: absolute;
+            text-transform: uppercase;
+            bottom: 25px;
+            left: 25px;
+            line-height: 1;
+            /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#787878+20,ffffff+75 */
+            background: rgb(189, 189, 189);
+            /* Old browsers */
+            background: -moz-linear-gradient(top, rgba(189, 189, 189, 1) 20%, rgba(255, 255, 255, 1) 75%);
+            /* FF3.6-15 */
+            background: -webkit-linear-gradient(top, rgba(189, 189, 189, 1) 20%, rgba(255, 255, 255, 1) 75%);
+            /* Chrome10-25,Safari5.1-6 */
+            background: linear-gradient(to bottom, rgba(189, 189, 189, 1) 20%, rgba(255, 255, 255, 1) 75%);
+            /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#787878', endColorstr='#ffffff', GradientType=0);
+            /* IE6-9 */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            width: 166px;
+            text-align: right;
+            font-size: 16px;
+        }
+
+    }
+
+    .card-benefits {
+        text-transform: capitalize;
+        text-decoration: underline;
+        display: inline-block;
+        color: $golden-color;
+        font-size: 18px;
+        margin-bottom: 30px;
+    }
+
+    &.platinum,
+    &.diamond,
+    &.silver {
+        .card-name {
+            background: rgb(0, 24, 72);
+            background: -moz-linear-gradient(top, rgba(0, 24, 72, 1) 20%, rgba(#1d2a44, 1) 75%);
+            background: -webkit-linear-gradient(top, rgba(0, 24, 72, 1) 20%, rgba(#1d2a44, 1) 75%);
+            background: linear-gradient(to bottom, rgba(0, 24, 72, 1) 20%, rgba(#1d2a44, 1) 75%);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#787878', endColorstr='#ffffff', GradientType=0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .card-expiry {
+            color: $primary-color;
+            font-family: $bold_font-family;
+        }
+    }
+
+    .card-details {
+        color: $complementary-color;
+        margin-top: 20px;
+
+        a {
+            color: $golden-color;
+        }
+
+        &.success {
+            .btn-gold {
+                left: auto;
+                transform: none;
+                margin: 20px 0 10px;
+            }
+
+            .message-link,
+            .user-message-failed {
+                display: none;
+            }
+        }
+
+        &.failed {
+
+            .user-message-success,
+            .card-img {
+                display: none;
+            }
+        }
+    }
+
+    .card-message {
+        margin-bottom: 15px;
+    }
+
+    .user-name {
+        font-size: 24px;
+        font-family: $medium_font-family;
+    }
+
+    .user-message {
+        color: $golden-color;
+        padding: 20px 0;
+        max-width: 380px;
+        margin: 0 auto;
+    }
+
+    .message-link {
+        min-height: 200px;
+        @include flexbox();
+        @include justify-content(center);
+        @include align-items(center);
+    }
+}
+
+.user-profile-page {
+    .user-membership {
+        min-height: auto;
+    }
+}
+
+.waf-user-profile {
+    padding-top: 0px;
+    margin: 0 -10px;
+
+    .form-tnc {
+        text-decoration: underline;
+    }
+
+    .forgot-password {
+        padding-top: 20px;
+    }
+
+    .input-disabled {
+        opacity: 0.5;
+    }
+
+    .card-details {
+        &.contact-details {
+            p {
+                color: $complementary-color;
+            }
+        }
+    }
+
+    .emailwrap .user-success {
+        text-align: center;
+        padding: 15px 0;
+
+        &.errordiv {
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            bottom: -25px;
+        }
+    }
+
+    .form-disabled {
+        .layout-wrapper {
+            .user-profile {
+                opacity: 0.5;
+                color: #808080;
+                pointer-events: none;
+            }
+
+            .user-profile.custom-form {
+                opacity: 0.5;
+                pointer-events: none;
+
+                .input-disabled {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+
+    select {
+        background-color: transparent;
+        border-bottom: 1px solid rgba(0, 24, 72, .3);
+        transition: border-bottom .2s;
+    }
+
+    .btn-wrap-icons {
+        .btn-gold {
+            left: auto;
+            transform: none;
+        }
+
+        .social-wrap {
+            // width: 118px;
+
+            .share-icons {
+                a {
+                    color: $primary-color;
+                }
+            }
+
+        }
+    }
+
+    .btn-edit {
+        font-family: $medium_font-family;
+        font-size: 18px;
+        text-transform: capitalize;
+        margin-left: auto;
+        display: block;
+        left: auto;
+        right: 0;
+        transform: none;
+        // margin-left: auto;
+        // display: block;
+    }
+
+    .user-profile {
+        @include flexbox();
+        @include justify-content(center);
+        @include align-items(center);
+        margin: 30px 0 40px;
+
+        .form-element {
+            width: 100%;
+        }
+
+        .statewrap,
+        .citywrap {
+            .form-element {
+                margin-bottom: 20px;
+            }
+        }
+
+
+
+        .img-box {
+            width: 120px;
+            height: 120px;
+            position: relative;
+            background-color: transparent;
+            border-radius: 50%;
+            border: 1px solid $golden-color;
+            padding: 5px;
+
+            img {
+                border-radius: 50%;
+            }
+
+            .avtar-edit {
+                width: 20px;
+                height: 20px;
+                position: absolute;
+                bottom: 15%;
+                left: 0;
+                cursor: pointer;
+
+                &:before {
+                    content: 'Please upload your profile photo in either JPG or PNG format. File size should not be more than 5MB.';
+                    position: absolute;
+                    width: 250px;
+                    height: 65px;
+                    background-color: $golden-color;
+                    padding: 10px;
+                    top: 10px;
+                    border-radius: 5px;
+                    font-size: 12px;
+                    font-weight: normal;
+                    line-height: 14px;
+                    right: 20px;
+                    opacity: 0;
+                    visibility: hidden;
+                    transition: 0.4s;
+                    z-index: 1;
+                }
+
+                &:hover {
+                    &:before {
+                        visibility: visible;
+                        opacity: 1;
+                    }
+                }
+
+                input {
+                    display: none;
+                    padding: 0;
+                    z-index: 0;
+                }
+
+                label,
+                input {
+                    width: 100%;
+                    position: absolute;
+                    height: 100%;
+                    margin: 0;
+                    cursor: pointer;
+                }
+
+                label {
+                    border-radius: 50%;
+                    font-size: 12px;
+                    @include flexbox();
+                    @include justify-content(center);
+                    @include align-items(center);
+                    background-color: $golden-color;
+                    color: $primary-color;
+                    font-family: $medium_font-family;
+                    z-index: 2;
+                }
+
+            }
+        }
+
+        .user-name {
+            font-family: $medium_font-family;
+            font-size: 24px;
+            margin-left: 20px;
+            text-transform: uppercase;
+        }
+    }
+
+    .button-wrap {
+        @include flexbox();
+        @include justify-content(space-between);
+        @include align-items(center);
+        padding: 15px 0;
+
+        .btn {
+            color: $golden-color;
+            text-decoration: underline;
+            text-transform: capitalize;
+        }
+    }
+
+    .radio-button {
+        text-align: left;
+    }
+
+    .button-group {
+        text-align: center;
+
+        // .form-element {
+        //     @include flexbox();
+        //     @include justify-content(space-between);
+        // }
+
+        .btn-gold {
+            left: auto;
+            transform: translateX(0);
+        }
+    }
+
+    .courier-details {
+        padding: 20px 0;
+        border-top: 1px solid rgba($primary-color, 0.5);
+        border-bottom: 1px solid rgba($primary-color, 0.5);
+
+        .title {
+            font-family: $medium_font-family;
+            text-transform: capitalize;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .label {
+            text-transform: capitalize;
+            color: $grey-note;
+
+            &+.label {
+                margin-top: 5px;
+            }
+        }
+
+        .label-detail {
+            text-transform: uppercase;
+            color: $golden-color;
+        }
+    }
+}
+
+@media screen and (max-width: $media-tablet-max) {
+    .waf-mi-bg {
+        .layout-wrapper {
+            margin: 0;
+            padding: 20px;
+        }
+    }
+
+    .waf-user-profile {
+        .btn-wrap-icons {
+            .social-wrap {
+                // width: 16%;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: $media-phone-max) {
+
+    .waf-mi-bg {
+        .layout-wrapper {
+            margin: 0;
+        }
+    }
+
+    .waf-user-profile {
+        .btn-edit {
+            font-size: 14px;
+        }
+
+        .btn-wrap-icons {
+            .social-wrap {
+                // width: 28%;
+                // width: 88px;
+
+                // &.loading {
+                //     width: 100px;
+                // }
+
+                // &.active {
+                //     width: 260px;
+                // }
+            }
+        }
+
+        .user-profile {
+            flex-direction: column;
+
+            .form-element {
+                width: 90%;
+            }
+
+            .radio-button {
+                &.form-element {
+                    margin-bottom: 20px;
+                }
+
+                label {
+                    display: block;
+                    margin-bottom: 10px;
+                }
+            }
+
+            .statewrap {
+                .form-element {
+                    margin-bottom: 50px;
+                }
+            }
+
+            .citywrap {
+                .form-element {
+                    margin-bottom: 25px;
+                }
+            }
+
+            .img-box {
+                .avtar-edit {
+                    &:before {
+                        left: 50%;
+                        transform: translateX(-50%);
+                    }
+                }
+            }
+
+            .user-name {
+                font-size: 18px;
+                margin-left: 0px;
+                margin-top: 15px;
+            }
+        }
+    }
+
+    .user-membership {
+        padding: 30px 15px;
+        min-height: auto;
+        background-repeat: repeat;
+
+        .card-title {
+            font-size: 24px;
+        }
+
+        .card-img {
+            width: 250px;
+
+            .card-name {
+                width: 140px;
+                bottom: 20px;
+            }
+
+        }
+
+        .user-message {
+            font-size: 14px;
+        }
+
+        .card-details {
+            p {
+                font-size: 14px;
+            }
+
+            .card-expiry {
+                right: 23px;
+                bottom: 13px;
+                font-size: 12px;
+            }
+        }
+    }
+
+    .user-profile-page {
+        .user-membership {
+            background-repeat: no-repeat;
+        }
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .user-membership {
+        .card-title {
+            font-size: 20px;
+        }
+    }
+}

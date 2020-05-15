@@ -1,0 +1,756 @@
+.waf-auction {
+    .overseas-player {
+        position: absolute;
+        right: -25px;
+        top: 50%;
+        transform: translateY(-50%);
+
+        &:before {
+            content: "\e92d";
+            font-family: $waf-icon;
+            // color: $Dummycity-color;
+            font-size: 18px;
+
+        }
+    }
+
+    .role {
+        font-family: $waf-icon;
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        color: $default-color;
+
+        &.bowler {
+            font-family: $waf-icon;
+
+            &:before {
+                content: "\e92f";
+            }
+        }
+
+        &.batsman {
+            font-family: $waf-icon;
+
+            &:before {
+                content: "\e92e";
+            }
+        }
+
+        &.wicket-keeper {
+            font-family: $waf-icon;
+
+            &:before {
+                content: "\e933";
+            }
+        }
+
+        &.all-rounder {
+            font-family: $waf-icon;
+
+            &:before {
+                content: "\e92b";
+            }
+        }
+
+    }
+
+    // .rupees-icon {
+    //     position: relative;
+
+    //     &:before {
+    //         content: "\e90f";
+    //         font-family: $waf-icon;
+    //         font-size: 12px;
+    //     }
+    // }
+
+    .player-info {
+        box-shadow: 0px 3px 7px 2px #dcdada;
+        @include border-radius(10px);
+        background-color: $complementary-color;
+        padding: 30px;
+        position: relative;
+
+        .detail-wrapper {
+            @include flexbox();
+            @include justify-content(space-around);
+            @include align-items(center);
+        }
+
+        .player-name {
+            color: $primary-color;
+            font-family: $bold_font-family;
+            text-transform: uppercase;
+            line-height: 1;
+
+            .name {
+                font-size: 34px;
+            }
+
+            .designation {
+                font-size: 24px;
+            }
+        }
+
+        .player-role {
+            color: $default-color;
+            font-size: 16px;
+            font-family: $regular_font-family;
+            padding-left: 5px;
+
+            .overseas-player {
+                position: relative;
+                right: 0;
+            }
+        }
+
+        .price {
+            color: $default-color;
+            font-family: $regular_font-family;
+            font-size: 16px;
+            padding-left: 5px;
+            margin-top: 20px;
+
+
+            .txt-3 {
+                font-size: 32px;
+                font-family: $bold_font-family;
+                line-height: 1;
+                display: block;
+            }
+
+        }
+
+        .status {
+
+            height: 150px;
+
+            span {
+                height: 150px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                // background-repeat: no-repeat;
+                // background-position: center;
+                // background-size: contain;
+
+
+                &.sold {
+                    &:before {
+                        content: "\e931";
+                        font-family: $waf-icon;
+                        font-size: 150px;
+                        color: #bb0d0d;
+
+                    }
+
+                    // background-image: url(/static-assets/images/cssimages/auction/Sold-01.png);
+                }
+
+                &.unsold {
+                    &:before {
+                        content: "\e932";
+                        font-family: $waf-icon;
+                        font-size: 150px;
+                        color: #124b89;
+
+                    }
+
+                    // background-image: url(/static-assets/images/cssimages/auction/Unsold-01.png);
+                }
+
+                &.rtm {
+                    &:before {
+                        content: "\e930";
+                        font-family: $waf-icon;
+                        font-size: 150px;
+                        color: #1459a2;
+
+                    }
+
+                    // background-image: url(/static-assets/images/cssimages/auction/RTM-01.png);
+                }
+
+                &.current {
+                    &:before {
+                        content: "\e92c";
+                        font-family: $waf-icon;
+                        font-size: 150px;
+                        color: #ec6529;
+
+                    }
+
+                    // background-image: url(/static-assets/images/cssimages/auction/Auction-01.png);
+
+                }
+            }
+
+        }
+    }
+
+    //.player-info
+    .tab-section {
+        padding: 20px 0px;
+    }
+
+    // .tab-container {
+    //     padding: 20px 0px;
+    // }
+    .tabs.auction-tabs {
+        border: 1px solid $primary-color;
+        border-radius: 5px;
+        padding: 0px;
+
+        ul {
+            li {
+                flex: 1;
+                text-align: center;
+                padding: 10px;
+                color: $primary-color;
+                cursor: pointer;
+
+                &.active {
+                    background-color: $primary-color;
+                    color: $complementary-color;
+                }
+            }
+        }
+    }
+
+    // team-slider-section //
+    .team-slider {
+        padding: 0px 20px;
+        background-color: #f5f5f5;
+        @include border-radius(10px);
+        position: relative;
+
+        // .team-list {
+        //   // padding: 12px 0px;
+        // }
+
+        .team-item {
+            width: 80px;
+            text-align: center;
+            cursor: pointer;
+            padding: 0 10px;
+
+            &:before {
+                content: "";
+                position: absolute;
+                bottom: 0;
+                left: 50%;
+                width: 0;
+                height: 4px;
+                transform: translateX(-50%);
+                background-color: $golden-color;
+                @include border-top-radius(5px);
+                @include transition(0.3s ease-in-out);
+                overflow: hidden;
+            }
+
+            &:hover,
+            &.active {
+                &:before {
+                    width: 100%;
+                }
+            }
+
+        }
+
+        .team-wrap {
+            position: relative;
+            padding: 12px 0px;
+
+            // &:after {
+            //   height: 2px;
+            //   width: 80%;
+            //   background-color: $primary-color;
+            //   content: "";
+            //   display: block;
+            //   position: absolute;
+            //   bottom: -10px;
+            //   left: 50%;
+            //   transition: 0.3s all;
+            //   @include transform(translateX(-50%) scale(0));
+            // }
+        }
+
+        .team-photo {
+            img {
+                width: 100%;
+                @include border-radius(10px);
+            }
+        }
+
+        .team-name {
+            display: none;
+            font-size: 14px;
+            color: #868686;
+            position: relative;
+            font-family: $medium_font-family;
+            top: 5px; //white-space: nowrap;
+        }
+
+        .slide-nav {
+            &:before {
+                font-size: 14px;
+            }
+
+            // &.nav-left:before
+            // {
+            // 	left:-20px;
+            // }
+            // &.nav-right:before
+            // {
+            // 	right:-20px;
+            // }
+        }
+    }
+
+    // team-info //
+    .team-info {
+        border: 1px solid #d6d6d6;
+        margin: 25px 0px;
+        @include border-radius(10px);
+
+        .info-listing {
+            @include flexbox();
+            padding: 20px;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        .info-item {
+            flex: 1;
+            text-align: center;
+            border-right: 1px solid #cccccc;
+
+            &:last-child {
+                border-right: none;
+            }
+
+            .txt-1 {
+                font-size: 12px;
+                text-transform: uppercase;
+                font-family: $regular_font-family;
+                color: $default-color;
+            }
+
+            .txt-3 {
+                font-size: 20px;
+                color: $golden-color;
+                font-family: $medium_font-family;
+                display: block;
+            }
+        }
+    }
+
+    // player-listing //
+    .players-section {
+        .mod-head {
+            background-color: $primary-color;
+            margin-bottom: 0px;
+            border-bottom: none;
+            @include border-top-radius(10px);
+
+            .title {
+                color: $complementary-color;
+                font-family: $regular_font-family;
+                font-size: 16px;
+                padding: 10px 20px;
+                text-transform: uppercase;
+                margin: 0;
+            }
+        }
+
+        .mod-body {
+            background-color: $complementary-color;
+            @include border-bottom-radius(10px);
+        }
+
+        .players-section-list {
+            margin-bottom: 25px;
+            border: 1px solid #cccccc;
+            @include border-radius(10px);
+        }
+    }
+
+    .player-listing.table {
+        margin-bottom: 0;
+
+        .tr {
+            @include flexbox();
+            align-items: center;
+            border-bottom: 1px solid #f7eded;
+            justify-content: space-between;
+
+            &:last-child {
+                border-bottom: none;
+            }
+
+            &.header {
+                border-bottom: 1px solid #cccccc;
+
+                .td {
+                    font-family: $regular_font-family;
+                    font-size: 16px;
+                    color: $default-color;
+                }
+            }
+        }
+
+        .player-detail {
+            position: relative;
+        }
+
+        .td {
+            text-align: center;
+            flex-basis: 20%;
+            padding: 18px 20px;
+            font-size: 24px;
+            font-family: $medium_font-family;
+            line-height: 1;
+
+            &.player {
+                flex-basis: 60%;
+                text-align: left;
+                @include flexbox();
+                align-items: center;
+            }
+
+            &.base-price,
+            &.selling-price {
+                color: $default-color;
+                text-align: right;
+            }
+
+            .name {
+                display: block;
+                position: relative;
+                top: 3px;
+                font-size: 18px;
+                font-family: $medium_font-family;
+                text-transform: uppercase;
+                padding-left: 30px;
+            }
+
+            // .role {
+            //   font-family: $regular_font-family;
+            //   font-size: 14px;
+            //   color: #7c7c7c;
+            // }
+
+            .player-photo {
+                width: 70px;
+                height: 70px;
+                border-radius: 50%;
+                overflow: hidden;
+                background-size: cover;
+                background-position: center;
+                margin-right: 15px;
+            }
+        }
+
+        // .t-body {
+        //     padding: 0 25px;
+        // }
+    }
+
+    // updates-section //
+    .updates-list {
+        .updates-item {
+            background-color: #f8f8f8;
+            margin-bottom: 15px;
+            padding: 12px;
+            border-radius: 5px;
+            position: relative;
+            font-family: $regular_font-family;
+        }
+
+        .update-title {
+            color: #424242;
+            font-size: 20px;
+        }
+
+        .time {
+            color: #7c7c7c;
+            font-size: 14px;
+            position: absolute;
+            bottom: 5px;
+            right: 10px;
+        }
+
+        .img-section {
+            img {
+                height: 250px;
+                width: auto;
+            }
+
+            .img-area {
+                display: flex;
+                justify-content: center;
+                margin: 15px 0px;
+            }
+        }
+
+        .twitter-section {
+            display: flex;
+            justify-content: center;
+            margin: 15px 0px;
+        }
+    }
+
+    .slider {
+        .slider-navigation {
+            .slide-nav {
+                display: none;
+                font-family: $waf-icon;
+                color: $primary-color;
+                font-size: 20px;
+                position: absolute;
+                top: 50%;
+                @include transform(translateY(-50%));
+            }
+
+            .nav-left {
+                left: 0;
+
+                &:before {
+                    content: "\e9cd";
+                }
+            }
+
+            .nav-right {
+                right: 0;
+
+                &:before {
+                    content: "\e9c5";
+                }
+            }
+        }
+    }
+}
+
+
+//min width 768px
+@media screen and (min-width: $media-tablet-min) {
+    .waf-auction {
+        .slide-nav {
+            display: none;
+        }
+    }
+}
+
+@media screen and (max-width: $media-tablet-max) {
+    .waf-auction {
+        .player-info {
+            padding: 20px;
+        }
+
+        .player-details {
+            margin-left: 40px;
+        }
+    }
+}
+
+@media screen and (max-width: $media-phone-max) {
+    .waf-auction {
+        // padding: 0 0 15px;
+
+        .player-info {
+            .detail-wrapper {
+                @include flex-direction(column);
+            }
+        }
+
+        .tab-section {
+            padding: 5px 0;
+        }
+
+        .overseas-player {
+            right: -15px;
+            // top: -5px;
+            // transform: translateY(0%);
+
+            &:before {
+                font-size: 10px;
+
+            }
+        }
+
+        .rupees-icon:before {
+            font-size: 12px;
+        }
+
+        // player-info //
+        .player-info {
+            padding: 15px;
+
+            .player-photo {
+                min-width: 80px;
+                width: 80px;
+                height: 80px;
+            }
+
+            .player-name {
+                .name {
+                    font-size: 18px;
+                }
+
+                .designation {
+                    font-size: 14px;
+                }
+            }
+
+            .player-role {
+                font-size: 14px;
+                padding-left: 2px;
+                margin-bottom: 2px;
+            }
+
+            .price {
+                font-size: 14px;
+                padding-left: 2px;
+
+                .txt-3 {
+                    font-size: 18px;
+                }
+            }
+
+            .sold-out {
+                right: 5px;
+                bottom: 5px;
+                width: 45px;
+                height: 45px;
+                background-size: auto 48%;
+            }
+        }
+
+        .player-details {
+            margin-left: 0;
+
+            .right-wrapper {
+                margin-top: 20px;
+                text-align: center;
+            }
+
+        }
+
+        // tab-section //
+        .tabs.auction-tabs {
+            ul {
+                li {
+                    padding: 7px;
+                }
+            }
+        }
+
+        // team-slider //
+        .team-slider {
+            .team-photo img {
+                width: 80%;
+            }
+        }
+
+        /* team-info */
+        .team-info {
+            .info-listing {
+                padding: 10px;
+                flex-wrap: wrap;
+            }
+
+            .info-item {
+                flex-basis: 50%;
+                margin-bottom: 15px;
+
+                &:nth-child(2) {
+                    border-right: none;
+                }
+
+                &:nth-last-child(-n+2) {
+                    margin-bottom: 0;
+                }
+
+                .txt-1 {
+                    font-size: 12px;
+                }
+
+                .txt-3 {
+                    font-size: 20px;
+                }
+            }
+        }
+
+        // player-listing //
+        .players-section {
+            .mod-head {
+                .title {
+                    font-size: 15px;
+                }
+            }
+        }
+
+        .player-listing.table {
+            .tr {
+                &.header {
+                    .td {
+                        font-size: 13px;
+                    }
+                }
+            }
+
+            .td {
+                font-size: 18px;
+                padding: 10px 5px;
+
+                .name {
+                    top: 0px;
+                    font-size: 14px;
+                    padding-left: 18px;
+                }
+
+                .role {
+                    font-size: 12px;
+                    left: 0;
+                }
+
+                .player-photo {
+                    min-width: 50px;
+                    max-width: 50px;
+                    height: 50px;
+                    margin-right: 10px;
+                }
+            }
+        }
+
+        .slider {
+            .slider-navigation {
+                .slide-nav {
+                    display: block;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width:375px) {
+    .waf-auction {
+        .player-listing {
+            &.table {
+                .td {
+                    .name {
+                        font-size: 12px;
+                    }
+
+                    &.base-price,
+                    &.selling-price {
+                        font-size: 16px;
+                    }
+                }
+            }
+        }
+    }
+}

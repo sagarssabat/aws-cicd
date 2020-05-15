@@ -1,0 +1,58 @@
+.sc__wrapper {
+  display: block;
+  width: 500px;
+  height: 500px;
+  // max-width: 300px;
+  margin: 0 auto;
+  // border: 5px solid rgba($complementary-color, 0.5);
+  cursor: url('../images/cssimages/mi-white-cursor.png'), auto;
+}
+
+// Where the scratchcard will be generate.
+.sc__container {
+  position: relative;
+  overflow: hidden;
+  max-height: 500px;
+  max-width: 500px;
+}
+
+// Background image, the result...
+.sc__container>img {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+}
+
+// The scratchcard generate with scratchcard-js
+.sc__container canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+}
+
+// Scratchcard informations
+.sc__infos {
+  text-align: center;
+  height: 40px;
+  line-height: 40px;
+  margin-top: 5px;
+  font-size: 16px;
+}
+
+@media screen and (max-width: $media-tablet-max) {
+  .sc__wrapper {
+    width: 300px;
+    height: 300px;
+    cursor: auto;
+  }
+
+  // Where the scratchcard will be generate.
+  .sc__container {
+    max-height: 300px;
+    max-width: 300px;
+  }
+}

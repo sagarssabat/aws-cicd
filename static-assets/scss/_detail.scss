@@ -1,0 +1,128 @@
+/* .mi-waf-detail extra class added only for js reference for loading comments*/
+.waf-detail {
+    padding-top: 0;
+    margin: 0 -10px;
+
+    .article-detail {
+        .article-comment {
+            position: relative;
+        }
+    }
+
+    /*fullwidth css is written for embed images that is added from cms*/
+    .fullwidth {
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
+
+    .waf-comment-container {
+        .comment-body {
+            height: 100%;
+            overflow-y: auto;
+
+            .user-post {
+                .post {
+                    max-height: 100%;
+                    overflow: auto;
+                }
+            }
+        }
+
+        .comment-head {
+            background-color: $complementary-color;
+        }
+
+        .comment-footer {
+            padding: 0 15px;
+        }
+
+        .head-wrapper,
+        .body-wrapper,
+        .footer-wrapper {
+            max-width: 1190px;
+            padding: 20px 65px;
+            margin: 0 auto;
+        }
+
+        .head-wrapper {
+            border-bottom: none;
+        }
+    }
+
+    .detail-wrapper {
+
+        .sub-title,
+        p {
+            margin: 15px 0;
+        }
+
+        ol,
+        ul {
+            li {
+                margin-bottom: 10px;
+            }
+        }
+    }
+
+    .title {
+        font-family: $bold_font-family;
+        color: $primary-color;
+        font-size: 28px;
+        margin: 20px 0;
+    }
+
+    .article-meta {
+        color: $primary-color;
+    }
+
+    .content-wrap {
+        color: $primary-color;
+        font-size: 18px;
+        padding: 20px 70px 0px;
+    }
+}
+
+@media screen and (max-width: $media-tablet-max) {
+    .waf-detail {
+        // margin: 0 -10px;
+
+        .title {
+            font-size: 24px;
+        }
+
+        .content-wrap {
+            font-size: 16px;
+        }
+    }
+}
+
+@media screen and (max-width: $media-phone-max) {
+    .waf-detail {
+        .title {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        .content-wrap {
+            padding: 20px 10px;
+            font-size: 14px;
+        }
+
+        .waf-comment-container {
+
+            .comment-head,
+            .comment-footer {
+                padding: 10px;
+            }
+
+            .head-wrapper,
+            .body-wrapper,
+            .footer-wrapper {
+                padding: 0px;
+
+            }
+        }
+    }
+}

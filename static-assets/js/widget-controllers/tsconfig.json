@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "baseUrl": ".",
+    "paths": {
+      "*": ["types/*"]
+    },
+    "target": "es5",
+    "moduleResolution": "node",
+    "module": "esnext",
+    "strict": true,
+    "importHelpers": true,
+    "lib": ["dom", "es5", "es2015", "es2015.promise"],
+    "sourceMap": true,
+    "strictPropertyInitialization": false
+  }
+}

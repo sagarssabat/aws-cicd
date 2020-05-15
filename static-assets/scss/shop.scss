@@ -1,0 +1,91 @@
+@import "_variables";
+@import "../../../../sass/mixins";
+@import "../../../../sass/variables";
+
+// @import "_swiper";
+// Shop section starts
+.waf-shop {
+    .card-container+.card-container {
+        margin-top: 30px;
+        padding-top: 10px;
+        border-top: 1px solid $golden-color;
+    }
+
+    .license-logo {
+        width: 80px;
+
+        img {
+            width: 100%;
+        }
+    }
+
+    .strike {
+        text-decoration: line-through;
+        font-family: $light_font-family;
+    }
+
+    .card-thumbnail {
+        background-color: #ececec;
+        text-align: center;
+        position: relative;
+
+        a {
+            display: block;
+        }
+
+        img {
+            width: 100%;
+        }
+    }
+
+    .card-title {
+        min-height: 38px;
+    }
+
+    .card-content {
+        background-color: $secondary-color;
+        color: $complementary-color;
+        font-family: $regular_font-family;
+        font-size: 18px;
+        text-align: center;
+        padding: 15px;
+    }
+
+    .item-label {
+        display: none;
+    }
+
+    .item-type-label {
+        .item-label {
+            background-color: $golden-color;
+            color: $complementary-color;
+            font-size: 12px;
+            font-family: $medium_font-family;
+            display: inline-block;
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            padding: 2px 8px;
+
+            &:after {
+                content: '';
+                position: absolute;
+                width: 10px;
+                height: 100%;
+                right: -6px;
+                background-color: $golden-color;
+                transform: skewX(-20deg);
+                top: 0;
+            }
+        }
+    }
+
+    .shop1 {
+        .card-content {
+            height: 120px;
+        }
+    }
+}
+
+// @media screen and (max-width: $media-tablet-max) {}
+// @media screen and (max-width: $media-phone-max) {}

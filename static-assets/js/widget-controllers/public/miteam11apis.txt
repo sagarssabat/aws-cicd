@@ -1,0 +1,118 @@
+1) GetUserTeam
+
+Path: /api/getuserteam
+
+query param
+a) userId --> pass value of user_guid from _urc cookie
+b) season_id --> 2020
+c) week_id --> 1
+
+
+
+2) insertteam
+
+Path : /api/insertteam
+
+Content-Type : application/json
+
+Request json :
+{
+    "team_name": "need to pass the name of the team",
+    "seasonid": need to pass value season ,
+    "weekid": need to pass value of week,
+    "players": [ --.below is the json format for player and shoud contain the all keys 
+        {
+            "id": "19153",
+            "name": "Rohit Sharma",
+            "skill_name": "Batsman",
+            "skill_id": 1,
+            "is_captain": 1,
+            "is_wicket_keeper": 0,
+            "is_vice_captain": 0,
+            "runs": 100,
+            "sixes": 6,
+            "fours": 4,
+            "wickets": 50,
+            "catches": 100,
+            "nationality_id": "4",
+            "nationality": "India",
+            "national_team_id": "4",
+            "national_team": "India"
+        }
+    ]
+}
+
+Response :
+{
+    "status": 200,
+    "ApplicationDomain": null,
+    "content": {
+        "Status": 1
+    },
+    "ImagesData": null,
+    "Authodata": null,
+    "NextPrev": null,
+    "EntityData": null,
+    "RelatedArticle": null,
+    "message": "success",
+    "meta": null
+}
+
+content-->status 1  --> team saved successfully
+content-->status -4 --> team already exist 
+content-->status -2 --> No Data posted
+
+status 400 --> Badrequest
+status 200 --> success
+status 401 --> InvalidUser
+status 403 --> InvalidUser
+
+
+
+3) Get MI team
+
+Path : /api/getseasonteam
+
+query param
+a) season_id --> need to pass value
+b) week_id --> need to pass week_id value
+
+Response :
+{
+  "status": 200,
+  "ApplicationDomain": null,
+  "content": {
+    "players": [
+      {
+        "id": "19153",
+        "name": "Rohit Sharma",
+        "skill_name": "Batsman",
+        "skill_id": 1,
+        "is_captain": 1,
+        "is_wicket_keeper": 0,
+        "is_vice_captain": 0,
+        "runs": 100,
+        "sixes": 6,
+        "fours": 4,
+        "wickets": 50,
+        "catches": 100,
+        "nationality_id": "4",
+        "nationality": "India",
+        "national_team_id": "4",
+        "national_team": "India",
+        "selected_percent": 50
+      }
+    ]
+  },
+  "ImagesData": null,
+  "Authodata": null,
+  "NextPrev": null,
+  "EntityData": null,
+  "RelatedArticle": null,
+  "message": "success",
+  "meta": null
+}
+
+status 200--> success
+status 204--> No content 
+status 400--> invalid input bad request

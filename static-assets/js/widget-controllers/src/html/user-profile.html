@@ -1,0 +1,393 @@
+<script>
+  loadWidget('si-ads', 'widget-layout-02');
+</script>
+<!-- <div class="waf-component waf-user-profile  waf-mi-bg" data-controller="si-ads--widget-layout-02">
+  <div class="container">
+    <div class="layout-wrapper" data-target="si-ads--widget-layout-02.updateProfileForm" id="updateProfileForm">
+      <div class="profile-percentage">
+        <div class="progress-bar">
+          <span class="progress-status" v-bind:style="{width:progressBarStyle}"></span>
+          <p class="active">0</p>
+
+          <p v-bind:class="{active:isFullComplete}">100</p>
+        </div>
+      </div>
+      <s3-profile-img-input v-model="imgSrc" name="fileInput" :userguid="userGuid" id="fileInput"
+        @image-uploaded="imageUploaded"></s3-profile-img-input>
+      <form action="" class="user-profile custom-form" data-vv-scope="updation">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <md-input type="text" id="fullName" name="full name" v-validate="'required'" v-model="fullName"
+                :error="errors.first('updation.full name')">
+              </md-input>
+
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <md-input id="dob" name="DOB" type="date" class-name="select-dob" v-validate="" v-model="dob"
+                :error="errors.first('updation.DOB')"></md-input>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <md-input type="email" id="email" name="email" v-validate="'required|email'" v-model="email"
+                :error="errors.first('updation.email')">
+              </md-input>
+
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <md-input type="text" id="mobile" name="mobile" v-validate="'digits:10'" v-model="mobile"
+                :error="errors.first('updation.mobile')">
+              </md-input>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <div class="select-box form-element">
+                <label for="state" v-bind:class="{active: state}">select-state</label>
+                <select name="state" id="state" data-target="si-ads--widget-layout-01.state" v-model="state"
+                  v-html="statedropdownHtml" v-on:change="onStateChange"
+                  data-action="mouseover->si-ads--widget-layout-01#focusInLabel mouseout->si-ads--widget-layout-01#focusOutDOB">
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <div class="select-box form-element">
+                <label for="city" v-bind:class="{active: city}">select-city</label>
+                <select name="city" id="city" data-target="si-ads--widget-layout-01.city" v-model="city"
+                  v-html="citydropdownHtml"
+                  data-action="mouseover->si-ads--widget-layout-01#focusInLabel mouseout->si-ads--widget-layout-01#focusOutDOB">
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="radio-button">
+              <label>Gender: </label>
+              <div class="radio">
+                <input type="radio" id="male" name="gender" checked="" value="male"
+                  v-validate="'required|included:male,female,other'" v-model="gender">
+                <label for="male">male</label>
+              </div>
+              <div class="radio">
+                <input type="radio" id="female" name="gender" value="female" v-model="gender">
+                <label for="female">female</label>
+              </div>
+              <div class="radio">
+                <input type="radio" id="other" name="gender" value="other" v-model="gender">
+                <label for="other">other</label>
+              </div>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="check-box">
+              <input type="checkbox" id="termsAndCondition" name="termsAndCondition" v-model="termsAndCondition"
+                v-validate="'required'" v-bind:class="{show:errors.first('updation.termsAndCondition')}">
+              <label for="termsAndCondition">i agree with terms and conditions</label>
+              <span v-cloak="" class="errordiv show">{{ errors.first("updation.termsAndCondition") }}</span>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="form-group">
+              <div class="captch-section notvalidated">
+                <vue-recaptcha ref="recaptcha" v-on:verify="verifyCaptcha"
+                  sitekey="6LcSOpIUAAAAAPrhE8x5_bwHc7wX_98h8deYfnxV">
+                </vue-recaptcha>
+              </div>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="form-group">
+              <button type="submit" class="btn-gold" v-on:click="submit"
+                v-bind:class="{'btn-disabled': isSubmitDisabled, loading : showLoader}">Update</button>
+            </div>
+            <div class="global-error">{{
+                                  globalMsgDiv }}</div>
+          </div>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div> -->
+<div class="waf-component waf-user-profile waf-mi-bg" data-controller="si-ads--widget-layout-02" id="membershipTopDiv"
+  data-entityType="2662">
+  <div data-target="si-ads--widget-layout-02.updateProfileForm" v-cloak id="updateProfileForm">
+    <section class="user-membership">
+      <div class="card-details">
+        <h2 class="card-title">{{cardType}}</h2>
+        <div class="card-img">
+          <img :src="cardImgUrl" alt="">
+          <span class="card-name">{{fullName}}</span>
+          <span class="card-expiry">{{expiryDate}}</span>
+        </div>
+        <div class="form-group btn-wrap btn-wrap-icons" v-show="showBtn">
+          <a href="/mi-membership"> <button type="submit" id="upgrade" class="btn-gold">Upgrade</button></a>
+          <button class="btn-gold" id="benefitBtn" v-on:click="onCardBenefitClicked">Card Benefits</button>
+          <!-- <button v-bind:href="invoice_link" download> <button id="downloadBtn" class="btn-gold">Download</button></a> -->
+          <a v-bind:href="invoice_link" download id="downloadBtn" class="invoice icon-download btn-gold">Invoice</a>
+          <div class="btn-gold social-wrap" data-target="si-ads--widget-layout-02.shareSocial"
+            v-on:click="onClickshare"> Share <ul class="share-icons">
+              <li>
+                <a v-bind:href="imgPath" download class="icon-download"></a>
+              </li>
+              <li v-on:click="listingShare"><a href="javascript:void(0)" data-sharetype="fb" class="icon-facebook"></a>
+              </li>
+              <li v-on:click="listingShare"><a href="javascript:void(0)" data-sharetype="twitter"
+                  class="icon-twitter"></a>
+              </li>
+              <li v-on:click="listingShare"><a href="javascript:void(0)" data-sharetype="whatsapp"
+                  class="icon-whatsapp"></a></li>
+            </ul>
+          </div>
+
+        </div>
+        <div class="card-details contact-details membership-query">
+          <!-- <span class="card-benefits">card benefits</span> -->
+          <p>Write to us with your queries at<a href="mailto:mifamily@dummyTeam.com" class="icon-mail">
+              mifamily@dummyTeam.com </a>or you can call us at<a href="tel:+918888888888" class="icon-contact-us">
+              8888888888</a><br class="web">
+            If you would like
+            to chat, just WhatsApp us on<a href="tel:+7977012345" class="icon-whatsapp">
+              7977012345</a></p>
+        </div>
+      </div>
+    </section>
+    <div class="container">
+      <div class="layout-wrapper">
+        <button type="button" class="btn btn-edit btn-gold" v-on:click="editProfilePage"><span>edit
+            profile</span></button>
+        <s3-profile-img-input v-model="imgSrc" name="fileInput" :userguid="userGuid" :username="fullName" id="fileInput"
+          @image-uploaded="imageUploaded"></s3-profile-img-input>
+        <form action="" class="user-profile custom-form" data-vv-scope="updation">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <md-input type="text" id="fullName" name="fullName" v-validate="'required'" v-model="fullName"
+                  :error="errors.first('updation.fullName')">
+                </md-input>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <!-- append active class on label when focus in input element -->
+                <md-input type="email" id="email" class="input-disabled" name="email" v-validate="'required|email'"
+                  v-model="email" :error="errors.first('updation.email')">
+                </md-input>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <md-input type="text" id="mobile" class="input-disabled" name="mobile" v-validate="'digits:10|required'"
+                  v-model="mobile" :error="errors.first('updation.mobile')">
+                </md-input>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <md-input id="dob" name="DOB" type="date" class-name="select-dob" v-validate="" v-model="dob"
+                  :error="errors.first('updation.DOB')"></md-input>
+              </div>
+            </div>
+            <div class="col-md-6 statewrap">
+              <div class="form-group">
+                <div class="select-box form-element">
+                  <label for="state" v-bind:class="{active: state}">select-state</label>
+                  <select name="state" id="state" data-target="si-ads--widget-layout-01.state" v-model="state"
+                    v-html="statedropdownHtml" v-on:change="onStateChange"
+                    data-action="mouseover->si-ads--widget-layout-01#focusInLabel mouseout->si-ads--widget-layout-01#focusOutDOB">
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 citywrap">
+              <div class="form-group">
+                <div class="select-box form-element">
+                  <label for="city" v-bind:class="{active: city}">select-city</label>
+                  <select name="city" id="city" data-target="si-ads--widget-layout-01.city" v-model="city"
+                    v-html="citydropdownHtml"
+                    data-action="mouseover->si-ads--widget-layout-01#focusInLabel mouseout->si-ads--widget-layout-01#focusOutDOB">
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <div class="radio-button form-element">
+                  <label>Gender: </label>
+                  <div class="radio">
+                    <input type="radio" name="gender" id="male" checked="" value="male"
+                      v-validate="'required|included:male,female,other'" v-model="gender">
+                    <label for="male">male</label>
+                  </div>
+                  <div class="radio">
+                    <input type="radio" id="female" name="gender" value="female" v-model="gender">
+                    <label for="female">female</label>
+                  </div>
+                  <div class="radio">
+                    <input type="radio" id="other" name="gender" value="other" v-model="gender">
+                    <label for="other">other</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="button-wrap">
+                <button type="button" class="btn btn-change" id="chngpsd" v-on:click="onChangePasswordClicked">change
+                  password</button>
+                <button type="button" class="btn btn-update" id="updAdd" v-on:click="onUpdatePasswordClicked">update
+                  Address</button>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="check-box">
+                <div class="check-box">
+                  <input type="checkbox" id="termsAndCondition" name="termsAndCondition" v-model="termsAndCondition"
+                    v-validate="'required'" v-bind:class="{show:errors.first('updation.termsAndCondition')}">
+                  <label for="termsAndCondition">i agree with <a href="terms-and-conditions" class="form-tnc">terms
+                      and conditions</a></label>
+                  <span v-cloak="" class="errordiv show">{{ errors.first("updation.termsAndCondition") }}</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="form-group">
+                <div class="captch-section notvalidated">
+                  <vue-recaptcha ref="recaptcha" v-on:verify="verifyCaptcha"
+                    sitekey="6LcSOpIUAAAAAPrhE8x5_bwHc7wX_98h8deYfnxV">
+                  </vue-recaptcha>
+                </div>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="form-group">
+                <button type="submit" class="btn-gold" value="submit" v-on:click="submit"
+                  v-bind:class="{'btn-disabled': isSubmitDisabled, loading : showLoader}">UPDATE</button>
+              </div>
+              <div class="global-error">{{ globalMsgDiv }}</div>
+            </div>
+          </div>
+      </div>
+      </form>
+      <div class="courier-details">
+        <h4 class="title">courier details:</h4>
+        <p class="label">delivery via: <span class="label-detail">{{delivery_via}}</span></p>
+        <p class="label">tracking id: <span class="label-detail">{{tracking_id}}</span></p>
+        <p class="label">approximate delivery date: <span class="label-detail">{{delivery_date}}</span></p>
+      </div>
+    </div>
+  </div>
+  <!-- popup for change password -->
+  <div class="modal modal-customlog modal-changepasswd fade" id="changePassword" v-cloak
+    data-target="si-ads--widget-layout-02.changePasswordModal">
+    <div class="modal-dialog">
+      <div class="modal-content content-body-selector-three">
+        <div class="content-wrap">
+          <span class="skip icon-close" v-on:click="onChangePasswordClicked"></span>
+          <div class="content-head">
+            <h3 class="title">change password</h3>
+          </div>
+          <div class="content-body">
+            <form action="" class="user-registration custom-form">
+              <div class="form-group">
+                <!-- append active class on label when focus in input element -->
+                <div class="form-element">
+                  <label for="oldpassward" class="active">Old Passward</label>
+                  <input type="password" class="form-control" id="oldpassward" name="oldpassward"
+                    v-validate="'required'" v-model="oldpassward">
+                  <span class="errordiv show"> {{ errors.first('oldpassward') }} </span>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="form-element">
+                  <label for="password" class="active">password</label>
+                  <input type="password" class="form-control" id="password" name="password"
+                    v-validate="'required|min:8|verify_password'" v-model="passward" ref="regPassword">
+                  <span class="errordiv show">{{ errors.first('password') }}</span>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="form-element">
+                  <label for="confirmpwd" class="active">confirm password</label>
+                  <input :type="passwordFieldType" class="form-control" id="confirmpwd" name="confirmpwd"
+                    v-validate="'required|confirmed:regPassword'" v-model="confirmpwd">
+                  <span class="view-pw icon-view" @click="switchVisibility"></span>
+                  <span class="errordiv show"> {{ errors.first('confirmpwd') }} </span>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="captch-section notvalidated">
+                  <vue-recaptcha ref="recaptcha" v-on:verify="verifyCaptcha"
+                    sitekey="6LcSOpIUAAAAAPrhE8x5_bwHc7wX_98h8deYfnxV">
+                  </vue-recaptcha>
+                </div>
+                <span v-cloak="" class="errordiv show">{{ captchaError }}</span>
+              </div>
+              <div class="col-12">
+                <div class="form-group">
+                  <button type="submit" v-on:click="submit" class="btn-gold">update</button>
+                </div>
+                <p class="success" v-cloak>{{message}}</p>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- popup for change Address -->
+  <div class="modal modal-customlog modal-updateadd fade" data-target="si-ads--widget-layout-02.onUpdatePasswordClicked"
+    id="updatePassword">
+    <div class="modal-dialog">
+      <div class="modal-content content-body-selector-two">
+        <div class="content-wrap">
+          <span class="skip icon-close" v-on:click="onUpdatePasswordClicked"></span>
+          <div class="content-head">
+            <h3 class="title">to update delivery address contact us on</h3>
+          </div>
+          <div class="content-body">
+            <p>Email us at<a href="mailto:mifamily@dummyTeam.com" class="icon-mail">
+                mifamily@dummyTeam.com </a>or you can call us at<a href="tel:+918888888888" class="icon-contact-us">
+                8888888888</a><br class="web">If you would like to chat, just WhatsApp us on<a href="tel:+7977012345"
+                class="icon-whatsapp">
+                7977012345</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- popup for know more-->
+  <div class="modal modal-customlog modal-card-benifits knowmore fade " id="benefit"
+    data-target="si-ads--widget-layout-02.cardBenefit">
+    <div class="modal-dialog">
+      <div class="modal-content content-body-selector-one">
+        <div class="content-wrap">
+          <span class="skip icon-close" data-action="click->si-ads--widget-layout-02#toggleCardsBenefit"></span>
+          <div id="knowMoreContentBody">
+            <div class=" content-head">
+              <h3 class="title"><span>Card benifits</span></h3>
+            </div>
+            <div class="content-body">
+              <ul>
+                <li>Contests, Games and Exclusive offers</li>
+                <li>MI Replica Jersey</li>
+                <li>Watch MI Training session</li>
+                <li>MI Autographed miniature bat</li>
+                <li>MI Cap</li>
+                <li> Photo Calendar</li>
+                <li>25% Discount on merchandise</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,478 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>DummyIndian</title>
+</head>
+<style type="text/css">
+    body,
+    html {
+        margin: 0px;
+        padding: 0px;
+    }
+
+    @font-face {
+        font-family: 'NoirProMedium';
+        src: url("https://www.dummyTeam.com/static-assets/fonts/NoirProMedium.eot");
+        src: url("https://www.dummyTeam.com/static-assets/fonts/NoirProMedium.eot") format("embedded-opentype"),
+            url("https://www.dummyTeam.com/static-assets/fonts/NoirProMedium.woff2") format("woff2"),
+            url("https://www.dummyTeam.com/static-assets/fonts/NoirProMedium.woff") format("woff"),
+            url("https://www.dummyTeam.com/static-assets/fonts/NoirProMedium.ttf") format("truetype"),
+            url("https://www.dummyTeam.com/static-assets/fonts/NoirProMedium.svg#NoirProMedium") format("svg")
+    }
+
+    @font-face {
+        font-family: 'NoirProBold';
+        src: url('https://www.dummyTeam.com/static-assets/fonts/NoirProBold.eot');
+        src: url('https://www.dummyTeam.com/static-assets/fonts/NoirProBold.eot') format('embedded-opentype'), url('https://www.dummyTeam.com/static-assets/fonts/NoirProBold.woff2') format('woff2'), url('https://www.dummyTeam.com/static-assets/fonts/NoirProBold.woff') format('woff'), url('https://www.dummyTeam.com/static-assets/fonts/NoirProBold.ttf') format('truetype'), url('https://www.dummyTeam.com/static-assets/fonts/NoirProBold.svg#NoirProBold') format('svg');
+    }
+
+    @font-face {
+        font-family: 'NoirProRegular';
+        src: url("https://www.dummyTeam.com/static-assets/fonts/NoirProRegular.eot");
+        src: url("https://www.dummyTeam.com/static-assets/fonts/NoirProRegular.eot") format("embedded-opentype"),
+            url("https://www.dummyTeam.com/static-assets/fonts/NoirProRegular.woff2") format("woff2"),
+            url("https://www.dummyTeam.com/static-assets/fonts/NoirProRegular.woff") format("woff"),
+            url("https://www.dummyTeam.com/static-assets/fonts/NoirProRegular.ttf") format("truetype"),
+            url("https://www.dummyTeam.com/static-assets/fonts/NoirProRegular.svg#NoirProRegular") format("svg")
+    }
+
+    @font-face {
+        font-family: 'NoirProSemiBold';
+        src: url("https://www.dummyTeam.com/static-assets/fonts/NoirProSemiBold.eot");
+        src: url("https://www.dummyTeam.com/static-assets/fonts/NoirProSemiBold.eot") format("embedded-opentype"),
+            url("https://www.dummyTeam.com/static-assets/fonts/NoirProSemiBold.woff2") format("woff2"),
+            url("https://www.dummyTeam.com/static-assets/fonts/NoirProSemiBold.woff") format("woff"),
+            url("https://www.dummyTeam.com/static-assets/fonts/NoirProSemiBold.ttf") format("truetype"),
+            url("https://www.dummyTeam.com/static-assets/fonts/NoirProSemiBold.svg#NoirProSemiBold") format("svg")
+    }
+
+    .team-download {
+        background: url("https://www.dummyTeam.com/static-assets/images/cssimages/team-download/team-download-bg.png") top center no-repeat;
+        background-size: cover;
+        padding: 100px 40px 20px;
+        position: relative;
+        width: 1200px;
+        height: 1200px;
+        margin: 0 auto
+    }
+
+    .players-listing {
+        padding: 50px 100px 30px;
+        display: block;
+        -webkit-border-radius: 30px;
+        -moz-border-radius: 30px;
+        -ms-border-radius: 30px;
+        border-radius: 30px;
+        text-align: center;
+        position: relative;
+        border-top: 0;
+        margin-bottom: 50px;
+        background: url("https://www.dummyTeam.com/static-assets/images/cssimages/team-download/border.png") no-repeat;
+        background-position: 100% 100%;
+        background-size: 100% 100%
+    }
+
+    .players-listing .player-listing-header {
+        position: absolute;
+        top: -55px;
+        left: 0;
+        right: 0
+    }
+
+    .player-item {
+        position: relative;
+        display: inline-block;
+        width: 20%;
+        margin: 20px
+    }
+
+    .player-item .player-img {
+        background: #fff;
+        width: 155px;
+        height: 155px;
+        margin: 0 auto;
+        overflow: hidden;
+        border: 2px solid #001848;
+        -webkit-border-radius: 15px;
+        -moz-border-radius: 15px;
+        -ms-border-radius: 15px;
+        border-radius: 15px;
+        position: relative
+    }
+
+    .player-item .player-img img {
+        width: 100%
+    }
+
+    .player-item .foreign-player {
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        -ms-border-radius: 50%;
+        border-radius: 50%;
+        background-position: center;
+        position: absolute;
+        right: 5px;
+        top: 5px;
+        font-size: 12px;
+        width: 20px;
+        height: 20px;
+        line-height: 25px;
+        background-color: #d1ab3e
+    }
+
+    .player-item .foreign-player img {
+        width: 10px
+    }
+
+    .player-item .captain-icon,
+    .player-item .wk-icon {
+        position: absolute;
+        top: 3px;
+        left: 5px;
+        background-color: #d1ab3e;
+        color: #001848;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        -ms-border-radius: 50%;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        text-align: center;
+        line-height: 30px;
+        font-size: 14px;
+        text-transform: uppercase;
+        font-family: 'NoirProSemiBold', sans-serif;
+        font-weight: bold;
+    }
+
+    .player-item .player-order {
+        position: absolute;
+        left: 10px;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+        -moz-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+        font-size: 21px;
+        font-family: 'NoirProBold', sans-serif;
+    }
+
+    .player-item .player-name {
+        font-size: 14px
+    }
+
+    .player-item .player-details {
+        margin: 5px 12px
+    }
+
+    .player-item .player-info {
+        display: block;
+        color: #fff;
+        background-color: #001848;
+        padding: 5px;
+        position: relative;
+        text-align: center;
+        -webkit-border-radius: 25px;
+        -moz-border-radius: 25px;
+        -ms-border-radius: 25px;
+        border-radius: 25px;
+        text-transform: uppercase;
+        margin-top: 5px;
+        font-family: 'NoirProMedium', sans-serif;
+    }
+
+    .team-stats {
+        text-align: center
+    }
+
+    .team-stats .stats-list {
+        margin: 30px 0;
+        display: inline-block;
+        text-align: center;
+        width: 100%
+    }
+
+    .team-stats .stats-title {
+        position: relative
+    }
+
+    .team-stats .stats-title span {
+        background-color: #001848;
+        color: #fff;
+        line-height: 20px;
+        text-transform: uppercase;
+        font-size: 35px;
+        font-family: 'NoirProBold',
+            sans-serif;
+        display: inline-block;
+        padding: 10px 50px;
+        position: relative
+    }
+
+    .team-stats .stats-item {
+        padding: 0 30px;
+        position: relative;
+        width: 14%;
+        display: inline-block;
+        border-right: 3px solid #b1b7c7;
+        margin: 0 auto
+    }
+
+    .team-stats .stats-item.last {
+        border-right: none
+    }
+
+    .team-stats .stats-txt {
+        color: #fff;
+        background-color: #d1ab3e;
+        padding: 0 10px;
+        text-transform: uppercase;
+        font-family: 'NoirProMedium',
+            sans-serif;
+        font-size: 32px;
+        display: block;
+        margin-bottom: 0;
+        line-height: 30px
+    }
+
+    .team-stats .scores {
+        display: inline-block;
+        font-size: 40px;
+        color: #001848;
+        font-family: 'NoirProBold',
+            sans-serif;
+        line-height: 20px;
+        margin: 20px 0
+    }
+
+    .team-stats-header {
+        position: relative
+    }
+
+    .team-stats-header .title-border.left,
+    .team-stats-header .title-border.right {
+        width: 32%;
+        border: 1.5px solid #d1ab3e;
+        position: absolute;
+        left: 10px;
+        top: 50%
+    }
+
+    .team-stats-header .title-border.right {
+        right: 10px;
+        left: auto
+    }
+
+    .footer-wrap {
+        text-align: center
+    }
+
+    .footer-wrap .note {
+        font-size: 24px;
+        display: inline-block;
+        font-family: 'NoirProMedium',
+            sans-serif;
+        background: #001549;
+        color: #fff;
+        padding: 10px 20px
+    }
+
+    .footer-wrap .note a {
+        color: #d9b347;
+        text-decoration: none
+    }
+
+    .footer-wrap .terms {
+        color: #013089;
+        font-size: 18px;
+        font-family: 'NoirProMedium',
+            sans-serif;
+        font-weight: bold;
+    }
+
+</style>
+
+<body>
+    <div class="team-download">
+        <div class="players-listing">
+            <div class="player-listing-header">
+                <img src="https://www.dummyTeam.com/static-assets/images/cssimages/team-download/team-header.png">
+            </div>
+            <div class="player-item player-selected">
+                <div class="player-img active">
+                    <img src="https://www.dummyTeam.com/static-assets/images/cssimages/team-download/avtar.png" alt="">
+                    <span class="captain-icon">C</span>
+                    <span class="foreign-player">
+                        <img src="https://www.dummyTeam.com/static-assets/images/cssimages/team-download/foreign-player.png"
+                            alt="">
+                    </span>
+                </div>
+                <div class="player-details">
+                    <div class="player-info">
+                        <span class="player-order">1</span>
+                        <span class="player-name">R.Sharma</span>
+                    </div>
+                </div>
+            </div>
+            <div class="player-item">
+                <div class="player-img">
+                    <img src="https://www.dummyTeam.com/static-assets/images/cssimages/team-download/avtar.png" alt="">
+                    <span class="wk-icon">wk</span>
+                </div>
+                <div class="player-details">
+                    <div class="player-info">
+                        <span class="player-order">2</span>
+                        <span class="player-name">H. PANDYA</span>
+                    </div>
+                </div>
+            </div>
+            <div class="player-item">
+                <div class="player-img">
+                    <img src="https://www.dummyTeam.com/static-assets/images/cssimages/team-download/avtar.png" alt="">
+                    <span class="captain-icon">C</span>
+                </div>
+                <div class="player-details">
+                    <div class="player-info">
+                        <span class="player-order">3</span>
+                        <span class="player-name">M. McClenaghan</span>
+                    </div>
+                </div>
+            </div>
+            <div class="player-item">
+                <div class="player-img">
+                    <img src="https://www.dummyTeam.com/static-assets/images/cssimages/team-download/avtar.png" alt="">
+                    <span class="wk-icon">wk</span>
+                </div>
+                <div class="player-details">
+                    <div class="player-info">
+                        <span class="player-order">4</span>
+                        <span class="player-name">J. Bumrah</span>
+                    </div>
+                </div>
+            </div>
+            <div class="player-item player-selected">
+                <div class="player-img">
+                    <img src="https://www.dummyTeam.com/static-assets/images/cssimages/team-download/avtar.png" alt="">
+                    <span class="captain-icon">C</span>
+                </div>
+                <div class="player-details">
+                    <div class="player-info">
+                        <span class="player-order">5</span>
+                        <span class="player-name">I. Kishan</span>
+                    </div>
+                </div>
+            </div>
+            <div class="player-item player-selected">
+                <div class="player-img">
+                    <img src="https://www.dummyTeam.com/static-assets/images/cssimages/team-download/avtar.png" alt="">
+                    <span class="wk-icon">wk</span>
+                </div>
+                <div class="player-details">
+                    <div class="player-info">
+                        <span class="player-order">6</span>
+                        <span class="player-name">R.Sharma</span>
+                    </div>
+                </div>
+            </div>
+            <div class="player-item">
+                <div class="player-img">
+                    <img src="https://www.dummyTeam.com/static-assets/images/cssimages/team-download/avtar.png" alt="">
+                    <span class="captain-icon">C</span>
+                </div>
+                <div class="player-details">
+                    <div class="player-info">
+                        <span class="player-order">7</span>
+                        <span class="player-name">R.Sharma</span>
+                    </div>
+                </div>
+            </div>
+            <div class="player-item">
+                <div class="player-img">
+                    <img src="https://www.dummyTeam.com/static-assets/images/cssimages/team-download/avtar.png" alt="">
+                    <span class="captain-icon">C</span>
+                </div>
+                <div class="player-details">
+                    <div class="player-info">
+                        <span class="player-order">8</span>
+                        <span class="player-name">R.Sharma</span>
+                    </div>
+                </div>
+            </div>
+            <div class="player-item">
+                <div class="player-img">
+                    <img src="https://www.dummyTeam.com/static-assets/images/cssimages/team-download/avtar.png" alt="">
+                    <span class="captain-icon">C</span>
+                </div>
+                <div class="player-details">
+                    <div class="player-info">
+                        <span class="player-order">9</span>
+                        <span class="player-name">R.Sharma</span>
+                    </div>
+                </div>
+            </div>
+            <div class="player-item">
+                <div class="player-img">
+                    <img src="https://www.dummyTeam.com/static-assets/images/cssimages/team-download/avtar.png" alt="">
+                    <span class="captain-icon">C</span>
+                </div>
+                <div class="player-details">
+                    <div class="player-info">
+                        <span class="player-order">10</span>
+                        <span class="player-name">R.Sharma</span>
+                    </div>
+                </div>
+            </div>
+            <div class="player-item">
+                <div class="player-img">
+                    <img src="https://www.dummyTeam.com/static-assets/images/cssimages/team-download/avtar.png" alt="">
+                    <span class="captain-icon">C</span>
+                </div>
+                <div class="player-details">
+                    <div class="player-info">
+                        <span class="player-order">11</span>
+                        <span class="player-name">R.Sharma</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="team-stats">
+            <div class="team-stats-header">
+                <div class="title-border left"></div>
+                <h3 class="stats-title"><span>Team Stats</span></h3>
+                <div class="title-border right"></div>
+            </div>
+            <div class="stats-list">
+                <div class="stats-item">
+                    <span class="stats-txt">Runs</span>
+                    <span class="scores">28,453</span>
+                </div>
+                <div class="stats-item">
+                    <span class="stats-txt">Fours</span>
+                    <span class="scores">545</span>
+                </div>
+                <div class="stats-item">
+                    <span class="stats-txt">Sixes</span>
+                    <span class="scores">275</span>
+                </div>
+                <div class="stats-item">
+                    <span class="stats-txt">Wickets</span>
+                    <span class="scores">102</span>
+                </div>
+                <div class="stats-item last">
+                    <span class="stats-txt">Catches</span>
+                    <span class="scores">67</span>
+                </div>
+            </div>
+        </div>
+        <div class="footer-wrap">
+            <div class="note"> MAKE YOUR TEAM ON: <a href="#">dummyTeam.com</a>
+            </div>
+            <p class="terms">*All stats are while playing for MI</p>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,294 @@
+<link rel="stylesheet" href="./main.css">
+
+<script src="//localhost:9020/main.bundle.js"></script>
+<script>
+  loadWidget('si-custom', 'widget-layout-27');
+</script>
+<div class="waf-component waf-my-team" data-controller="si-custom--widget-layout-27">
+  <div class="waf-head">
+    <h3 class="title">
+      <span>Paltan's All Time </span>
+      <img src="http://beta-mi.sportz.io/static-assets/images/cssimages/create-team/mi-logo.png">
+      <span> XI</span>
+    </h3>
+  </div>
+  <div class="waf-body" id="allTeam" v-cloak>
+    <div class="create-team-wrap">
+      <div class="lhs-player-listing"
+        :class="{'not-logged-in': !loggedIn || playerDetailsSubmitted || selectionStep === 0 || currentTab != 'create', 'deactive': selectionStep !== 1}">
+        <div class="lhs-head">
+          <h2 class="lhs-title">
+            <span>Pick your players</span>
+          </h2>
+        </div>
+        <div class="lhs-body">
+          <div class="filters">
+            <form action="" @submit.prevent>
+              <div class="form-group select-year">
+                <div class="select-box">
+                  <select name="" id="" class="form-control" v-model="season" @change="fetchPlayers(season)"
+                    :disabled="loadingStatus === 1 || playerDetailsSubmitted || selectionStep !== 1 || currentTab != 'create'">
+                    <option v-for="(value, key) in endPoints" :value="key">{{key}}</option>
+                  </select>
+                  <span class="errordiv"> message is required </span>
+                </div>
+              </div>
+              <div class="form-group search-player">
+                <input type="text" class="search-input" placeholder="Search Player by Name" v-model="searchText"
+                  :disabled="loadingStatus === 1 || playerDetailsSubmitted || selectionStep !== 1 || currentTab != 'create'"
+                  @blur="searchText.length && trackEvent('FilterUse', 'search player', 'Searched player query: ' + searchText)"
+                  @submit.prevent>
+                <span class="search-btn"></span>
+                <span class="errordiv"> message is required </span>
+              </div>
+              <div class="player-data">
+                <span>Players Left : <span class="data">{{getPlayersLeft}}</span></span>
+                <span>Foreign Players : <span class="data">{{getForeignPlayersLeft}}</span></span>
+              </div>
+            </form>
+          </div>
+          <div class="add-players-list" v-if="getFilteredSquadList.length">
+            <div class="player-item" :class="{'mobile':mobileDevice}" v-for="(player, index) in getFilteredSquadList"
+              @click="selectPlayer(player)">
+              <div class="player-thumb-img">
+                <img
+                  :src="'http://beta-mi.sportz.io/static-assets/images/players/team-xi/'+player.player_details.id+'.jpg'"
+                  class="lazy"
+                  onerror="event.target.src = 'http://beta-mi.sportz.io/static-assets/images/cssimages/create-team/avtar.png'">
+              </div>
+              <div class="player-content" v-if="player">
+                <span class="player-name">{{player.player_details.name}}</span>
+                <span class="player-country">{{player.player_details.nationality}}</span>
+                <span class="foreign-player" v-if="player.player_details.nationality_id !== '4'"></span>
+              </div>
+              <span class="add-player"
+                :class="{'active':player && selectedSquad.filter(p=>p && p.player_details.id === player.player_details.id).length>0, 'disabled': playerDetailsSubmitted}"></span>
+            </div>
+          </div>
+          <div class="action-wrap action-mobile" v-if="!playerDetailsSubmitted">
+            <button class="action-btn btn-gold"
+              :class="{'disabled':selectedSquad.filter(p=>p && p.player_details && p.player_details.id).length===0}"
+              @click="selectionStep = 2;scrollTop();">Preview</button>
+            <button class="action-btn btn-primary" :class="{'disabled':!ifValidXI}"
+              @click="selectionStep = 0;scrollTop();">Continue</button>
+          </div>
+        </div>
+      </div>
+      <div class="rhs-player-listing" :class="{'active': selectionStep !== 1}" @click.stop="focusedCaptainWKId = ''">
+        <ul class="team-tabs">
+          <li @click="changeTab('create')" :class="{'active': currentTab === 'create'}">
+            {{playerDetailsSubmitted?'My Team XI':'Create Team'}}</li>
+          <li @click="changeTab('mi')" :class="{'active': currentTab === 'mi'}">Mi Team Xi</li>
+        </ul>
+        <div class="action" v-if="mobileDevice && selectionStep === 2">
+          <span class="icon-back icon-right-arrow mobile" @click="selectionStep = 1"></span>
+        </div>
+        <div class="tab-container create-team" v-if="currentTab === 'create'">
+          <div class="rhs-head" v-if="!(mobileDevice && selectionStep === 2)">
+            <h3 class="rhs-title" v-if="ifValidXI && captainId !== '' && wicketKeeperId !== ''">
+              <span>My ALL-TIME</span>
+              <img src="http://beta-mi.sportz.io/static-assets/images/cssimages/create-team/mi-logo.png">
+              <span>XI</span>
+            </h3>
+            <p class="text" v-if="!ifValidXI && (captainId === '' && wicketKeeperId === '')">Make your All-Time MI XI
+              and share it with your friends, family and more.
+            </p>
+            <p class="text" v-if="ifValidXI && (captainId === '' || wicketKeeperId === '')">
+              Please select a Captain and a Wicket Keeper for your team.
+              {{mobileDevice?'Tap on the players to swap them.': 'Click and drag to swap players.'}}
+            </p>
+          </div>
+          <div class="rhs-body">
+            <div class="players-listing">
+              <div class="player-item" v-for="(player, index) in selectedSquad" :class="{'player-selected': player}">
+                <div v-if="player"
+                  :class="{'dragover': player.player_details.id === dragOverPlayerId, 'selected':selectionStep === 0 && player.player_details.id === focusedCaptainWKId}"
+                  :draggable="selectionStep === 0 && !mobileDevice" @drop.prevent="!mobileDevice && handleDrop(index)"
+                  @dragend.prevent="mobileDevice && handleDrop(index)"
+                  @dragover.prevent="handleDragOver(player.player_details.id)"
+                  @dragstart.stop="focusedCaptainWKId = '';handleDragStart(player.player_details.id)"
+                  @dragenter.prevent="handleDragEnter(player.player_details.id)" @click.stop="swapPlayer(player)">
+                  <span class="icon-close" v-if="selectionStep === (mobileDevice ? 0 : 1) && !playerDetailsSubmitted"
+                    @click.stop="removePlayer(player, index)"></span>
+                  <div class="player-img"
+                    :class="{'active': mobileDevice && focusedCaptainWKId === player.player_details.id}">
+                    <img
+                      onerror="event.target.src = 'http://beta-mi.sportz.io/static-assets/images/cssimages/create-team/avtar.png'"
+                      :src="'http://beta-mi.sportz.io/static-assets/images/players/team-xi/'+player.player_details.id+'.jpg'"
+                      :alt="player.player_details.name" draggable="false" class="lazy">
+                    <div class="player-selection" v-if="!playerDetailsSubmitted"
+                      v-show="ifValidXI && selectionStep === 0">
+                      <span class="captain"
+                        @click.stop="focusedCaptainWKId = player.player_details.id; selectCaptainWK(player, 'c')">C</span>
+                      <span class="wicket-keeper"
+                        @click.stop="focusedCaptainWKId = player.player_details.id; selectCaptainWK(player, 'wk')">WK</span>
+                    </div>
+                    <div class="select-captain">
+                      <span class="wk-icon" v-if="wicketKeeperId === player.player_details.id">wk</span>
+                      <span class="captain-icon" v-if="captainId === player.player_details.id">C</span>
+                    </div>
+                    <span class="foreign-player" v-if="player.player_details.nationality_id !== '4'"></span>
+                  </div>
+                  <div class="player-details">
+                    <div class="addplayer">
+                      <span class="icon-plus">Add Player</span>
+                    </div>
+                    <div class="player-info">
+                      <span class="player-order">{{index+1}}</span>
+                      <span class="player-name">{{shortenPlayerName(player.player_details.name)}}</span>
+                    </div>
+                  </div>
+                </div>
+                <div v-if="player == null">
+                  <div class="player-img" @click.stop="openSelectionScreen()">
+                    <img src="http://beta-mi.sportz.io/static-assets/images/cssimages/create-team/avtar.png" alt="">
+                  </div>
+                  <div class="player-details">
+                    <div class="addplayer" @click.stop="openSelectionScreen()">
+                      <span class="icon-plus">Add Player</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="team-stats" v-if="squadDetailAndStats.length">
+              <h3 class="stats-title">Team Stats</h3>
+              <div class="stats-list">
+                <div class="stats-item">
+                  <span class="stats-txt">Runs</span>
+                  <span class="scores">{{formatNumber(getSquadStats.runs)}}</span>
+                </div>
+                <div class="stats-item">
+                  <span class="stats-txt">Fours</span>
+                  <span class="scores">{{formatNumber(getSquadStats.fours)}}</span>
+                </div>
+                <div class="stats-item">
+                  <span class="stats-txt">Sixes</span>
+                  <span class="scores">{{formatNumber(getSquadStats.sixes)}}</span>
+                </div>
+                <div class="stats-item">
+                  <span class="stats-txt">Wickets</span>
+                  <span class="scores">{{formatNumber(getSquadStats.wickets)}}</span>
+                </div>
+                <div class="stats-item">
+                  <span class="stats-txt">Catches</span>
+                  <span class="scores">{{formatNumber(getSquadStats.catches)}}</span>
+                </div>
+              </div>
+            </div>
+            <div class="action-wrap" v-if="loggedIn && !playerDetailsSubmitted && selectionStep === 1">
+              <button class="action-btn btn-gold" @click="searchText = ''; selectionStep = 0"
+                :class="{'disabled':!ifValidXI}">Continue</button>
+            </div>
+            <div class="action-wrap" v-if="loggedIn && !playerDetailsSubmitted && selectionStep === 0">
+              <button class="action-btn btn-gold" :class="{'disabled': loadingStatus === 1}"
+                @click.stop="selectionStep = 1;scrollTop();">Edit</button>
+              <button class="action-btn"
+                :class="{'btn-primary': !ifValidXI,'btn-gold': ifValidXI, 'disabled': !ifValidXI || loadingStatus === 1, 'loading': loadingStatus === 1}"
+                @click.stop="continueToSubmit()">Submit</button>
+            </div>
+            <div class="action-wrap share-wrap" v-if="loggedIn && playerDetailsSubmitted">
+              <button class="action-btn btn-gold" @click="editTeam()">Change Your MI XI</button>
+              <button class="action-btn btn-gold icon-download" v-if="!teamImgUrl"
+                :class="{'disabled': generatingImg, 'loading': generatingImg}"
+                @click="!teamImgUrl && downloadImage(undefined, true)">
+                {{generatingImg?'Generating Image...':'Download'}}
+              </button>
+              <a :href="teamImgUrl||'javascript:void(0)'" class="action-btn btn-gold icon-download"
+                :download="usersTeamName+'.jpg'" v-if="teamImgUrl" target="_blank">Download</a>
+              <div class="btn-gold action-btn social-wrap icon-share"
+                :class="{'active':shareMenuToggle,'disabled': generatingImg, 'loading': generatingImg}"
+                @click="shareMenuToggle = !shareMenuToggle">Share
+                <ul class="share-icons">
+                  <li><a href="javascript:void(0)" class="icon-facebook"
+                      @click.stop="downloadAndShareImage('facebook')"></a>
+                  </li>
+                  <li><a href="javascript:void(0)" class="icon-twitter"
+                      @click.stop="downloadAndShareImage('twitter')"></a>
+                  </li>
+                  <li><a href="javascript:void(0)" class="icon-whatsapp"
+                      @click.stop="downloadAndShareImage('whatsapp')"></a></li>
+                </ul>
+              </div>
+            </div>
+            <p class="text-danger text-center px-3 mx-auto w-50" v-if="playerDetailsSubmitError">
+              {{playerDetailsSubmitError}}</p>
+            <p class="text-success text-center px-3 mx-auto w-50" v-if="playerDetailsSubmitSuccess">
+              {{playerDetailsSubmitSuccess}}</p>
+          </div>
+        </div>
+        <div class="tab-container create-team" v-if="currentTab === 'mi'">
+          <div class="rhs-head">
+            <h3 class="rhs-title">
+              <span>Most Selected All-Time</span>
+              <img src="http://beta-mi.sportz.io/static-assets/images/cssimages/create-team/mi-logo.png">
+              <span>XI</span>
+            </h3>
+          </div>
+          <div class="rhs-body">
+            <div class="players-listing">
+              <div class="player-item player-selected" v-for="(player, index) in allTimeMISquad">
+                <div v-if="player">
+                  <div class="player-img active">
+                    <img
+                      onerror="event.target.src = 'http://beta-mi.sportz.io/static-assets/images/cssimages/create-team/avtar.png'"
+                      :src="'http://beta-mi.sportz.io/static-assets/images/players/team-xi/'+player.player_id+'.jpg'"
+                      :alt="player.name" class="lazy" draggable="false">
+                    <div class="select-captain">
+                      <span class="captain-icon" v-if="player.is_captain">C</span>
+                      <span class="wk-icon" v-if="player.is_wicket_keeper">wk</span>
+                    </div>
+                    <span class="foreign-player" v-if="player.nationality_id !== '4'"></span>
+                  </div>
+                  <div class="player-details">
+                    <div class="player-info">
+                      <span class="player-order">{{index+1}}</span>
+                      <span class="player-name">{{shortenPlayerName(player.name)}}</span>
+                    </div>
+                    <div class="player-votes">
+                      <span class="votes">{{Math.round(player.percentage)}}%</span>
+                      <span>Votes</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="team-stats" v-if="squadDetailAndStats.length">
+              <h3 class="stats-title">Team Stats</h3>
+              <div class="stats-list">
+                <div class="stats-item">
+                  <span class="stats-txt">Runs</span>
+                  <span class="scores">{{formatNumber(getSquadStats.runs)}}</span>
+                </div>
+                <div class="stats-item">
+                  <span class="stats-txt">Fours</span>
+                  <span class="scores">{{formatNumber(getSquadStats.fours)}}</span>
+                </div>
+                <div class="stats-item">
+                  <span class="stats-txt">Sixes</span>
+                  <span class="scores">{{formatNumber(getSquadStats.sixes)}}</span>
+                </div>
+                <div class="stats-item">
+                  <span class="stats-txt">Wickets</span>
+                  <span class="scores">{{formatNumber(getSquadStats.wickets)}}</span>
+                </div>
+                <div class="stats-item">
+                  <span class="stats-txt">Catches</span>
+                  <span class="scores">{{formatNumber(getSquadStats.catches)}}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="create-team-rules">
+      <h3 class="rules-title">Rules:</h3>
+      <ul class="rules-list">
+        <li>Login to create your all-time MI XI</li>
+        <li>You can pick a maximum of four overseas players </li>
+        <li>You are entitled to appoint a Captain and a Wicket-keeper for your team</li>
+      </ul>
+    </div>
+  </div>
+</div>

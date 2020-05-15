@@ -1,0 +1,465 @@
+@font-face {
+    font-family: 'waf-icon-font';
+    src: url('/static-assets/fonts/waf-icon-font.eot?48384366');
+    src: url('/static-assets/fonts/waf-icon-font.eot?48384366#iefix') format('embedded-opentype'),
+        url('/static-assets/fonts/waf-icon-font.woff2?48384366') format('woff2'),
+        url('/static-assets/fonts/waf-icon-font.woff?48384366') format('woff'),
+        url('/static-assets/fonts/waf-icon-font.ttf?48384366') format('truetype'),
+        url('/static-assets/fonts/waf-icon-font.svg?48384366#waf-icon-font') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+/* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
+/* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
+/*
+  @media screen and (-webkit-min-device-pixel-ratio:0) {
+    @font-face {
+      font-family: 'waf-icon-font';
+      src: url('../font/waf-icon-font.svg?58535680#waf-icon-font') format('svg');
+    }
+  }
+  */
+
+[class^="icon-"]:before,
+[class*=" icon-"]:before {
+    font-family: "waf-icon-font";
+    font-style: normal;
+    font-weight: normal;
+    speak: none;
+
+    display: inline-block;
+    text-decoration: inherit;
+    width: 1em;
+    margin-right: .2em;
+    text-align: center;
+    /* opacity: .8; */
+
+    /* For safety - reset parent styles, that can break glyph codes*/
+    font-variant: normal;
+    text-transform: none;
+
+    /* fix buttons height, for twitter bootstrap */
+    line-height: 1em;
+
+    /* Animation center compensation - margins should be symmetric */
+    /* remove if not needed */
+    margin-left: .2em;
+
+    /* you can be more comfortable with increased icons size */
+    /* font-size: 120%; */
+
+    /* Font smoothing. That was taken from TWBS */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    /* Uncomment for 3D effect */
+    /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
+}
+
+.icon-mail:before {
+    content: '\e800';
+}
+
+/* '' */
+.icon-bell:before {
+    content: '\e801';
+}
+
+/* '' */
+.icon-search:before {
+    content: '\e802';
+}
+
+/* '' */
+.icon-contact-us:before {
+    content: '\e803';
+}
+
+/* '' */
+.icon-ok:before {
+    content: '\e804';
+}
+
+/* '' */
+.icon-trash:before {
+    content: '\e805';
+}
+
+/* '' */
+.icon-post:before {
+    content: '\e806';
+}
+
+/* '' */
+.icon-share:before {
+    content: '\e80f';
+}
+
+/* '' */
+.icon-cancel:before {
+    content: '\e824';
+}
+
+/* '' */
+.icon-plus:before {
+    content: '\e838';
+}
+
+/* '' */
+.icon-download:before {
+    content: '\e851';
+}
+
+/* '' */
+.icon-hand:before {
+    content: '\e85b';
+}
+
+/* '' */
+.icon-edit:before {
+    content: '\e85f';
+}
+
+/* '' */
+.icon-video:before {
+    content: '\e873';
+}
+
+/* '' */
+.icon-latest-update:before {
+    content: '\e8bc';
+}
+
+/* '' */
+.icon-thumbs-up:before {
+    content: '\e8fd';
+}
+
+/* '' */
+.icon-thumbs-up-fill:before {
+    content: '\e8fe';
+}
+
+/* '' */
+.icon-dislike-fill:before {
+    content: '\e900';
+}
+
+/* '' */
+.icon-like-fill:before {
+    content: '\e901';
+}
+
+/* '' */
+.icon-dislike:before {
+    content: '\e902';
+}
+
+/* '' */
+.icon-like:before {
+    content: '\e903';
+}
+
+/* '' */
+.icon-stas:before {
+    content: '\e904';
+}
+
+/* '' */
+.icon-shop:before {
+    content: '\e905';
+}
+
+/* '' */
+.icon-fanhub:before {
+    content: '\e906';
+}
+
+/* '' */
+.icon-emoji:before {
+    content: '\e908';
+}
+
+/* '' */
+.icon-card:before {
+    content: '\e919';
+}
+
+/* '' */
+.icon-create:before {
+    content: '\e91a';
+}
+
+/* '' */
+.icon-login-01:before {
+    content: '\e91b';
+}
+
+/* '' */
+.icon-paltans-team-xi:before {
+    content: '\e925';
+}
+
+/* '' */
+.icon-gif-cordon:before {
+    content: '\e926';
+}
+
+/* '' */
+.icon-all_rounder-01:before {
+    content: '\e92b';
+}
+
+/* '' */
+.icon-auction-01:before {
+    content: '\e92c';
+}
+
+/* '' */
+.icon-away-01:before {
+    content: '\e92d';
+}
+
+/* '' */
+.icon-batsman-01:before {
+    content: '\e92e';
+}
+
+/* '' */
+.icon-bowler-01:before {
+    content: '\e92f';
+}
+
+/* '' */
+.icon-rtm-01:before {
+    content: '\e930';
+}
+
+/* '' */
+.icon-sold-01:before {
+    content: '\e931';
+}
+
+/* '' */
+.icon-unsold-01:before {
+    content: '\e932';
+}
+
+/* '' */
+.icon-wicket_keeper-01:before {
+    content: '\e933';
+}
+
+/* '' */
+.icon-ticket:before {
+    content: '\e95e';
+}
+
+/* '' */
+.icon-close:before {
+    content: '\e9be';
+}
+
+/* '' */
+.icon-down-arrow:before {
+    content: '\e9bf';
+}
+
+/* '' */
+.icon-left-arrow:before {
+    content: '\e9c5';
+}
+
+/* '' */
+.icon-right-arrow:before {
+    content: '\e9cd';
+}
+
+/* '' */
+.icon-up-arrow:before {
+    content: '\e9d0';
+}
+
+/* '' */
+.icon-mitv:before {
+    content: '\e9d2';
+}
+
+/* '' */
+.icon-attachment:before {
+    content: '\e9d4';
+}
+
+/* '' */
+.icon-esa:before {
+    content: '\e9e7';
+}
+
+/* '' */
+.icon-fixtures:before {
+    content: '\e9ed';
+}
+
+/* '' */
+.icon-home:before {
+    content: '\e9ef';
+}
+
+/* '' */
+.icon-more-watch:before {
+    content: '\e9f3';
+}
+
+/* '' */
+.icon-squad:before {
+    content: '\e9f4';
+}
+
+/* '' */
+.icon-total-run:before {
+    content: '\e9f5';
+}
+
+/* '' */
+.icon-total-wicket:before {
+    content: '\e9f6';
+}
+
+/* '' */
+.icon-photo:before {
+    content: '\e9f7';
+}
+
+/* '' */
+.icon-reply:before {
+    content: '\e9f8';
+}
+
+/* '' */
+.icon-overseas:before {
+    content: '\e9f9';
+}
+
+/* '' */
+.icon-mi-junior-2020:before {
+    content: '\ea11';
+}
+
+/* '' */
+.icon-auction_icon-1:before {
+    content: '\ea26';
+}
+
+/* '' */
+.icon-boygirl-icon-01:before {
+    content: '\ea28';
+}
+
+/* '' */
+.icon-boygirl-icon-03:before {
+    content: '\ea29';
+}
+
+/* '' */
+.icon-boygirl-icon-02:before {
+    content: '\ea2a';
+}
+
+/* '' */
+.icon-view:before {
+    content: '\ea41';
+}
+
+/* '' */
+.icon-comment:before {
+    content: '\ea57';
+}
+
+/* '' */
+.icon-retweet:before {
+    content: '\ea58';
+}
+
+/* '' */
+.icon-line-dot:before {
+    content: '\eb5e';
+}
+
+/* '' */
+.icon-twitter:before {
+    content: '\f099';
+}
+
+/* '' */
+.icon-facebook:before {
+    content: '\f09a';
+}
+
+/* '' */
+.icon-menu:before {
+    content: '\f0c9';
+}
+
+/* '' */
+.icon-gplus:before {
+    content: '\f0d5';
+}
+
+/* '' */
+.icon-angle-left:before {
+    content: '\f104';
+}
+
+/* '' */
+.icon-angle-right:before {
+    content: '\f105';
+}
+
+/* '' */
+.icon-angle-up:before {
+    content: '\f106';
+}
+
+/* '' */
+.icon-angle-down:before {
+    content: '\f107';
+}
+
+/* '' */
+.icon-vert-menu:before {
+    content: '\f142';
+}
+
+/* '' */
+.icon-rupee:before {
+    content: '\f156';
+}
+
+/* '' */
+.icon-youtube-play:before {
+    content: '\f16a';
+}
+
+/* '' */
+.icon-instagram:before {
+    content: '\f16d';
+}
+
+/* '' */
+.icon-apple:before {
+    content: '\f179';
+}
+
+/* '' */
+.icon-android:before {
+    content: '\f17b';
+}
+
+/* '' */
+.icon-whatsapp:before {
+    content: '\f232';
+}
+
+/* '' */

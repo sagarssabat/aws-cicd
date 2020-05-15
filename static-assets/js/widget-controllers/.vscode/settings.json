@@ -1,0 +1,15 @@
+{
+  "typescript.extension.sortImports.sortOnSave": true,
+  "typescript.extension.sortImports.enableJavascript": true,
+  "typescript.extension.sortImports.omitSemicolon": true,
+  "typescript.extension.sortImports.sortMethod": "path",
+  "typescript.extension.sortImports.pathSortOrder": [
+    "package",
+    "relativeDownLevel",
+    "relativeUpLevel"
+  ],
+  "editor.formatOnSave": true,
+  "editor.tabSize": 2,
+  "javascript.format.insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces": true,
+  "files.autoSave": "onFocusChange"
+}

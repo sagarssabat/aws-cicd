@@ -1,0 +1,198 @@
+.waf-info-section {
+    .head-wrap {
+        @include justify-content(center);
+        border-bottom: 1px solid $golden-color;
+    }
+
+    .content-wrap {
+        color: $secondary-color;
+    }
+
+    p,
+    ul {
+        margin-bottom: 20px;
+    }
+
+    p,
+    li {
+        font-family: $regular_font-family;
+        font-size: 16px;
+    }
+
+    li {
+        margin-bottom: 20px;
+    }
+
+    .main-title {
+        font-size: 24px;
+        font-family: $bold_font-family;
+        text-transform: uppercase;
+        color: $default-color;
+        margin-bottom: 10px;
+    }
+
+    .section-title {
+        font-size: 20px;
+        // color: $secondary-color;
+        font-family: $bold_font-family;
+        text-transform: capitalize;
+        margin-bottom: 20px;
+    }
+
+    .subtitle {
+        margin-bottom: 0;
+    }
+
+    .numeric-list {
+        padding-left: 30px;
+
+        li {
+            list-style-type: decimal;
+        }
+    }
+
+    .custom-bullet {
+        padding-left: 30px;
+        list-style: disc;
+
+        li {
+            position: relative;
+            line-height: 1.5;
+        }
+    }
+
+    .lower-roman {
+        padding-left: 30px;
+
+        &>li {
+            list-style-type: lower-roman;
+        }
+    }
+
+    .lower-alpha {
+        padding-left: 30px;
+
+        &>li {
+            list-style-type: lower-alpha;
+        }
+    }
+}
+
+.paltans-tnc {
+    .strong {
+        font-family: $medium_font-family;
+    }
+
+    a {
+        text-decoration: underline;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+.no-space {
+    margin: 0 -10px;
+    padding: 0px 10px;
+}
+
+.book-tickets {
+    img {
+        width: 100%;
+    }
+}
+
+.waf-highlight {
+    position: relative;
+
+    .highlight-wrap {
+        position: relative;
+        @include flexbox();
+        @include justify-content(center);
+        @include align-items(center);
+        max-width: 900px;
+        margin: auto;
+        padding: 25px;
+    }
+
+    .highlight-img {
+        width: 20%;
+
+        img {
+            width: 100%;
+        }
+    }
+
+    .highlight-content {
+        padding: 0 25px;
+        font-size: 18px;
+        font-family: $medium_font-family;
+        color: $complementary-color;
+        line-height: 1.3;
+
+        .txt {
+            font-family: $bold_font-family;
+        }
+    }
+
+    &:before {
+        content: "";
+        background-image: url('../images/cssimages/mitv-strip.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+@media screen and (max-width: $media-tablet-max) {
+    .waf-info-section {
+
+        p,
+        li {
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .section-title {
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+    }
+}
+
+@media screen and (max-width: $media-phone-max) {
+    .waf-info-section {
+
+        p,
+        li {
+            line-height: 1.7;
+            margin-bottom: 10px;
+        }
+
+        .section-title {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+    }
+
+    .waf-highlight {
+        .highlight-wrap {
+            flex-direction: column;
+            padding: 0;
+        }
+
+        .highlight-img {
+            margin-bottom: 20px;
+        }
+
+        .highlight-content {
+            padding: 0 15px;
+            font-size: 14px;
+        }
+    }
+}

@@ -1,0 +1,186 @@
+@import "../../../../../../widget-library/showcase/sass/widget-layout-27.scss";
+@import "../../_variables";
+
+.waf-showcase.widget-layout-27 {
+    margin: 0 -10px;
+    padding: 0;
+
+    .article-wrap {
+        position: relative;
+    }
+
+    &.listing-showcase {
+        .article-content {
+            // position: relative;
+            left: 0;
+            width: 33.33%;
+        }
+
+        .article-wrap {
+            @include flexbox();
+
+            .article-video,
+            .article-thumbnail {
+                width: 66.66%;
+                order: 2;
+                position: relative;
+                margin-left: auto;
+            }
+        }
+    }
+
+    .article-video-thumbnail {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        transition: 0.4s;
+        opacity: 1;
+        cursor: pointer;
+    }
+
+    .item-type-news,
+    .item-type-article,
+    .item-type-photo {
+        .item-type-icon {
+            display: none;
+        }
+    }
+
+    .article-next {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        margin: 0 10px;
+        height: 60px;
+        overflow: hidden;
+        width: 40%;
+        color: $complementary-color;
+        z-index: 2;
+        transition: 0.4s;
+        font-size: 14px;
+        @include flexbox();
+        @include justify-content(flex-start);
+        @include align-items(center);
+
+        .label {
+            color: $golden-color;
+            font-family: $medium_font-family;
+            text-transform: capitalize;
+            margin-right: 6px;
+        }
+
+        .title {
+            cursor: pointer;
+            font-size: 14px;
+            white-space: nowrap;
+            font-family: $regular_font-family;
+        }
+    }
+
+    .swiper-pagination {
+        height: 60px;
+        position: absolute;
+        width: auto;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 2;
+        @include flexbox();
+        @include justify-content(center);
+        @include align-items(center);
+        transition: 0.4s;
+    }
+
+    .show-video {
+
+        &.slider-wrapper:before,
+        .article-next,
+        .swiper-pagination,
+        .article-video-thumbnail {
+            opacity: 0;
+            z-index: 0;
+        }
+    }
+
+    .slider-nav {
+        display: none;
+    }
+
+    .slider-wrapper {
+        position: relative;
+
+        &:before {
+            content: '';
+            /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#00000a+0,001848+100&0+0,1+60 */
+            background: -moz-linear-gradient(left, rgba(0, 0, 10, 0) 5%, rgba(0, 14, 47, 1) 70%, rgba(0, 24, 72, 1) 100%);
+            /* FF3.6-15 */
+            background: -webkit-linear-gradient(left, rgba(0, 0, 10, 0) 5%, rgba(0, 14, 47, 1) 70%, rgba(0, 24, 72, 1) 100%);
+            /* Chrome10-25,Safari5.1-6 */
+            background: linear-gradient(to right, rgba(0, 0, 10, 0) 5%, rgba(0, 14, 47, 1) 70%, rgba(0, 24, 72, 1) 100%);
+            /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0000000a', endColorstr='#001848', GradientType=1);
+            /* IE6-9 */
+            position: absolute;
+            height: 60px;
+            bottom: 0;
+            right: 0;
+            z-index: 2;
+            width: calc(100% - 33.33%);
+            transition: 0.4s;
+        }
+    }
+}
+
+@media screen and (max-width: $media-tablet-max) {
+    .waf-showcase.widget-layout-27 {
+        .show-video {
+            .article-content {
+                opacity: 1;
+            }
+        }
+
+        .slider-wrapper {
+            &:before {
+                display: none;
+                height: 40px;
+            }
+        }
+
+        .article-next {
+            display: none;
+            height: 40px;
+
+            .label {
+                font-size: 12px;
+            }
+
+            .title {
+                font-size: 12px;
+            }
+        }
+
+        .swiper-pagination {
+            height: 40px;
+        }
+
+        .article-description {
+            font-size: 12px;
+            display: none;
+        }
+    }
+}
+
+@media screen and (max-width: $media-phone-max) {
+    .waf-showcase.widget-layout-27 {
+        .swiper-pagination {
+            display: none;
+        }
+
+        .slider-wrapper {
+            &:before {
+                display: none;
+            }
+        }
+    }
+}

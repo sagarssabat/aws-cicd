@@ -1,0 +1,38 @@
+@import "../../../../../../widget-library/downloads/sass/widget-layout-05.scss";
+@import "../../_variables";
+@import "../../_stickers";
+@import "../../_emoji";
+
+.waf-downloads.widget-layout-05 {
+    .head-wrap {
+        .btn-download {
+            background-color: $golden-color;
+            padding: 10px 20px;
+            line-height: 1;
+            border-radius: 20px;
+
+            &:after {
+                content: '\e851';
+                font-family: $waf-icon;
+                margin-left: 14px;
+            }
+        }
+    }
+}
+
+// @media screen and (max-width: $media-tablet-max) {}
+
+@media screen and (max-width: $media-phone-max) {
+    .waf-downloads.widget-layout-05 {
+        .head-wrap {
+            .btn-download {
+                font-size: 12px;
+                padding: 8px 14px;
+
+                &:after {
+                    margin-left: 8px;
+                }
+            }
+        }
+    }
+}

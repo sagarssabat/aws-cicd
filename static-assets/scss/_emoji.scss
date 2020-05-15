@@ -1,0 +1,163 @@
+.waf-tab {
+    @include flexbox();
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.waf-tab-item {
+    border-bottom: 2px solid $primary-color;
+    text-transform: uppercase;
+    padding: 10px;
+    font-size: 16px;
+    text-align: center;
+
+    &.active {
+        color: $golden-color;
+        border-bottom: 2px solid $golden-color;
+    }
+}
+
+.waf-tab-pane {
+    display: none;
+
+    &.active {
+        display: block;
+    }
+}
+
+.emoji-list {
+    @include flexbox();
+    @include justify-content(center);
+    flex-wrap: wrap;
+    text-align: center;
+    margin: 0 -20px;
+}
+
+.emoji-item {
+    flex-basis: 20%;
+    position: relative;
+    margin-bottom: 20px;
+    padding: 0 20px;
+
+    .btn-download {
+        width: 40px;
+        height: 40px;
+        margin: 0 auto;
+        background-color: $golden-color;
+        color: $primary-color;
+        border-radius: 50%;
+        font-size: 18px;
+        @include flexbox();
+        @include justify-content(center);
+        @include align-items(center);
+
+        &:before {
+            content: '\e851';
+            font-family: $waf-icon;
+            line-height: 1;
+        }
+
+        span {
+            display: none;
+        }
+    }
+}
+
+.emoji-img {
+    margin: 0 auto;
+}
+
+.section2,
+.mi-emoji {
+    .emoji-item {
+        &:before {
+            content: '';
+            border: 1px solid $primary-color;
+            width: 85%;
+            height: 55%;
+            position: absolute;
+            left: 0;
+            top: 65%;
+            transform: translateY(-50%);
+            z-index: 0;
+            right: 0;
+            margin: 0 auto;
+            border-radius: 10px;
+        }
+    }
+
+    .emoji-wrap {
+        position: relative;
+        z-index: 1;
+    }
+
+    .emoji-img {
+        width: 150px;
+        height: 150px;
+
+        img {
+            width: 100%;
+        }
+    }
+
+    .emoji-name {
+        text-transform: capitalize;
+        color: $primary-color;
+        font-size: 20px;
+        font-family: $medium_font-family;
+        margin: 14px 6px;
+        line-height: 1;
+        min-height: 40px;
+        @include flexbox();
+        @include justify-content(center);
+        @include align-items(center);
+    }
+}
+
+@media screen and (max-width: $media-tablet-max) {
+    .emoji-item {
+        flex-basis: 33.33%;
+    }
+
+    .waf-tab-item {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: $media-phone-max) {
+    .waf-tab {
+        width: 100%;
+        top: 34px;
+    }
+
+    .waf-tab-item {
+        font-size: 10px;
+        flex: 1;
+    }
+
+    .waf-tab-content {
+        padding-top: 50px;
+    }
+
+    .emoji-item {
+        flex-basis: 50%;
+        padding: 0 10px;
+    }
+
+    .emoji-list {
+        margin: 0 -10px
+    }
+
+    .section2,
+    .mi-emoji {
+        .emoji-img {
+            width: 100px;
+            height: 100px;
+        }
+
+        .emoji-name {
+            font-size: 16px;
+        }
+    }
+}

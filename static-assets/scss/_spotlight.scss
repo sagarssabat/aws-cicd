@@ -1,0 +1,114 @@
+.spotlight {
+    margin: 0 -10px;
+    padding: 0;
+
+    .slider-nav,
+    .waf-head {
+        display: none;
+    }
+
+    .article-description {
+        height: 50px;
+    }
+
+    .article-item {
+        position: relative;
+    }
+
+    .swiper-pagination {
+        display: none;
+    }
+
+    /* spotlight styling */
+    .article-content {
+        position: absolute;
+        top: 0;
+        height: 100%;
+        transition: 0.4s;
+        left: 0;
+        width: 33.33%;
+        background-color: $primary-color;
+        order: 1;
+        z-index: 1;
+
+        .content-wrap {
+            color: $complementary-color;
+            padding: 20px;
+        }
+
+        .article-title {
+            .title {
+                margin: 10px 0;
+                max-height: 86px;
+                font-size: 20px;
+            }
+        }
+    }
+
+    .article-wrap {
+        @include flexbox();
+
+    }
+
+    .article-video,
+    .article-thumbnail {
+        width: 66.66%;
+        order: 2;
+        position: relative;
+        margin-left: auto;
+    }
+
+    .article-comment {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+    }
+}
+
+
+@media screen and (max-width: $media-tablet-max) {
+    .spotlight {
+        .article-content {
+            position: relative;
+            left: 0;
+            width: 100%;
+            background-color: rgba($primary-color, 1);
+
+            .content-wrap {
+                padding: 15px;
+            }
+
+            .article-title {
+                .title {
+                    height: 46px;
+                    margin-bottom: 0px;
+                    font-size: 16px;
+                }
+            }
+        }
+
+        .article-description {
+            display: none;
+        }
+
+        /* spotlight styling */
+        .article-wrap {
+            display: unset;
+
+        }
+
+        .article-thumbnail,
+        .article-video {
+            position: relative;
+            width: 100%;
+        }
+
+        .article-comment {
+            position: relative;
+        }
+    }
+}
+
+@media screen and (max-width: $media-phone-max) {
+    // .spotlight {}
+}

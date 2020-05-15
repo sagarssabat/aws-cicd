@@ -1,0 +1,514 @@
+@import "_variables";
+@import "../../../../sass/mixins";
+@import "../../../../sass/variables";
+
+
+.waf-mi-membership {
+    margin: 0 -10px;
+    padding-top: 0px;
+
+    .waf-head {
+        background-image: url('../images/cssimages/membership/membership-bg.jpg');
+        background-repeat: no-repeat;
+    }
+
+    .head-wrap {
+        @include justify-content(center);
+        flex-direction: column;
+        text-align: center;
+        margin: 0px;
+        min-height: 480px;
+        position: relative;
+
+        &::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            bottom: 0px;
+            left: 0px;
+            /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#001848+0,001848+100&0+0,1+27,1+100 */
+            background: -moz-linear-gradient(top, rgba(0, 24, 72, 0) 0%, rgba(0, 24, 72, 0.5) 27%, rgba(0, 24, 72, 1) 100%);
+            /* FF3.6-15 */
+            background: -webkit-linear-gradient(top, rgba(0, 24, 72, 0) 0%, rgba(0, 24, 72, 0.5) 27%, rgba(0, 24, 72, 1) 100%);
+            /* Chrome10-25,Safari5.1-6 */
+            background: linear-gradient(to bottom, rgba(0, 24, 72, 0) 0%, rgba(0, 24, 72, 0.5) 20%, #001848 100%);
+            /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00001848', endColorstr='#001848', GradientType=0);
+            /* IE6-9 */
+            height: 50%;
+        }
+    }
+
+    .head-img {
+        padding: 10px 0 20px;
+    }
+
+    .head-title {
+        color: $complementary-color;
+        text-transform: uppercase;
+        font-style: italic;
+        font-family: $medium_font-family;
+        font-size: 40px;
+
+        span {
+            font-family: $medium_font-family;
+            display: block;
+        }
+    }
+
+    .head-description {
+        color: $golden-color;
+        max-width: 400px;
+        margin: 0 auto;
+
+        p {
+            z-index: 3;
+            position: relative;
+        }
+
+        &::before,
+        &::after {
+            content: '';
+            position: absolute;
+            background-repeat: no-repeat;
+            background-position: bottom;
+            bottom: 0px;
+            width: 30%;
+            height: 100%;
+            background-size: 100%;
+        }
+
+        &::before {
+            background-image: url('../images/cssimages/membership/Players-left.png');
+            left: 0;
+            right: auto;
+        }
+
+        &::after {
+            background-image: url('../images/cssimages/membership/Players-right.png');
+            right: 0;
+            left: auto;
+        }
+    }
+
+    .card-list {
+        .card-title {
+            font-family: $bold_font-family;
+            text-transform: uppercase;
+        }
+    }
+
+    .data-content {
+        @include flexbox();
+        @include justify-content(center);
+        margin-top: 80px;
+
+        .card {
+            &-list {
+                width: 100%;
+
+                &_content {
+                    margin: 10px 0;
+
+                    li {
+                        position: relative;
+                        padding-left: 25px;
+
+                        &::before {
+                            content: '';
+                            width: 8px;
+                            height: 8px;
+                            position: absolute;
+                            border-radius: 50%;
+                            top: 8px;
+                            left: 0px;
+                            background-color: $golden-color;
+                            box-shadow: 0px 0px 0px 2px rgba($golden-color, 0.3);
+                        }
+                    }
+                }
+            }
+
+            &-title {
+                font-size: 24px;
+                margin-bottom: 10px;
+            }
+
+            &-img {
+                width: 400px;
+                margin-right: 20px;
+                padding-right: 20px;
+                position: relative;
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    right: 0px;
+                    /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#d1ab3e+25,d1ab3e+75&0+0,0+0,1+25,1+75,0+100 */
+                    background: -moz-linear-gradient(top, rgba(209, 171, 62, 0) 0%, rgba(209, 171, 62, 1) 25%, rgba(209, 171, 62, 1) 75%, rgba(209, 171, 62, 0) 100%);
+                    /* FF3.6-15 */
+                    background: -webkit-linear-gradient(top, rgba(209, 171, 62, 0) 0%, rgba(209, 171, 62, 1) 25%, rgba(209, 171, 62, 1) 75%, rgba(209, 171, 62, 0) 100%);
+                    /* Chrome10-25,Safari5.1-6 */
+                    background: linear-gradient(to bottom, rgba(209, 171, 62, 0) 0%, rgba(209, 171, 62, 1) 25%, rgba(209, 171, 62, 1) 75%, rgba(209, 171, 62, 0) 100%);
+                    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+                    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00d1ab3e', endColorstr='#00d1ab3e', GradientType=0);
+                    /* IE6-9 */
+                    height: 100%;
+                    width: 1px;
+                }
+
+                img {
+                    width: 100%;
+                }
+            }
+
+            &-item {
+                @include flexbox();
+                @include justify-content(center);
+                @include align-items(center);
+                padding: 50px 0;
+
+                &:nth-child(even) {
+                    background-color: #eff0f2;
+                    flex-direction: row-reverse;
+
+                    .card-img {
+                        margin-right: 0px;
+                        padding-right: 0px;
+                        margin-left: 20px;
+                        padding-left: 20px;
+
+                        &::after {
+                            display: none;
+                        }
+
+                        &::before {
+                            content: '';
+                            position: absolute;
+                            left: 0px;
+                            /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#d1ab3e+25,d1ab3e+75&0+0,0+0,1+25,1+75,0+100 */
+                            background: -moz-linear-gradient(top, rgba(209, 171, 62, 0) 0%, rgba(209, 171, 62, 1) 25%, rgba(209, 171, 62, 1) 75%, rgba(209, 171, 62, 0) 100%);
+                            /* FF3.6-15 */
+                            background: -webkit-linear-gradient(top, rgba(209, 171, 62, 0) 0%, rgba(209, 171, 62, 1) 25%, rgba(209, 171, 62, 1) 75%, rgba(209, 171, 62, 0) 100%);
+                            /* Chrome10-25,Safari5.1-6 */
+                            background: linear-gradient(to bottom, rgba(209, 171, 62, 0) 0%, rgba(209, 171, 62, 1) 25%, rgba(209, 171, 62, 1) 75%, rgba(209, 171, 62, 0) 100%);
+                            /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+                            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00d1ab3e', endColorstr='#00d1ab3e', GradientType=0);
+                            /* IE6-9 */
+                            height: 100%;
+                            width: 1px;
+                        }
+                    }
+                }
+
+                .active-membership {
+                    padding: 20px 0;
+                    display: none;
+
+                    .active-patch {
+                        background-color: #2ba913;
+                        color: $complementary-color;
+                        text-transform: uppercase;
+                        position: relative;
+                        padding: 10px 30px;
+
+                        &:before {
+                            content: "";
+                            border-top: 20px solid #2ba913;
+                            position: absolute;
+                            right: -15px;
+                            border-right: 15px solid transparent;
+                            top: 0;
+                        }
+
+                        &:after {
+                            content: "";
+                            border-bottom: 20px solid #2ba913;
+                            position: absolute;
+                            right: -15px;
+                            border-right: 15px solid transparent;
+                            bottom: 0;
+                        }
+                    }
+                }
+
+                &.active {
+                    .active-membership {
+                        display: block;
+                    }
+
+                    .card-btn-wrap {
+                        display: none;
+                    }
+                }
+            }
+
+            &-amount {
+                text-transform: uppercase;
+                color: $golden-color;
+                font-family: $medium_font-family;
+                font-size: 20px;
+            }
+
+            &-btn-wrap {
+                .card-button {
+                    left: 0;
+                    transform: translateX(0);
+                }
+            }
+        }
+
+        &.member-active {
+
+            .card-item {
+                filter: grayscale(1);
+                pointer-events: none;
+
+                &.active {
+                    filter: grayscale(0);
+                    pointer-events: visible;
+
+
+                }
+
+
+            }
+        }
+    }
+
+    .data-list {
+        @include flexbox();
+        @include justify-content(space-evenly);
+        margin-top: -60px;
+
+        .card {
+            &-img {
+                perspective: 480px;
+                perspective-origin: left;
+                transition: 0.4s;
+                width: 100%;
+
+                img {
+                    transform-style: preserve-3d;
+                    transform-origin: left;
+                    transform: rotateY(-44deg) skewY(-4deg);
+                    transition: 0.4s;
+                    width: 100%;
+                }
+            }
+
+            &-item {
+                cursor: pointer;
+                width: 19%;
+
+                &:hover {
+                    .card {
+                        &-img {
+                            transition: 0.4s;
+
+                            img {
+                                // transform-style: unset;
+                                // transform-origin: unset;
+                                transform: rotateY(0deg) skewY(0deg);
+                            }
+                        }
+                    }
+                }
+            }
+
+            &-title {
+                text-align: center;
+                color: $primary-color;
+                font-size: 18px;
+                margin-top: 10px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: $media-tablet-max) {
+    .waf-mi-membership {
+        .head-wrap {
+            min-height: 350px;
+        }
+
+        .data-list {
+            margin-top: -30px;
+            margin-left: -35px;
+
+            .card {
+                &-img {
+                    width: 210px;
+                    perspective: unset;
+
+                    img {
+                        // width: 130px;
+                        width: auto;
+                        transform: rotateY(0deg) skewY(0deg);
+                    }
+                }
+
+                &-title {
+                    font-size: 14px;
+                    padding-left: 30%;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: $media-tablet-max) {
+    .waf-mi-membership {
+        .head {
+            &-wrap {
+                padding: 0 20px;
+                min-height: 300px;
+            }
+
+            &-title {
+                font-size: 20px;
+            }
+
+            &-description {
+                font-size: 12px;
+            }
+        }
+
+        .data-list {
+            @include justify-content(flex-start);
+            overflow-x: scroll;
+
+            .card {
+                &-item {
+                    width: auto;
+                }
+            }
+        }
+
+        .data-content {
+            margin-top: 20px;
+
+            .card {
+                &-img {
+                    margin-right: 0px;
+                    padding-right: 0px;
+                    width: 200px;
+                    margin-bottom: 20px;
+
+                    &::after {
+                        display: none;
+                    }
+                }
+
+                &-item {
+                    flex-direction: column;
+                    padding: 50px 20px;
+
+                    &:nth-child(even) {
+                        flex-direction: column;
+
+                        .card-img {
+                            margin-left: 0px;
+                            padding-left: 0px;
+
+                            &::before {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+
+                &-amount,
+                &-title {
+                    font-size: 20px;
+                }
+
+                &-list_content {
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: $media-phone-max) {
+    .waf-mi-membership {
+        .data-content {
+            .card {
+                &-img {
+                    // margin-right: auto;
+                    padding-right: 0px;
+                    width: 285px;
+                    // margin-bottom: 20px;
+                    margin: 0 auto 20px;
+
+                    &::after {
+                        display: none;
+                    }
+                }
+
+                &-item {
+                    flex-direction: column;
+                    // padding: 50px 20px;
+                    padding: 20px 20px 50px;
+
+                    &:nth-child(even) {
+                        flex-direction: column;
+
+                        .card-img {
+                            margin-left: 0px;
+                            padding-left: 0px;
+                            // margin-right: auto;
+
+                            &::before {
+                                display: none;
+                            }
+                        }
+                    }
+
+                    &:last-child {
+                        padding-bottom: 0;
+                    }
+                }
+
+                &-amount,
+                &-title {
+                    font-size: 20px;
+                }
+
+                &-list_content {
+                    font-size: 14px;
+                }
+            }
+        }
+
+        .waf-head {
+            background-size: 100% 100%;
+        }
+
+        .head-img {
+            z-index: 1;
+
+            img {
+                max-width: 65%;
+                width: 100%;
+            }
+        }
+
+        .head-description {
+            max-width: 70%;
+
+            &:before {
+                left: -102px;
+                right: auto;
+                width: 55%;
+            }
+
+            &:after {
+                right: -102px;
+                left: auto;
+                width: 55%;
+            }
+        }
+    }
+}

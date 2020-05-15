@@ -1,0 +1,99 @@
+.microsite {
+    &-navigation {
+        background-color: $golden-color;
+        position: fixed;
+        z-index: 4;
+        margin: 0 -10px;
+        width: 100%;
+        transition: 0.4s;
+        top: 91px;
+        display: none;
+    }
+
+    &-label {
+        &>a {
+            display: inline-block;
+            padding: 5px 20px;
+        }
+    }
+
+    &-navwrap {
+        @include flexbox();
+        @include justify-content(start);
+        margin-left: auto;
+        width: 86%;
+
+        .menu-item {
+            display: inline-block;
+            padding: 5px 20px;
+        }
+    }
+}
+
+
+// .mi-junior-page {
+
+//     .section-wrap {
+//         padding-top: 123px;
+//     }
+
+//     .sticky {
+//         .section-wrap {
+//             padding-top: 90px;
+//         }
+
+//         .microsite {
+//             &-navigation {
+//                 top: 56px;
+//             }
+//         }
+//     }
+// }
+
+@media screen and (max-width: $media-tablet-max) {
+    .microsite {
+        &-navigation {
+            position: fixed;
+            width: 100%;
+            top: 89px;
+            font-size: 12px;
+            display: block;
+        }
+
+        &-navwrap {
+            width: 100%;
+            margin-left: auto;
+
+            .menu-item {
+                padding: 5px 10px;
+            }
+        }
+
+        &-label {
+            flex-shrink: 0;
+
+            &>a {
+                span {
+                    display: none;
+                }
+            }
+        }
+
+        &-nav {
+            white-space: nowrap;
+            overflow-x: scroll;
+        }
+    }
+
+    .mi-junior-page {
+        .section-wrap {
+            padding-top: 115px;
+        }
+    }
+
+    .is-countdown {
+        .microsite-navigation {
+            top: 122px;
+        }
+    }
+}

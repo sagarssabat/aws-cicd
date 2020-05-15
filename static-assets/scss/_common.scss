@@ -1,0 +1,184 @@
+/*Global Level variables*/
+
+@import "../../../../sass/variables";
+@import "../../../../sass/mixins";
+
+/*Project Level variables*/
+// @import "../../../../sass/_swiper";
+/*_start of component default-property_*/
+[v-cloak] {
+    display: none;
+}
+
+.site {
+    position: relative;
+    overflow: hidden;
+}
+
+.waf-component {
+    display: block;
+    padding: 20px 0;
+    position: relative;
+}
+
+.waf-row {
+    clear: both;
+    position: relative;
+}
+
+.waf-row:before,
+.waf-row:after {
+    clear: both;
+    content: "";
+    display: table;
+}
+
+/*_ start of IMG Ratio _*/
+
+.img-box img {
+    height: auto;
+    width: 100%;
+}
+
+.img-16by9 .img-box img,
+.img-4by3 .img-box img,
+.img-1by1 .img-box img,
+.img-21by9 .img-box img,
+.img-18by6 .img-box img,
+.img-6by4 .img-box img,
+.img-18by9 .img-box img,
+.img-2by3 .img-box img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+}
+
+.img-16by9 .img-box,
+.img-4by3 .img-box,
+.img-1by1 .img-box,
+.img-21by9 .img-box,
+.img-18by6 .img-box,
+.img-6by4 .img-box,
+.img-18by9 .img-box,
+.img-2by3 .img-box {
+    position: relative;
+    background-color: #676767;
+}
+
+.img-18by6 .img-box {
+    padding-bottom: 33.33%;
+}
+
+.img-21by9 .img-box {
+    padding-bottom: 42.85%;
+}
+
+.img-18by9 .img-box {
+    padding-bottom: 50%;
+}
+
+.img-16by9 .img-box {
+    padding-bottom: 56.25%;
+}
+
+.img-6by4 .img-box {
+    padding-bottom: 66.66%;
+}
+
+.img-4by3 .img-box {
+    padding-bottom: 75%;
+}
+
+.img-1by1 .img-box {
+    padding-bottom: 100%;
+}
+
+.img-2by3 .img-box {
+    padding-bottom: 150%;
+}
+
+/*_ Slider _*/
+.slider-nav {
+    width: 35px;
+    height: 35px;
+    display: inline-block;
+    color: $default-color;
+    cursor: pointer;
+    text-align: center;
+    line-height: 35px;
+
+    &:before {
+        content: "";
+        font-family: $waf-icon;
+    }
+
+    &.swiper-button-prev:before {
+        content: "\e9cd";
+    }
+
+    &.swiper-button-next:before {
+        content: "\e9c5";
+    }
+
+    &.swiper-button-disabled {
+        cursor: not-allowed;
+        opacity: 0.5;
+    }
+}
+
+.slider-wrap {
+    position: relative;
+
+    .slider-nav {
+        z-index: 1;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        color: $complementary-color;
+    }
+
+    .swiper-button-prev {
+        left: 0;
+        right: auto;
+    }
+
+    .swiper-button-next {
+        right: 0;
+        left: auto;
+    }
+}
+
+.no-scroll {
+    overflow: hidden;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+}
+
+/*_start of Display-property_*/
+
+.mobile {
+    display: none;
+}
+
+.web {
+    display: block;
+}
+
+// @media screen and (max-width: $media-desktop-max) {}
+// @media screen and (max-width: $media-tablet-max) {}
+@media screen and (max-width: $media-phone-max) {
+    component {
+        padding: 10px 0;
+    }
+
+    .mobile {
+        display: block;
+    }
+
+    .web {
+        display: none;
+    }
+}

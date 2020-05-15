@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cash/3.0.0-beta.3/cash.min.js"></script>
+    <script src="main.bundle.js"></script>
+</head>
+
+<body>
+    <script>
+        loadWidget('si-listing', 'widget-layout-53')
+    </script>
+    <div class="container" data-controller="galleryFilter">
+        <div class="waf-filter">
+            <button data-action="click->galleryFilter#showTab" data-id="1" data-showMoreUrl=""><span>ALL</span></button>
+            <button data-action="click->galleryFilter#showTab" data-id="2" data-showMoreUrl="/photos"><span>Photos</span></button>
+            <button data-action="click->galleryFilter#showTab" data-id="3" data-showMoreUrl="/videos"><span>Videos</span></button>
+            <a href="javascript:void(0)" data-target="galleryFilter.showMore"><span>Show more</span></a>
+        </div>
+        <div data-target="galleryFilter.tab" data-id="1">
+            <h1>ALL</h1>
+            <ul>
+                <li>photo 1</li>
+                <li>Video 2</li>
+                <li>photo 3</li>
+            </ul>
+        </div>
+        <div style="display: none;" data-target="galleryFilter.tab" data-id="2">
+            <h1>Photos</h1>
+            <ul>
+                <li>photo 1</li>
+                <li>photo 2</li>
+                <li>photo 3</li>
+            </ul>
+        </div>
+        <div style="display: none;" data-target="galleryFilter.tab" data-id="3">
+            <h1>Videos</h1>
+            <ul>
+                <li>Video 1</li>
+                <li>Video 2</li>
+                <li>Video 3</li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>

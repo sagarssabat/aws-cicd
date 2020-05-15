@@ -1,0 +1,255 @@
+@import "_variables";
+@import "../../../../sass/mixins";
+@import "../../../../sass/variables";
+.waf-history-banner {
+    padding: 0px;
+}
+
+.waf-history-timeline {
+    padding: 0px;
+    .timline-title {
+        background-color: $golden-color;
+        .title {
+            color: $primary-color;
+            text-transform: uppercase;
+            text-align: center;
+            font-family: $bold_font-family; // padding: 10px 0;
+            position: relative;
+            z-index: 1;
+            left: 50%;
+            transform: translateX(-50%);
+            display: inline-block;
+            &:before {
+                content: "";
+                background-image: url('../images/cssimages/svg/mi-logo.svg');
+                background-repeat: no-repeat;
+                background-size: 100% auto;
+                position: absolute;
+                top: -22px;
+                left: -60px;
+                width: 60px;
+                height: 60px;
+            }
+        }
+    }
+}
+
+.year-card-wrapper {
+    background-image: url('../images/cssimages/history-bg.JPG');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    padding: 50px 0;
+    position: relative;
+    &:before {
+        content: "";
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        border-left: 2px dashed #d1ab3e;
+        height: calc(100% + 40px);
+        bottom: 40px;
+        z-index: 0;
+    }
+}
+
+.year-list {
+    @include flexbox();
+    flex-wrap: wrap;
+    justify-content: space-between;
+    .year-item {
+        flex-basis: 50%;
+        padding: 0 50px;
+        position: relative;
+        align-self: flex-start;
+        &:before,
+        &:after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        &:before {
+            content: '';
+            position: absolute;
+            right: -10px;
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            background-color: $golden-color;
+            z-index: 2;
+        }
+        &:after {
+            content: '';
+            position: absolute;
+            border-top: 2px dashed $golden-color;
+            height: 1px;
+            width: 8%;
+            right: 0px;
+        } // &:nth-child(odd) {
+        //     margin-top: -60px;
+        // }
+        &:nth-child(even) {
+            margin-top: 100px;
+            &:before {
+                left: -10px;
+                right: auto;
+            }
+            &:after {
+                left: 0px;
+                right: auto;
+            }
+        }
+        .head {
+            color: $complementary-color;
+            h2 {
+                font-family: $medium_font-family;
+                font-size: 64px;
+                line-height: 1;
+                text-shadow: 2px 2px 1px $primary-color;
+            }
+            .sub-title {
+                font-family: $medium_font-family;
+                font-size: 18px;
+                margin-bottom: 5px;
+            }
+            .highlights {
+                font-size: 14px;
+            }
+            .moments {
+                display: inline-block;
+                &+.moments {
+                    border-top: 1px solid $complementary-color;
+                    margin-top: 5px;
+                    padding-top: 5px;
+                }
+            }
+        }
+        .hall-of-fame {
+            @include flexbox();
+            flex-direction: row-reverse;
+            @include align-items(flex-end);
+            .trophies {
+                width: 60px;
+                img {
+                    width: 100%
+                }
+            }
+        }
+        &.golden {
+            .head {
+                h2 {
+                    font-family: $bold_font-family;
+                    background: -webkit-linear-gradient(#dab449, #fdda75);
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                    color: #fff;
+                    text-shadow: none;
+                }
+            }
+        }
+        &.year-2019 {
+            margin-top: 0px;
+        }
+    }
+    .year-head {
+        align-self: flex-start;
+        &:before {
+            border: 2px solid $primary-color;
+        }
+        &:after {
+            display: none;
+        }
+    }
+    .year-left {
+        text-align: right;
+    }
+    .card-title {
+        padding: 15px;
+        color: $complementary-color;
+        background-color: $primary-color;
+        .title {
+            font-size: 18px;
+            line-height: 1.4;
+        }
+    }
+}
+
+@media screen and (max-width: $media-tablet-max) {
+    .year-list {
+        .year-item {
+            .head {
+                h2 {
+                    font-size: 44px;
+                }
+                .sub-title {
+                    font-size: 16px;
+                }
+                .highlights {
+                    font-size: 12px;
+                }
+            }
+            &:after {
+                width: 12%;
+            }
+        }
+        .card-title {
+            padding: 10px;
+            .title {
+                font-size: 14px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: $media-phone-max) {
+    .year-card-wrapper {
+        &:before {
+            left: 4%;
+        }
+    }
+    .year-list {
+        .year-left {
+            text-align: left;
+        }
+        .year-item {
+            flex-basis: 100%;
+            margin-bottom: 20px;
+            padding: 0px;
+            padding-left: 40px;
+            .hall-of-fame {
+                flex-direction: row;
+            }
+            &:before {
+                left: -5px;
+                width: 16px;
+                height: 16px;
+            }
+            &:nth-child(even) {
+                &:before {
+                    left: -5px;
+                }
+            }
+            &:nth-child(even),
+            &:nth-child(odd) {
+                margin-top: 0px;
+            }
+            &:after {
+                left: 0;
+                right: auto;
+            }
+        }
+    }
+    .year-2019 {
+        .initial-card {
+            text-align: center;
+        }
+    }
+    .waf-history-timeline {
+        .timline-title {
+            .title {
+                left: 55%;
+            }
+        }
+    }
+}

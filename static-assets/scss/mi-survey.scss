@@ -1,0 +1,68 @@
+@import "_variables";
+@import "../../../../sass/mixins";
+@import "../../../../sass/variables";
+.mi-survey {
+    .radio-button {
+        text-align: left;
+        margin-bottom: 0px;
+    }
+
+    .errordiv {
+        height: auto;
+        bottom: 0px;
+        position: relative;
+    }
+    p {
+        margin-bottom: 5px;
+    }
+    .form-element {
+        margin-bottom: 0px;
+        &.select-box {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            p {
+                flex-basis: 30%;
+            }
+            select {
+                flex-basis: 70%;
+            }
+        }
+    }
+    .custom-form {
+        .radio-button {
+            @include flexbox();
+            flex-wrap: wrap;
+            .radio {
+                width: 25%;
+                margin: 5px 0;
+            }
+            .radio+.radio {
+                margin-left: 0px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: $media-phone-max) {
+    .mi-survey {
+        .custom-form {
+            .radio-button {
+                .radio {
+                    width: 100%;
+                }
+            }
+        }
+        .form-element {
+            &.select-box {
+                p {
+                    flex-basis: 100%;
+                }
+                select {
+                    flex-basis: 100%;
+                }
+            }
+        }
+    }
+}

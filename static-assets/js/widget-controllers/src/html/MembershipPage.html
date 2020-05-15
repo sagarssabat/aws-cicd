@@ -1,0 +1,667 @@
+<script>
+  loadWidget("si-custom", "widget-layout-24")
+  loadWidget("si-custom", "widget-layout-25")
+
+</script>
+<link rel="stylesheet" type="text/css" href="../static-assets/css/membership.css?v=1.12">
+</link>
+<div class="waf-component waf-mi-membership" data-controller="si-custom--widget-layout-24" id="membershipTopDiv"
+  data-entityType="2662" data-imagePath="https://s3.ap-south-1.amazonaws.com/assets-dummyTeam.sportz.io/beta/">
+  <div class="layout-wrapper">
+    <div class="waf-head">
+      <div class="head-wrap">
+        <h1 class="head-title">welcome to</h1>
+        <div class="head-img">
+          <img src="/static-assets/images/cssimages/membership/mi-family.png?v=1.1" alt="mi family">
+        </div>
+        <div class="head-description">
+          <p> Exclusive offers only for you. Buy a membership card of your preferred choice and avail exciting offers.
+            Join the fun now! </p>
+        </div>
+      </div>
+    </div>
+    <div class="waf-body">
+      <div class="card-list data-list">
+        <div class="card-item">
+          <div class="card-img">
+            <img src="/static-assets/images/cssimages/membership/blue.png?v=1.1" alt="" data-type="blue-membership-card"
+              data-action="click->si-custom--widget-layout-24#scrollToMembership">
+          </div>
+          <h3 class="card-title" data-type="blue-membership-card"
+            data-action="click->si-custom--widget-layout-24#scrollToMembership"> blue</h3>
+        </div>
+        <div class="card-item">
+          <div class="card-img">
+            <img src="/static-assets/images/cssimages/membership/silver.png?v=1.1" alt=""
+              data-type="silver-membership-card" data-action="click->si-custom--widget-layout-24#scrollToMembership">
+          </div>
+          <h3 class="card-title" data-type="silver-membership-card"
+            data-action="click->si-custom--widget-layout-24#scrollToMembership"> silver</h3>
+        </div>
+        <div class="card-item">
+          <div class="card-img">
+            <img src="/static-assets/images/cssimages/membership/gold.png?v=1.1" alt="" data-type="gold-membership-card"
+              data-action="click->si-custom--widget-layout-24#scrollToMembership">
+          </div>
+          <h3 class="card-title" data-type="gold-membership-card"
+            data-action="click->si-custom--widget-layout-24#scrollToMembership"> gold</h3>
+        </div>
+        <div class="card-item">
+          <div class="card-img">
+            <img src="/static-assets/images/cssimages/membership/platinum.png?v=1.1" alt=""
+              data-type="platinum-membership-card" data-action="click->si-custom--widget-layout-24#scrollToMembership">
+          </div>
+          <h3 class="card-title" data-type="platinum-membership-card"
+            data-action="click->si-custom--widget-layout-24#scrollToMembership">platinum</h3>
+        </div>
+        <div class="card-item">
+          <div class="card-img">
+            <img src="/static-assets/images/cssimages/membership/diamond.png?v=1.1" alt=""
+              data-type="diamond-membership-card" data-action="click->si-custom--widget-layout-24#scrollToMembership">
+          </div>
+          <h3 class="card-title" data-type="diamond-membership-card"
+            data-action="click->si-custom--widget-layout-24#scrollToMembership">diamond</h3>
+        </div>
+      </div>
+      <div class="card-content data-content sample-class vueListingDiv" data-target="si-custom--widget-layout-24.cards"
+        id="cardsVue" v-cloak style="display: none;">
+        <div class="card-list">
+          <div class="card-item" :id="member.title_alias" v-for="member of initialListingData">
+            <div class="card-img">
+              <img :src="member.imagePathEx" alt="">
+            </div>
+            <div class="card-body">
+              <div class="active-membership">
+                <span class="active-patch">Active</span>
+              </div>
+              <h2 class="card-title">{{ member.product_name }}</h2>
+              <div class="card-amount"><span>{{ member.skujson[0].product_price }}</span></div>
+              <ul class="card-list_content">
+                <li v-for="desc of member.descriptionArray">{{ desc }}</li>
+              </ul>
+              <div class="card-btn-wrap">
+                <button class="card-button btn-gold" type="button" :data-type="member.title_alias"
+                  @click="buyNowPopupOpen" v-if="member.title_alias == 'blue-membership-card'">Enroll now</button>
+                <button class="card-button btn-gold" type="button" :data-type="member.title_alias"
+                  @click="buyNowPopupOpen" v-else>buy now</button>
+                <button class="card-button btn-blue" type="button" :data-type="member.title_alias"
+                  @click="knowMorePopupOpen">know more</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Purchase popup -->
+  <div class="modal modal-register modal-membership purchase-popup-outer fade sho"
+    data-target="si-custom--widget-layout-24.purchasePopup"
+    data-action="click->si-custom--widget-layout-24#closeWhenClickedOut" id="purchasePopupVue">
+    <div class=" modal-dialog">
+      <div class="modal-content content-body-selector-one">
+        <div class="content-wrap">
+          <span class="skip icon-close" data-action="click->si-custom--widget-layout-24#closePurchasePopup"></span>
+          <div class="content-head" id="HeadOne">
+            <h3 class="title"><span class="membershipTitle"></span> Membership</h3>
+          </div>
+          <div class="content-head" id="HeadTwo" style="display: none;">
+            <h3 class="title">Confirm details for <span class="membershipTitleTwo"></span> Tier Membership</h3>
+          </div>
+          <div class="content-body">
+            <form action="" class="user-registration custom-form">
+              <section class="row-fields">
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <!-- append active class on label when focus in input element -->
+                      <div class="form-element">
+                        <label for="firstname" class="active show">*Full Name</label>
+                        <input type="text" name="FName" class="form-control forever-disabled" v-model="fullName"
+                          @focus="focussed" @blur="blurred" v-validate="'required'" disabled="disabled">
+                        <span class="errordiv show">{{ errors.first('FName') }}</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <div class="form-element">
+                        <label for="lastname" class="active show">*Email Address</label>
+                        <input type="email" name="Email" class="form-control forever-disabled" v-model="email"
+                          @focus="focussed" @blur="blurred" v-validate="'email'" disabled="disabled">
+                        <span class="errordiv show">{{ errors.first('Email') }}</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <div class="form-element">
+                        <label for="lastname" class="active show">*Mobile</label>
+                        <input type="text" name="Mobile" class="form-control forever-disabled" v-model="mobile"
+                          @focus="focussed" @blur="blurred" v-validate="'digits:10'" disabled="disabled">
+                        <span class=" errordiv show">{{ errors.first('Mobile') }}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+              <section class="row-fields">
+                <h3 class="row-title">Postal Address</h3>
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <!-- append active class on label when focus in input element -->
+                      <div class="form-element">
+                        <label for="address1" class="">*Address Line 1</label>
+                        <input type="text" name="Address1" class="form-control" id="address1" v-model="addressOne"
+                          v-validate="'required'" @focus="focussed" @blur="blurred">
+                        <span class="errordiv show">{{ errors.first('Address1') }}</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <div class="form-element">
+                        <label for="address2" class="">*Address Line 2</label>
+                        <input type="text" name="Address2" class="form-control" id="address2" v-model="addressTwo"
+                          @focus="focussed" @blur="blurred" v-validate="'required'">
+                        <span class="errordiv show">{{ errors.first('Address2') }}</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <div class="form-element">
+                        <label for="password" class="">*Area</label>
+                        <input type="text" name="District" class="form-control" id="" v-model="district"
+                          @focus="focussed" @blur="blurred" v-validate="'required'">
+                        <span class="errordiv show">{{ errors.first('District') }}</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <!-- append active class on label when focus in input element -->
+                      <div class="form-element">
+                        <label for="landmbar" class="">*Landmark</label>
+                        <input type="text" name="Landmark" class="form-control" id="landmbar" v-model="landmark"
+                          @focus="focussed" @blur="blurred" v-validate="'required'">
+                        <span class="errordiv show">{{ errors.first('Landmark') }}</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <div class="select-box form-element">
+                        <label class="active">*State</label>
+                        <select name="" id="" name="State" class="form-control" v-model="stateId"
+                          v-html="statedropdownHtml" @change="onStateChange" v-validate="'required'">
+                        </select>
+                        <span class="errordiv show">{{ errors.first('State') }}</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <div class="select-box form-element">
+                        <label class="active">*City</label>
+                        <select name="" id="" name="City" class="form-control" v-model="cityId"
+                          v-html="citydropdownHtml" v-validate="'required'">
+                        </select>
+                        <span class="errordiv show">{{ errors.first('City') }}</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <div class="form-element">
+                        <label for="password" class="">*Pincode</label>
+                        <input type="text" name="Pincode" class="form-control" id="pinCode" v-model="pincode"
+                          v-validate="'required|digits:6'" @focus="focussed" @blur="verifyPinCode">
+                        <span class="errordiv show">{{ errors.first('Pincode') }}</span>
+                        <span class="errordiv" id="pinVerifErrorSpan">Invalid pincode.</span>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- GST -->
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <div class="form-element">
+                        <label for="" class="">GST Number</label>
+                        <input type="text" name="Gst" class="form-control" id="" v-model="gst"
+                          v-validate="'gst_pattern'" @focus="focussed" @blur="blurred">
+                        <span class="errordiv show">{{ errors.first('Gst') }}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+              <!-- Dynamic membership related fields -->
+              <section class="jersey-fields">
+                <div class="row-fields merchendiseFields" v-for="(option, index) of selectedCardOptions.customizejson"
+                  :data-merchTypeId=`${index}`>
+                  <h3 class="row-title">{{ option.customize_name }}</h3>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <div class="select-box form-element">
+                          <label class="active">Category</label>
+                          <select name="" id="" class="form-control categoryDD" :data-assetType=`cat_${index+1}`
+                            @change="categoryChange" v-model="categories[index]"
+                            v-bind:class="{jacket: option.customize_name == 'MI R Elan Jacket'}">
+                            <option value="adult">Adult</option>
+                            <option value="child" v-if="option.customize_name != 'MI R Elan Jacket'">Child</option>
+                          </select>
+                          <span class="errordiv show"></span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <div class="select-box form-element">
+                          <label class="active">Size</label>
+                          <select name="" id="" class="form-control sizeDD" :data-assetType=`siz_${index+1}`
+                            v-model="sizes[index]">
+                            <option value="S">S</option>
+                            <option value="M">M</option>
+                            <option value="L">L</option>
+                            <option value="XL">XL</option>
+                            <option value="XXL">XXL</option>
+                          </select>
+                          <span class="errordiv show"></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+              <div class="col-md-12 chart-wrap sho size-chart"
+                data-action="click->si-custom--widget-layout-24#toggleSizeChart">
+                <a href="javascript:void(0)">Size Chart</a>
+                <img class="size-chart" src="../static-assets/images/cssimages/membership/size-chart.jpg">
+              </div>
+              <section class="row-fields">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="check-box">
+                      <input type="checkbox" id="termsAndCondition" name="termsAndCondition" v-model="termsAndCondition"
+                        v-validate="'required'" v-bind:class="{show:errors.first('termsAndCondition')}">
+                      <label for="termsAndCondition">i agree with <a href="terms-and-conditions" class="form-tnc">terms
+                          and conditions</a></label>
+                      <span v-cloak="" class="errordiv show">{{ errors.first("termsAndCondition") }}</span>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="form-group btn-wrap">
+                      <!-- toggle loading class to show loader on buttons -->
+                      <button type="submit" class="btn-secondary" id="editButton" @click="editBack"
+                        style="display: none;">Edit</button>
+                      <button type="submit" class="btn-gold toEdit" id="continueButton"
+                        @click="continueClick">Continue</button>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- KNOW MORE POPUP -->
+  <div class="modal modal-register modal-membership knowmore fade sho"
+    data-target="si-custom--widget-layout-24.knowMorePopup"
+    data-action="click->si-custom--widget-layout-24#closeWhenClickedOut">
+    <div class="modal-dialog">
+      <div class="modal-content content-body-selector-two">
+        <div class="content-wrap">
+          <span class="skip icon-close" data-action="click->si-custom--widget-layout-24#closeKnowMore"></span>
+          <div class="content-body" id="knowMoreContentBody">
+            <!-- <div class="content-list">
+              <div class="content-item">
+                <div class="item-img">
+                  <div class="img-box">
+                    <img src="../static-assets/images/cssimages/membership/tshirt.png">
+                  </div>
+                </div>
+                <div class="item-text">
+                  <h3 class="item-title">Lorem Ipsum is simply dummy</h3>
+                  <p>ext of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing
+                    and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting
+                    industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem </p>
+                </div>
+              </div>
+              <div class="content-item">
+                <div class="item-img">
+                  <div class="img-box">
+                    <img src="../static-assets/images/cssimages/membership/cap.png">
+                  </div>
+                </div>
+                <div class="item-text">
+                  <h3 class="item-title">Lorem Ipsum is simply dummy</h3>
+                  <p>ext of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing
+                    and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting
+                    industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem </p>
+                </div>
+              </div>
+              <div class="content-item">
+                <div class="item-img">
+                  <div class="img-box">
+                    <img src="../static-assets/images/cssimages/membership/bat.png">
+                  </div>
+                </div>
+                <div class="item-text">
+                  <h3 class="item-title">Lorem Ipsum is simply dummy</h3>
+                  <p>ext of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing
+                    and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting
+                    industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem </p>
+                </div>
+              </div>
+            </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Membership comparison chart -->
+<div class="waf-component waf-mi-choose-membership" data-controller="si-custom--widget-layout-25">
+  <div class="container">
+    <div class="waf-head">
+      <div class="head-wrap">
+        <h1 class="head-title">Choose the Membership that’s Just for you </h1>
+      </div>
+      <div class="waf-body">
+        <div class="table-responsive membership-table">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Benefits</th>
+                <th>
+                  <div class="head-img">
+                    <img src="../static-assets/images/cssimages/membership/blue.png">
+                  </div>
+                  <div class="head-text">
+                    <span class="title"> Blue </span>
+                    <span class="price">Free</span>
+                    <button class="btn-gold" data-type="blue-membership-card" id="blueBtn"
+                      data-action="click->si-custom--widget-layout-25#triggerbuynowButton">Enroll Now</button>
+                  </div>
+                </th>
+                <th>
+                  <div class="head-img">
+                    <img src="../static-assets/images/cssimages/membership/silver.png">
+                  </div>
+                  <div class="head-text">
+                    <span class="title"> Silver </span>
+                    <span class="price">Rs. 999/-</span>
+                    <button id="silverBtn" class="btn-gold" data-type="silver-membership-card"
+                      data-action="click->si-custom--widget-layout-25#triggerbuynowButton">Buy Now</button>
+                  </div>
+                </th>
+                <th>
+                  <div class="head-img">
+                    <img src="../static-assets/images/cssimages/membership/gold.png">
+                  </div>
+                  <div class="head-text">
+                    <span class="title"> Gold </span>
+                    <span class="price">Rs. 2,999/-</span>
+                    <button id="goldBtn" class="btn-gold" data-type="gold-membership-card"
+                      data-action="click->si-custom--widget-layout-25#triggerbuynowButton">Buy Now</button>
+                  </div>
+                </th>
+                <th>
+                  <div class="head-img">
+                    <img src="../static-assets/images/cssimages/membership/platinum.png">
+                  </div>
+                  <div class="head-text">
+                    <span class="title"> Platinum </span>
+                    <span class="price">Rs. 49,999/-</span>
+                    <button id="platinumBtn" class="btn-gold" data-type="platinum-membership-card"
+                      data-action="click->si-custom--widget-layout-25#triggerbuynowButton">Buy Now</button>
+                  </div>
+                </th>
+                <th>
+                  <div class="head-img">
+                    <img src="../static-assets/images/cssimages/membership/diamond.png">
+                  </div>
+                  <div class="head-text">
+                    <span class="title"> Diamond </span>
+                    <span class="price">Rs. 99,999/-</span>
+                    <button id="diamondBtn" class="btn-gold" data-type="diamond-membership-card"
+                      data-action="click->si-custom--widget-layout-25#triggerbuynowButton">Buy Now</button>
+                  </div>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="first-child"> Contests, Games and Exclusive offers </td>
+                <td>
+                  <span class="icon icon-ok"></span>
+                </td>
+                <td>
+                  <span class="icon icon-ok"></span>
+                </td>
+                <td>
+                  <span class="icon icon-ok"></span>
+                </td>
+                <td>
+                  <span class="icon icon-ok"></span>
+                </td>
+                <td>
+                  <span class="icon icon-ok"></span>
+                </td>
+              </tr>
+              <tr>
+                <td class="first-child"> MI Fan Replica Jersey x 2 </td>
+                <td>
+                  <span class="icon icon-cancel"></span>
+                </td>
+                <td> MI Fan T-shirt </td>
+                <td> MI Fan Replica Jersey </td>
+                <td>
+                  <span class="icon icon-ok"></span>
+                </td>
+                <td>
+                  <span class="icon icon-ok"></span>
+                </td>
+              </tr>
+              <tr>
+                <td class="first-child">Watch MI Training session</td>
+                <td>
+                  <span class="icon icon-cancel"></span>
+                </td>
+                <td>
+                  <span class="icon icon-ok"></span>
+                </td>
+                <td>
+                  <span class="icon icon-ok"></span>
+                </td>
+                <td>
+                  <span class="icon icon-ok"></span>
+                </td>
+                <td>
+                  <span class="icon icon-ok"></span>
+                </td>
+              </tr>
+              <tr>
+                <td class="first-child">MI R Elan Jacket </td>
+                <td>
+                  <span class="icon icon-cancel"></span>
+                </td>
+                <td>
+                  <span class="icon icon-cancel"></span>
+                </td>
+                <td>
+                  <span class="icon icon-cancel"></span>
+                </td>
+                <td>
+                  <span class="icon icon-ok"></span>
+                </td>
+                <td>
+                  <span class="icon icon-ok"></span>
+                </td>
+              </tr>
+              <tr>
+                <td class="first-child"> MI Cap x2 </td>
+                <td>
+                  <span class="icon icon-cancel"></span>
+                </td>
+                <td> MI Cap </td>
+                <td> MI Cap </td>
+                <td>
+                  <span class="icon icon-ok"></span>
+                </td>
+                <td>
+                  <span class="icon icon-ok"></span>
+                </td>
+              </tr>
+              <tr>
+                <td class="first-child">MI (boAt) Bluetooth Headphones</td>
+                <td>
+                  <span class="icon icon-cancel"></span>
+                </td>
+                <td>
+                  <span class="icon icon-cancel"></span>
+                </td>
+                <td>
+                  <span class="icon icon-cancel"></span>
+                </td>
+                <td>
+                  <span class="icon icon-ok"></span>
+                </td>
+                <td>
+                  <span class="icon icon-ok"></span>
+                </td>
+              </tr>
+              <tr>
+                <td class="first-child"> MI Autographed full sized bat </td>
+                <td>
+                  <span class="icon icon-cancel"></span>
+                </td>
+                <td>MI Autographed miniature bat </td>
+                <td>MI Autographed miniature bat </td>
+                <td>
+                  <span class="icon icon-ok"></span>
+                </td>
+                <td>
+                  <span class="icon icon-ok"></span>
+                </td>
+              </tr>
+              <tr>
+                <td class="first-child">2 Box Tickets for 2 Matches in Dummy</td>
+                <td>
+                  <span class="icon icon-cancel"></span>
+                </td>
+                <td>
+                  <span class="icon icon-cancel"></span>
+                </td>
+                <td>
+                  <span class="icon icon-cancel"></span>
+                </td>
+                <td>
+                  <span class="icon icon-ok"></span>
+                </td>
+                <td>
+                  <span class="icon icon-ok"></span>
+                </td>
+              </tr>
+              <tr>
+                <td class="first-child">MI Player meet and Greet</td>
+                <td>
+                  <span class="icon icon-cancel"></span>
+                </td>
+                <td>
+                  <span class="icon icon-cancel"></span>
+                </td>
+                <td>
+                  <span class="icon icon-cancel"></span>
+                </td>
+                <td>
+                  <span class="icon icon-ok"></span>
+                </td>
+                <td>
+                  <span class="icon icon-ok"></span>
+                </td>
+              </tr>
+              <tr>
+                <td class="first-child">Cricket coaching session by MI</td>
+                <td>
+                  <span class="icon icon-cancel"></span>
+                </td>
+                <td>
+                  <span class="icon icon-cancel"></span>
+                </td>
+                <td>
+                  <span class="icon icon-cancel"></span>
+                </td>
+                <td>
+                  <span class="icon icon-ok"></span>
+                </td>
+                <td>
+                  <span class="icon icon-ok"></span>
+                </td>
+              </tr>
+              <tr>
+                <td class="first-child">Dinner with the team</td>
+                <td>
+                  <span class="icon icon-cancel"></span>
+                </td>
+                <td>
+                  <span class="icon icon-cancel"></span>
+                </td>
+                <td>
+                  <span class="icon icon-cancel"></span>
+                </td>
+                <td>
+                  <span class="icon icon-cancel"></span>
+                </td>
+                <td>
+                  <span class="icon icon-ok"></span>
+                </td>
+              </tr>
+              <tr>
+                <td class="first-child">MI Team Room experience</td>
+                <td>
+                  <span class="icon icon-cancel"></span>
+                </td>
+                <td>
+                  <span class="icon icon-cancel"></span>
+                </td>
+                <td>
+                  <span class="icon icon-cancel"></span>
+                </td>
+                <td>
+                  <span class="icon icon-cancel"></span>
+                </td>
+                <td>
+                  <span class="icon icon-ok"></span>
+                </td>
+              </tr>
+              <tr>
+                <td class="first-child"> Discount on Merchandise </td>
+                <td>
+                  <span class="icon icon-cancel"></span>
+                </td>
+                <td>15% Discount on merchandise </td>
+                <td>25% Discount on merchandise </td>
+                <td>
+                  <span class="icon icon-ok"></span>
+                </td>
+                <td>
+                  <span class="icon icon-ok"></span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="card-details contact-details membership-query">
+  <!-- <span class="card-benefits">card benefits</span> -->
+  <p>Write to us with your queries at<a href="mailto:mifamily@dummyTeam.com" class="icon-mail"> mifamily@dummyTeam.com
+    </a>or you can call us at<a href="tel:+918888888888" class="icon-contact-us"> 8888888888</a><br class="web"> If you
+    would like to chat, just WhatsApp us on<a href="tel:+7977012345" class="icon-whatsapp"> 7977012345</a></p>
+</div>

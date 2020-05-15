@@ -1,0 +1,172 @@
+<script>
+  loadWidget('si-custom', 'widget-layout-26');
+</script>
+<div class="waf-component waf-gifcardon" data-controller="si-custom--widget-layout-26">
+  <div id="initGifVue">
+    <div class="waf-head">
+      <h3 class="head-title">welcome <br> to</h3>
+      <div class="head-img">
+        <img src="../static-assets/images/cssimages/gif-cardon/gifcardon-logo.png">
+      </div>
+    </div>
+    <div class="waf-body">
+      <div class="gif-steps">
+        <span class="steps icon-login-01">login</span>
+        <span class="steps icon-create">create</span>
+        <span class="steps icon-share">share</span>
+        <span class="steps icon-download">download</span>
+      </div>
+      <div class="tabs-wrapper">
+        <ul class="tabs">
+          <li data-target="si-custom--widget-layout-26.mygif"
+            data-action="click->si-custom--widget-layout-26#onTabClick">
+            My gif</li>
+          <li class="active" data-target="si-custom--widget-layout-26.migif"
+            data-action="click->si-custom--widget-layout-26#onTabClick">
+            MI Gif</li>
+        </ul>
+        <div class="mygif-wrap tab-container">
+          <ul class="mygif-tabs">
+            <li class="active subtab" id="firstSubtab" data-target="si-custom--widget-layout-26.mygifs"
+              v-on:click="onSubTabClick">My
+              Gif<span>s</span></li>
+            <li class="subtab" data-target="si-custom--widget-layout-26.pending" v-on:click="onSubTabClick">pending</li>
+            <li class="subtab" data-target="si-custom--widget-layout-26.tryagain" v-on:click="onSubTabClick">try again
+            </li>
+          </ul>
+          <div class="mygifs-container">
+            <div class="gif-list">
+              <div class="gif-item" v-for="imgPath of myData">
+                <div class="gif-img" :data-gallery="imgPath.gallery_id" v-on:click="detailPage">
+                  <img :src="imgPath.url" alt="">
+                </div>
+                <a href="" class="mitv icon-mitv"></a>
+                <div class="gif-icon-wrap">
+                  <a v-bind:href="imgPath.url" download class="icon icon-download"></a>
+                  <div class="social-icons " v-on:click="onClickshare">
+                    <a href="javascript:void(0)" class="icon icon-share"></a>
+                    <ul class="share-icons">
+                      <li v-on:click="listingShare"><a href="javascript:void(0)" data-sharetype="fb"
+                          class="icon-facebook"></a>
+                      </li>
+                      <li v-on:click="listingShare"><a href="javascript:void(0)" data-sharetype="twitter"
+                          class="icon-twitter"></a>
+                      </li>
+                      <li v-on:click="listingShare"><a href="javascript:void(0)" data-sharetype="whatsapp"
+                          class="icon-whatsapp"></a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="pending-container nogif">
+            <div class="gif-list">
+              <div class="gif-item" v-for="imgPath of myData">
+                <div class="gif-img">
+                  <img :src="imgPath.url" alt="">
+                </div>
+                <div class="gif-text">
+                  <p>Your GIFs is in process, once approved it will reflect in My GIFs tab. This will
+                    take some time.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tryagain-container nogif">
+            <div class="gif-list">
+              <div class="gif-item" v-for="imgPath of myData">
+                <div class="gif-img">
+                  <img :src="imgPath.url" alt="">
+                </div>
+                <div class="gif-text">
+                  <p>This GIF has been rejected due to inappropriate content. Please try again</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="migif-wrap tab-container">
+          <div class="gif-list">
+            <div class="gif-item" v-for="imgPath of mIData">
+              <div class="gif-img">
+                <img :src="imgPath.url" alt="">
+              </div>
+              <a href="" class="mitv icon-mitv"></a>
+
+              <div class="gif-icon-wrap">
+                <a v-bind:href="imgPath.url" v-on:click="isDownload" download class="icon icon-download"></a>
+                <div class="social-icons " v-on:click="onClickshare">
+                  <a href="javascript:void(0)" class="icon icon-share"></a>
+                  <ul class="share-icons">
+                    <li v-on:click="listingShare"><a href="javascript:void(0)" data-sharetype="fb"
+                        class="icon-facebook"></a>
+                    </li>
+                    <li v-on:click="listingShare"><a href="javascript:void(0)" data-sharetype="twitter"
+                        class="icon-twitter"></a>
+                    </li>
+                    <li v-on:click="listingShare"><a href="javascript:void(0)" data-sharetype="whatsapp"
+                        class="icon-whatsapp"></a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="login-wrap" id="gifLoginWrap">
+          <div class="login-img">
+            <img src="../static-assets/images/cssimages/gif-cardon/login-web.png" alt="" class="web">
+            <img src="../static-assets/images/cssimages/gif-cardon/login-mobile.png" alt="" class="mobile">
+          </div>
+          <p class="text">You don’t have any GIFs at the moment,<br>please <a href="">login</a> from the
+            app to create them.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- popup detailpage -->
+    <div id="detailPopup" class="modal modal-register modal-gifcordon gif-loaded fade sho">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="content-wrap">
+            <span class="skip icon-close" v-on:click="detailPage"></span>
+            <div class="content-body">
+              <div class="gif-logo">
+                <img src="../static-assets/images/cssimages/gif-cardon/gifcardon-logo.png" alt="Gif Cardon">
+              </div>
+              <div class="gif-list">
+                <div class="gif-item">
+                  <div class="gif-img">
+                    <img :src="detailImgPath" alt="">
+                  </div>
+                  <div class="gif-details">
+                    <span class="date">{{detailDate}}</span>
+                    <div class="gif-icon-wrap">
+                      <a href="javascript:void(0)" class="icon icon-trash" :data-gallery="detailGalleryId"
+                        :data-thumbnail="detailThumbnail" v-on:click="onClickDelete"></a>
+                      <div data-target="si-custom--widget-layout-26.shareSocial" v-on:click="onClickshare"
+                        class="social-icons">
+                        <a href="javascript:void(0)" class="icon icon-share"></a>
+                        <ul class="share-icons">
+                          <li v-on:click="listingShare"><a href="javascript:void(0)" data-sharetype="fb"
+                              class="icon-facebook"></a>
+                          </li>
+                          <li v-on:click="listingShare"><a href="javascript:void(0)" data-sharetype="twitter"
+                              class="icon-twitter"></a>
+                          </li>
+                          <li v-on:click="listingShare"><a href="javascript:void(0)" data-sharetype="whatsapp"
+                              class="icon-whatsapp"></a></li>
+                        </ul>
+                      </div>
+                      <a v-bind:href="detailImgPath" download class="icon icon-download"></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

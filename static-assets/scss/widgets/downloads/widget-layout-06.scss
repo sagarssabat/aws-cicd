@@ -1,0 +1,61 @@
+@import "../../../../../../widget-library/downloads/sass/widget-layout-05.scss";
+@import "../../_variables";
+// @import "../../_emoji";
+
+.waf-downloads.widget-layout-06 {
+    .emoji-list {
+        @include flexbox();
+        @include justify-content(center);
+        flex-wrap: wrap;
+        text-align: center;
+        margin: 0 -20px;
+    }
+
+    .emoji-item {
+        flex-basis: 16.66%;
+        position: relative;
+        margin-bottom: 20px;
+        padding: 0 20px;
+    }
+
+    .emoji-img {
+        width: 150px;
+        height: 150px;
+        margin: 0 auto;
+
+        img {
+            width: 100%;
+        }
+    }
+
+    .head-wrap {
+        border-bottom: 1px solid rgba($primary-color, 0.6);
+        margin-bottom: 20px;
+    }
+}
+
+@media screen and (max-width: $media-tablet-max) {
+    .waf-downloads.widget-layout-06 {
+        .emoji-item {
+            flex-basis: 33.33%;
+        }
+    }
+}
+
+@media screen and (max-width: $media-phone-max) {
+    .waf-downloads.widget-layout-06 {
+        .emoji-list {
+            margin: 0 -10px;
+        }
+
+        .emoji-item {
+            padding: 0 10px;
+            flex-basis: 50%;
+        }
+
+        .emoji-img {
+            width: 100px;
+            height: 100px;
+        }
+    }
+}

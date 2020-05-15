@@ -1,0 +1,200 @@
+@import "../../_variables";
+@import "../../../../../../sass/mixins";
+@import "../../../../../../sass/variables";
+
+.waf-showcase.widget-layout-43 {
+    margin: 0 -10px;
+    padding: 0;
+    background-color: #011649;
+
+    .showcase-wrapper {
+        @include flexbox();
+    }
+
+    .slider-wrapper {
+        flex-basis: 66.66%;
+
+
+    }
+
+    .showcase-dependency {
+        flex-basis: 33.33%;
+
+    }
+
+    .article-content {
+        padding: 25px;
+
+        .article-title {
+            font-size: 50px;
+            font-family: $bold_font-family;
+            color: $complementary-color;
+            margin-bottom: 15px;
+        }
+
+        .description {
+            height: 380px;
+            overflow-y: auto;
+
+            p {
+                font-size: 16px;
+                font-family: $regular_font-family;
+                color: $complementary-color;
+            }
+        }
+    }
+
+    .slider-wrapper {
+        position: relative;
+
+        &:before {
+            content: '';
+            /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#011649+0,011649+40,011649+100&0+0,1+40,1+100 */
+            background: -moz-linear-gradient(left, rgba(1, 22, 73, 0) 0%, rgba(1, 22, 73, 1) 40%, rgba(1, 22, 73, 1) 100%);
+            /* FF3.6-15 */
+            background: -webkit-linear-gradient(left, rgba(1, 22, 73, 0) 0%, rgba(1, 22, 73, 1) 40%, rgba(1, 22, 73, 1) 100%);
+            /* Chrome10-25,Safari5.1-6 */
+            background: linear-gradient(to right, rgba(1, 22, 73, 0) 0%, rgba(1, 22, 73, 1) 40%, rgba(1, 22, 73, 1) 100%);
+            /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00011649', endColorstr='#011649', GradientType=1);
+            /* IE6-9 */
+
+            position: absolute;
+            height: 60px;
+            bottom: 0;
+            right: 0;
+            z-index: 2;
+            width: calc(100% - 33.33%);
+            transition: 0.4s;
+        }
+    }
+
+
+    .item-type-news,
+    .item-type-article,
+    .item-type-photo {
+        .item-type-icon {
+            display: none;
+        }
+    }
+
+    .article-next {
+        display: none;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        margin: 0 10px;
+        height: 60px;
+        overflow: hidden;
+        width: 40%;
+        color: $complementary-color;
+        z-index: 2;
+        transition: 0.4s;
+        font-size: 14px;
+        // @include flexbox();
+        @include justify-content(flex-end);
+        @include align-items(center);
+
+        .label {
+            color: $golden-color;
+            font-family: $medium_font-family;
+            text-transform: capitalize;
+            margin-right: 6px;
+        }
+
+        .article-title {
+            cursor: pointer;
+            font-size: 14px;
+            white-space: nowrap;
+            font-family: $regular_font-family;
+        }
+    }
+
+    .swiper-pagination {
+        height: 60px;
+        position: absolute;
+        width: auto;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 2;
+        @include flexbox();
+        @include justify-content(center);
+        @include align-items(center);
+        transition: 0.4s;
+    }
+
+    .show-video {
+
+        &.slider-wrapper:before,
+        .article-next,
+        .swiper-pagination,
+        .article-video-thumbnail {
+            opacity: 0;
+            z-index: 0;
+        }
+    }
+
+    .slider-nav {
+        display: none;
+    }
+
+}
+
+
+@media screen and (max-width: $media-phone-max) {
+    .waf-showcase.widget-layout-43 {
+        .showcase-wrapper {
+            flex-wrap: wrap;
+
+        }
+
+        .slider-wrapper {
+            flex-basis: 100%;
+        }
+
+        .showcase-dependency {
+            flex-basis: 100%;
+
+        }
+
+        .article-content {
+            padding: 20px;
+
+            .article-title {
+                font-size: 30px;
+            }
+
+            .description {
+                height: 100%;
+            }
+
+        }
+
+        .slider-wrapper {
+
+            &:before {
+                /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#011649+0,011649+52,011649+75,011649+100&0+0,0.68+52,0.87+75,0.87+100 */
+                background: -moz-linear-gradient(top, rgba(1, 22, 73, 0) 0%, rgba(1, 22, 73, 0.68) 52%, rgba(1, 22, 73, 0.87) 75%, rgba(1, 22, 73, 0.87) 100%);
+                /* FF3.6-15 */
+                background: -webkit-linear-gradient(top, rgba(1, 22, 73, 0) 0%, rgba(1, 22, 73, 0.68) 52%, rgba(1, 22, 73, 0.87) 75%, rgba(1, 22, 73, 0.87) 100%);
+                /* Chrome10-25,Safari5.1-6 */
+                background: linear-gradient(to bottom, rgba(1, 22, 73, 0) 0%, rgba(1, 22, 73, 0.68) 52%, rgba(1, 22, 73, 0.87) 75%, rgba(1, 22, 73, 0.87) 100%);
+                /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+                filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00011649', endColorstr='#de011649', GradientType=0);
+                /* IE6-9 */
+                height: 20px;
+                width: 100%;
+            }
+        }
+
+        .article-next {
+            display: none;
+        }
+
+        .swiper-pagination {
+            display: none;
+        }
+
+    }
+}

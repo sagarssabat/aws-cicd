@@ -1,0 +1,25 @@
+/*animate bus in modal*/
+@keyframes bus {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(-1%);
+    }
+}
+
+@keyframes road {
+    0% {
+        transform: translateX(0);
+    }
+
+    75% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateX(-250%);
+        opacity: 0;
+    }
+}

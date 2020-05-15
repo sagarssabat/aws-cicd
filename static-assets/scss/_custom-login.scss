@@ -1,0 +1,190 @@
+.modal-customlog {
+    .modal-content {
+        @include flexbox();
+        @include justify-content(center);
+        @include align-items(center);
+        background-color: $complementary-color;
+        border: 7px solid $golden-color;
+        // outline: 1px solid;
+        // outline-color: $grey-note;
+        // outline-style: solid;
+        // outline-offset: -20px;
+        // outline-width: 1px;
+        height: 100%;
+        overflow-y: auto;
+        position: relative;
+
+        .content-wrap {
+            padding: 40px 100px;
+        }
+    }
+
+    .content-head {
+        text-align: center;
+
+        .title {
+            font-family: $medium_font-family;
+            color: $primary-color;
+            display: inline-block;
+            text-transform: uppercase;
+            position: relative;
+            font-size: 20px;
+            margin-bottom: 60px;
+
+            &::after {
+                content: '';
+                border-bottom: 1px solid $default-color;
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+                left: 0;
+            }
+        }
+    }
+
+    .note {
+        text-align: center;
+        margin: 20px 0;
+    }
+
+    // input[type='number']::-webkit-inner-spin-button {
+    //     -webkit-appearance: none;
+    // }
+
+    &.modal-changepasswd {
+        .modal-content {
+            .content-wrap {
+                width: 70%;
+                margin: 0 auto;
+            }
+        }
+    }
+
+    &.modal-updateadd {
+        .content-head {
+            .title {
+                text-transform: capitalize;
+
+                &::after {
+                    display: none;
+                }
+            }
+        }
+
+        .content-body {
+            text-align: center;
+
+            p {
+                margin: 10px 0;
+            }
+
+            a {
+                color: $golden-color;
+            }
+        }
+    }
+
+    &.modal-card-benifits {
+        .content-head {
+            text-align: left;
+
+            .title {
+                display: block;
+                margin-bottom: 20px;
+                line-height: 1.5;
+
+                span {
+                    display: block;
+                }
+
+                &::after {
+                    display: none;
+                }
+            }
+        }
+
+        .modal-content {
+            display: block;
+
+            .content-wrap {
+                padding: 40px 50px;
+            }
+
+            ul {
+                li {
+                    position: relative;
+                    padding-left: 25px;
+                    padding-bottom: 8px;
+
+                    &::before {
+                        content: '';
+                        width: 8px;
+                        height: 8px;
+                        position: absolute;
+                        border-radius: 50%;
+                        top: 8px;
+                        left: 0px;
+                        background-color: $golden-color;
+                        box-shadow: 0px 0px 0px 2px rgba($golden-color, 0.3);
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: $media-phone-max) {
+    .modal-customlog {
+        .modal-dialog {
+            // height: 75%;
+            height: auto;
+        }
+
+        .content-head {
+            .title {
+                font-size: 16px;
+            }
+        }
+
+        .modal-content {
+            display: block;
+            outline: none;
+            overflow-y: auto;
+            height: 100%;
+            @include align-items(flex-start);
+            // max-height: 90vh;
+
+            .content-wrap {
+                padding: 20px;
+            }
+        }
+
+        &.modal-changepasswd {
+            .modal-content {
+                .content-wrap {
+                    width: 100%;
+                }
+            }
+        }
+
+        &.modal-card-benifits {
+            .modal-content {
+                .content-wrap {
+                    padding: 40px 20px;
+                }
+            }
+
+            .content-body {
+                font-size: 14px;
+            }
+        }
+
+        &.modal-updateadd {
+            .content-head {
+                .title {
+                    margin: 40px 0 30px;
+                }
+            }
+        }
+    }
+}
