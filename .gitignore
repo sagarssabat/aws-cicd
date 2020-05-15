@@ -8,4 +8,3 @@ yarn.lock
 static-assets/js/widget-controllers/node_modules/
 static-assets/js/widget-controllers/build/
 static-assets/js/widget-controllers/dist/
-.vscode/settings.json
