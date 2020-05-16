@@ -17,6 +17,54 @@ gulp.task('sass', function () {
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest('./static-assets/css'));
 });
+/* task to deploy on s3 bucket according to environment (dev,beta,prod) */
+gulp.task("publish", function (done) {
+    var env = process.argv[process.argv.length - 1];
+    env = env.replace('--', '');
+    if (env != 'prod' && env != 'beta' && env != 'dev') {
+        console.log('unknown environment');
+        done();
+        return;
+    }
+
+    if (process.env.ACCESSKEYID == undefined || process.env.SECRETACCESSKEY == undefined) {
+        console.log("It Seems you dont have Access Key And Secret Key....");
+        console.log("Please Contact Sagar");
+        done();
+        return;
+    }
+
+    var publisher = awspublish.create({
+        params: {
+            Bucket: process.env.BUCKET
+        },
+        accessKeyId: process.env.ACCESSKEYID,
+        secretAccessKey: process.env.SECRETACCESSKEY
+    });
+
+    // define custom headers
+    var headers = {
+        "Cache-Control": "private"
+    };
+    return (
+        gulp
+        // .src("./static-assets/css/**/*.{css,map}")
+        .src("./static-assets/{css,fonts,images}/**/*")
+        .pipe(
+            rename(function (path) {
+                path.dirname = '/' + env + '/static-assets/' + path.dirname;
+            })
+        )
+        // publisher will add Content-Length, Content-Type and headers specified above
+        // If not specified it will set x-amz-acl to public-read by default
+        .pipe(publisher.publish(headers))
+        // create a cache file to speed up consecutive uploads
+        .pipe(publisher.cache())
+        // print upload updates to console
+        .pipe(awspublish.reporter())
+    );
+});
+
 //task to reload the browser once scss/html file is changed
 gulp.task('serve', function () {
     browserSync.init({

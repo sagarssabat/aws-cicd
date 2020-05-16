@@ -1,0 +1,15 @@
+---
+kind: pipeline
+type: docker
+name: default
+
+steps:
+- name: autodeploy
+  image: node
+  commands:
+  - npm install
+  - npm run test
+
+trigger:
+  branch:
+  - master
