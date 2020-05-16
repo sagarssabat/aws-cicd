@@ -4,7 +4,7 @@
   "description": "first task in gulp",
   "main": "gulpfile.js",
   "scripts": {
-    "test": "gulp sass:css",
+    "test": "gulp sass",
     "start": "gulp cssmaps && gulp serve"
   },
   "author": "",
