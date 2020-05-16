@@ -1,0 +1,33 @@
+// Core variables and mixins
+@import "./plugins/bootstrap-4/scss/functions";
+@import "./plugins/bootstrap-4/scss/variables";
+@import "./plugins/bootstrap-4/scss/mixins";
+
+
+// Reset and dependencies
+@import "./plugins/bootstrap-4/scss/reboot.scss";
+@import "./plugins/bootstrap-4/scss/print";
+
+
+
+
+// Core CSS
+// @import "./plugins/bootstrap-4/scss/scaffolding";
+@import "./plugins/bootstrap-4/scss/type";
+//@import "bootstrap/code";
+
+@import "./plugins/bootstrap-4/scss/grid";
+@import "./plugins/bootstrap-4/scss/tables";
+
+
+// Components
+
+// @import "./plugins/bootstrap-4/scss/utilities/embed";
+
+
+
+
+
+// Utility classes
+@import "./plugins/bootstrap-4/scss/utilities";
+// @import "./plugins/bootstrap-4/scss/responsive-utilities";

@@ -1,0 +1,118 @@
+/*_media Width_*/
+
+$media-phone-min:320px !default;
+$media-phone-max:767px !default;
+$media-tablet-min:768px !default;
+$media-tablet-max:992px !default;
+$media-desktop-min:1024px !default;
+$media-desktop-max:1200px !default;
+$media-large-max:1440px !default;
+/*_media Width bootstrap-4_*/
+
+$media-phone-small:480px !default;
+$media-tablet-min:768px !default;
+$media-tablet-max:992px !default;
+$media-desktop-min:1024px !default;
+$media-desktop-max:1200px !default;
+$media-large-max:1440px !default;
+
+// Fonts
+$light_font-family:sans-serif !default;
+$regular_font-family:sans-serif !default;
+$thin_font-family:sans-serif !default;
+$medium_font-family:sans-serif !default;
+$medium_semi_font-family:sans-serif !default;
+$bold_font-family:sans-serif !default;
+$ultra_font-family:sans-serif !default;
+$black_font-family:sans-serif !default;
+$demi_font-family:sans-serif !default;
+$light_font-weight:300 !default;
+$regular_font-weight:400 !default;
+$medium_font-weight:500 !default;
+$bold_font-weight:700 !default;
+$ultra_font-weight:800 !default;
+$blaack_font-weight:900 !default;
+
+//Color Scheme
+$default-color: #000000 !default;
+$primary-color: #df1e26 !default;
+$secondary-color: #ffffff !default;
+$link-color:#319bc2 !default;
+$complementary-color:#000000 !default;
+$third-color:#cccccc !default;
+
+// Font Setting
+$featured-title_font-size:38px !default;
+$title_color: $default-color !default;
+$title-hover_color:$link-color !default;
+$title_font-family:$bold_font-family !default;
+$title_font-size:28px !default;
+$title_font-weight:$bold_font-weight !default;
+$paragraph_font-size:20px !default;
+$paragraph_color:$default-color !default;
+$paragraph_font-family:$regular_font-family !default;
+$paragraph_font-weight:$regular_font-weight !default;
+$meta_font-size:16px !default;
+$body_font-size: 14px;
+$meta_color: $default-color !default;
+$meta_font-family:$regular_font-family !default;
+$font-size-1:36px !default;
+$font-size-2:34px !default;
+$font-size-3:32px !default;
+$font-size-4:30px !default;
+$font-size-5:28px !default;
+$font-size-6:26px !default;
+$font-size-7:24px !default;
+$font-size-8:22px !default;
+$font-size-9:20px !default;
+
+// Sports Entity
+$athletics:7870 !default;
+$badminton:7871 !default;
+$basketball:7872 !default;
+$combatsports:7873 !default;
+$cricket:7874 !default;
+$motorsports:7875 !default;
+$football:7876 !default;
+$golf:7877 !default;
+$fieldhockey:7878 !default;
+$tennis:7879 !default;
+$kabaddi:7880 !default;
+$baseball:7881 !default;
+$rugby:7882 !default;
+$skiing:7883 !default;
+$volleyball:7884 !default;
+$icehockey:7885 !default;
+$cuesports:7886 !default;
+$tabletennis:7887 !default;
+$surfing:7888 !default;
+$netball:7889 !default;
+$martialarts:7890 !default;
+$ufc:7891 !default;
+$mma:7892 !default;
+$australianrulesfootball:7893 !default;
+$waterpolo:7894 !default;
+$speedskating:7895 !default;
+$taekwondo:7896 !default;
+$karate:7897 !default;
+$bowling:7898 !default;
+$squash:7899 !default;
+$rowing:7900 !default;
+$running:7901 !default;
+$cycling:7902 !default;
+$swimming:7903 !default;
+$wrestling:7904 !default;
+$cardgames:7905 !default;
+$polo:7906 !default;
+$fencing:7907 !default;
+$gymnastics:7908 !default;
+$sailing:7909 !default;
+$kayaking:7910 !default;
+$canoeing:7911 !default;
+$diving:7912 !default;
+$weightlifting:7913 !default;
+$darts:7914 !default;
+$hockey:7938 !default;
+$othersports:7941 !default;
+$boxing:86944 !default;
+$chess:140059 !default;

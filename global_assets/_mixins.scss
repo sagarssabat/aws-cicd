@@ -1,0 +1,462 @@
+// CSS3 Mixins
+// @mixin placeholder {
+  //     &.placeholder { @content; }
+  //     &:-moz-placeholder { @content; }
+  //     &::-moz-placeholder { @content; }
+  //     &:-ms-input-placeholder { @content; }
+  //     &::-webkit-input-placeholder { @content; }
+  // }
+
+
+  @mixin transform($value){
+    -webkit-transform: $value;
+    -moz-transform: $value;
+    -ms-transform: $value;
+    transform: $value;
+
+  }
+
+  // rotate
+  @mixin rotate ($deg) {
+    @include transform(rotate(#{$deg}deg));
+  }
+
+  // scale
+  @mixin scale($scale) {
+    @include transform(scale($scale));
+  } 
+
+  // translate
+  @mixin translate ($x, $y) {
+   @include transform(translate($x, $y));
+ }
+
+ @mixin translateX ($x) {
+   @include transform(translateX($x));
+ }
+
+ @mixin translateY ($y) {
+   @include transform(translateY($y));
+ }
+
+ // skew
+ @mixin skew ($x, $y) {
+   @include transform(skew(#{$x}deg, #{$y}deg));
+ }
+
+ @mixin skewX ($x) {
+   @include transform(skew(#{$x}deg));
+ }
+ @mixin skewY ($y) {
+   @include transform(skew(#{$y}deg));
+ }
+
+ @mixin transition($value){
+  -webkit-transition: $value;
+  -moz-transition: $value;
+  -ms-transition: $value;
+  transition: $value;
+}
+
+
+@mixin border-radius($value){
+  -webkit-border-radius:$value;
+  -moz-border-radius:$value;
+  -ms-border-radius:$value;
+  border-radius:$value;
+  //background-clip: padding-box;  /* stops bg color from leaking outside the border: */
+}
+
+
+// Single side border-radius
+
+@mixin border-top-radius($radius) {
+	-webkit-border-top-right-radius: $radius;
+	-moz-border-top-right-radius: $radius;
+	-ms-border-top-right-radius: $radius;
+	border-top-right-radius: $radius;
+	-webkit-border-top-left-radius: $radius;
+	-moz-border-top-left-radius: $radius;
+	-ms-border-top-left-radius: $radius;
+	border-top-left-radius: $radius;
+	//background-clip: padding-box;
+}
+@mixin border-right-radius($radius) {
+	-webkit-border-bottom-right-radius: $radius;
+	-moz-border-bottom-right-radius: $radius;
+	-ms-border-bottom-right-radius: $radius;
+	border-bottom-right-radius: $radius;
+  -webkit-border-top-right-radius: $radius;
+  -moz-border-top-right-radius: $radius;
+  -ms-border-top-right-radius: $radius;
+  border-top-right-radius: $radius;
+  //background-clip: padding-box;
+}
+@mixin border-bottom-radius($radius) {
+	-webkit-border-bottom-right-radius: $radius;
+	-moz-border-bottom-right-radius: $radius;
+	-ms-border-bottom-right-radius: $radius;
+	border-bottom-right-radius: $radius;
+	-webkit-border-bottom-left-radius: $radius;
+	-moz-border-bottom-left-radius: $radius;
+	-ms-border-bottom-left-radius: $radius;
+	border-bottom-left-radius: $radius;
+	//background-clip: padding-box;
+}
+@mixin border-left-radius($radius) {
+	-webkit-border-bottom-left-radius: $radius;
+	-moz-border-bottom-left-radius: $radius;
+	-ms-border-bottom-left-radius: $radius;
+	border-bottom-left-radius: $radius;
+  -webkit-border-top-left-radius: $radius;
+  -moz-border-top-left-radius: $radius;
+  -ms-border-top-left-radius: $radius;
+  border-top-left-radius: $radius;
+  //background-clip: padding-box;
+}
+
+@mixin border-top-left-radius($radius) {	
+  -webkit-border-top-left-radius: $radius;
+  -moz-border-top-left-radius: $radius;
+  -ms-border-top-left-radius: $radius;
+  border-top-left-radius: $radius;
+  //background-clip: padding-box;
+}
+
+@mixin border-top-right-radius($radius) {	
+  -webkit-border-top-right-radius: $radius;
+  -moz-border-top-right-radius: $radius;
+  -ms-border-top-right-radius: $radius;
+  border-top-right-radius: $radius;
+  //background-clip: padding-box;
+}
+
+@mixin border-bottom-left-radius($radius) {	
+  -webkit-border-bottom-left-radius: $radius;
+  -moz-border-bottom-left-radius: $radius;
+  -ms-border-bottom-left-radius: $radius;
+  border-bottom-left-radius: $radius;
+  //background-clip: padding-box;
+}
+
+@mixin border-bottom-right-radius($radius) {	
+  -webkit-border-bottom-right-radius: $radius;
+  -moz-border-bottom-right-radius: $radius;
+  -ms-border-bottom-right-radius: $radius;
+  border-bottom-right-radius: $radius;
+}
+
+
+// PX TO REM Mixin
+
+@function parseInt($n) { 
+  @return $n / ($n * 0 + 1);
+}
+
+@mixin rem($property, $values) {
+  $px : (); 
+  $rem: (); 
+
+  @each $value in $values { 
+
+    @if $value == 0 or $value == auto { 
+      $px : append($px , $value);
+      $rem: append($rem, $value);
+    }
+
+    @else {
+      $unit: unit($value); 
+      $val: parseInt($value); 
+
+      @if $unit == "px" {  
+        $px : append($px,  $value);
+        $rem: append($rem, ($val / 10 + rem));
+      }
+
+      @if $unit == "rem" {
+        $px : append($px,  ($val * 10 + px));
+        $rem: append($rem, $value);
+      }
+    }
+  }
+
+  @if $px == $rem {    
+    #{$property}: $px;  
+    } @else {
+      #{$property}: $px;  
+      #{$property}: $rem; 
+    }
+  }
+
+
+  //Another px to rem mixin
+  //Usage: p{@include font-size(13);}
+
+  @mixin font-size($sizeValue: 1.6) {
+    font-size: ($sizeValue * 10) + px;
+    font-size: $sizeValue + rem;
+  }
+
+
+
+
+  @mixin flip-effect{
+
+    /*_ Flip Effects _*/
+    .flip-container{
+      -webkit-transform-style: preserve-3d;
+      -moz-transform-style: preserve-3d;
+      -ms-transform-style: preserve-3d;
+      transform-style: preserve-3d;
+      -webkit-perspective: 1000px;
+      -moz-perspective: 1000px;
+      -ms-perspective: 1000px;
+      perspective: 1000px;
+      position: relative;
+    }
+    .flip-container .flip-box{
+      -webkit-transform-style: preserve-3d;
+      -moz-transform-style: preserve-3d;
+      -ms-transform-style: preserve-3d;
+      transform-style: preserve-3d;
+
+      // -webkit-transform: rotateY(0deg);
+      // -moz-transform: rotateY(0deg);
+      // -ms-transform: rotateY(0deg);
+      // transform: rotateY(0deg);
+
+      @include transform(rotateY(0deg));
+
+      // -webkit-transition: transform 0.3s;
+      // -moz-transition: transform 0.3s;
+      // -ms-transition: transform 0.3s;
+      // transition: transform 0.3s;
+
+      @include transition(transform 0.3s);
+    }       
+    .flip-box .front-card,.flip-box .back-card{
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top: 0;
+      -webkit-backface-visibility: hidden;
+      -moz-backface-visibility: hidden;
+      -ms-backface-visibility: hidden;
+      backface-visibility: hidden;
+    }
+    .flip-box .front-card{background-color: $secondary-color;transform: rotateY(0deg);z-index:2;}
+    .flip-box .back-card{background-color: #cccccc;transform: rotateY(-180deg);}  
+    .flip .flip-box{transform: rotateY(180deg);}  //comment this to disable flip
+
+  } 
+
+  @mixin linearGradient($top, $bottom){
+    background: $top; /* Old browsers */
+    background: -moz-linear-gradient(top,  $top 0%, $bottom 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$top), color-stop(100%,$bottom)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  $top 0%,$bottom 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  $top 0%,$bottom 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  $top 0%,$bottom 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  $top 0%,$bottom 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
+  }
+/*usage: 
+.class{
+    @include linearGradient(#cccccc, #666666);
+    }*/
+
+
+    //To dislpay article meta on separate lines
+    @mixin articleMetaBlock(){
+
+      .meta{
+        display: block;
+        border: none;
+        padding: 0;
+        margin-bottom: 5px;
+
+        &:last-child{
+          margin-bottom: 0; 
+        }
+      }
+
+    }
+
+    //To dislpay article meta on same lines
+    @mixin articleMetaInline(){
+      .meta{margin-bottom: 0;display: inline-block; vertical-align: middle; padding-top: 0;padding: 0 5px;border-left:1px solid #d7d7d7;}
+      .meta:first-child{padding-left: 0; border-left: none; }
+      .meta:last-child{padding-right: 0;}  
+
+    }
+
+    // Flexbox display
+    @mixin flexbox() {
+     // display: -webkit-box;
+     display: -moz-box;
+     display: -ms-flexbox;
+     display: -webkit-flex;
+     display: flex;
+   }
+
+   @mixin inline-flexbox() {
+     // display: -webkit-box;
+     display: -moz-inline-box;
+     display: -ms-inline-flexbox;
+     display: -webkit-inline-flex;
+     display: inline-flex;
+   }
+
+   // Flexbox direction
+   @mixin flex-direction($direction) {
+    -webkit-flex-direction: $direction;
+    -moz-flex-direction: $direction;
+    -ms-flex-direction: $direction;
+    flex-direction: $direction;
+  }
+
+  // Flexbox x-axis alignment
+  @mixin justify-content($justify) {
+    -webkit-justify-content: $justify;
+    -moz-justify-content: $justify;
+    -ms-justify-content: $justify;
+    justify-content: $justify;
+    -ms-flex-pack: $justify;
+  }
+
+  // Y-axis Alignment
+  @mixin align-items($align) {
+    -webkit-align-items: $align;
+    -moz-align-items: $align;
+    -ms-align-items: $align;
+    align-items: $align;
+  }
+
+
+  // Flexbox child ordering
+  @mixin flex-order($order){
+    -webkit-flex-order: $order;
+    -moz-flex-order: $order;
+    -ms-flex-order: $order;
+    flex-order: $order;
+  }
+
+  //Triangle
+  @mixin triangle($dir, $size, $color) {
+
+    width: 0; 
+    height: 0; 
+
+    @if $dir == up {    
+      border-left: $size solid transparent;
+      border-right: $size solid transparent;
+      border-bottom: $size solid $color;
+      
+      } @else if $dir == down {
+        border-left: $size solid transparent;
+        border-right: $size solid transparent;
+        border-top: $size solid $color;
+
+        } @else if $dir == left {
+          border-top: $size solid transparent;
+          border-bottom: $size solid transparent; 
+          border-right: $size solid $color;         
+
+          } @else if $dir == right {
+            border-top: $size solid transparent;
+            border-bottom: $size solid transparent;
+            border-left: $size solid $color;  
+          }
+        }
+
+
+        //To dislpay article meta on same lines
+        @mixin articleMetaInline(){
+          .meta{margin-bottom: 0;display: inline-block; vertical-align: middle; padding-top: 0;padding: 0 5px;border-left:1px solid #d7d7d7;}
+          .meta:first-child{padding-left: 0; border-left: none; }
+          .meta:last-child{padding-right: 0;}  
+
+        }
+
+        @mixin headwrap()
+        {
+          
+          @include flexbox();
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 10px;
+          padding-bottom: 10px;
+        }
+
+        @mixin more-btn()
+        {
+          padding-right: 20px;
+          position: relative;
+          display:block;
+          &:after {
+            content: "\e804";
+            font-family: "waf-icon-font";
+            position: absolute;
+            top: 50%;
+            right: 0px;
+            transform: translateY(-50%);
+          }
+        }
+
+        @mixin overlaytop() {  
+          left: 0;
+          position: absolute;
+          right: 0;
+          top: 0;
+        }
+
+        @mixin overlaybottom() {  
+          left: 0;
+          position: absolute;
+          right: 0;
+          bottom: 0;
+        }
+
+        @mixin pseudo($display: block, $pos: absolute, $content: ''){
+          content: $content;
+          display: $display;
+          position: $pos;
+        }
+        //pseudo Usage: 
+/*div::after {
+    @include pseudo;
+    top: -1rem; left: -1rem;
+    width: 1rem; height: 1rem;
+    }*/
+
+
+    // Define vertical, horizontal, or both position
+    @mixin center($position) {
+      position: absolute;
+      
+      @if $position == 'vertical' {
+        top: 50%;
+        @include transform(translateY(-50%));
+      }
+      @else if $position == 'horizontal' {
+        left: 50%;
+        @include transform(translateX(-50%));
+      }
+      @else if $position == 'both' {
+        top: 50%;
+        left: 50%;
+        @include transform(translate(-50%, -50%));
+      }
+    }
+
+/* Center Usage: 
+.child {
+  @include center(horizontal);
+  @include center(vertical);
+  @include center(both);
+}
+.parent {
+  position: relative;
+}
+*/
