@@ -27,7 +27,7 @@ gulp.task("publish", function (done) {
         return;
     }
 
-    if (process.env.ACCESSKEYID == undefined || process.env.SECRETACCESSKEY == undefined) {
+    if (process.env.MYACCESSKEYID == undefined || process.env.MYSECRETACCESSKEY == undefined) {
         console.log("It Seems you dont have Access Key And Secret Key....");
         console.log("Please Contact Sagar");
         done();
@@ -38,10 +38,10 @@ gulp.task("publish", function (done) {
         params: {
             Bucket: process.env.BUCKET
         },
-        accessKeyId: process.env.ACCESSKEYID,
-        secretAccessKey: process.env.SECRETACCESSKEY
+        accessKeyId: process.env.MYACCESSKEYID,
+        secretAccessKey: process.env.MYSECRETACCESSKEY
     });
-
+    console.log(accessKeyId);
     // define custom headers
     var headers = {
         "Cache-Control": "private"
