@@ -1,6 +1,8 @@
-@import "../../../../../../widget-library/detail/sass/widget-layout-11.scss";
-@import "../../_variables";
+// @import "../../../../../../widget-library/detail/sass/widget-layout-11.scss";
+@import "../../../../global_assets/_variables";
+@import "../../../../global_assets/_mixins";
 @import "../../detail";
+@import "../../_variables";
 
 .waf-detail.widget-layout-11 {
     .detail-wrapper {

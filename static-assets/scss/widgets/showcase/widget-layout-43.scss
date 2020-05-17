@@ -1,6 +1,8 @@
 @import "../../_variables";
-@import "../../../../../../sass/mixins";
-@import "../../../../../../sass/variables";
+// @import "../../../../../../sass/mixins";
+// @import "../../../../../../sass/variables";
+@import "../../../../global_assets/_variables";
+@import "../../../../global_assets/_mixins";
 
 .waf-showcase.widget-layout-43 {
     margin: 0 -10px;

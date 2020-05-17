@@ -1,9 +1,14 @@
-.waf-tab {
-    @include flexbox();
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-}
+// @import "../../global_assets/_variables";
+@import "../../../../global_assets/_mixins";
+
+@import "_variables";
+
+// .waf-tab {
+//     @include flexbox();
+//     position: absolute;
+//     left: 50%;
+//     transform: translateX(-50%);
+// }
 
 .waf-tab-item {
     border-bottom: 2px solid $primary-color;

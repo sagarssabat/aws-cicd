@@ -1,5 +1,8 @@
-@import "../../../../../../widget-library/postlisting/sass/widget-layout-130.scss";
+// @import "../../../../../../widget-library/postlisting/sass/widget-layout-130.scss";
+@import "../../../../global_assets/_variables";
+@import "../../../../global_assets/_mixins";
 @import "../../_variables";
+
 
 .waf-listing.widget-layout-130 {
     background-color: #cccccc;

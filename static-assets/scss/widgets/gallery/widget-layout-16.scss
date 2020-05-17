@@ -1,9 +1,14 @@
-@import "../../../../../../widget-library/gallery/sass/widget-layout-16.scss";
+// @import "../../../../../../widget-library/gallery/sass/widget-layout-16.scss";
+@import "../../../../global_assets/_variables";
+@import "../../../../global_assets/_mixins";
 @import "../../_variables";
+
 @import "../../detail";
 @import "../../_swiper";
+
 .waf-detail.widget-layout-16 {
     margin: 0 -10px; // padding: 20px 0;
+
     figcaption {
         position: absolute;
         top: 20px;
@@ -16,6 +21,7 @@
         overflow: hidden;
         display: none;
     }
+
     .show-more {
         position: absolute;
         bottom: 0;
@@ -29,14 +35,17 @@
         flex-direction: column;
         cursor: pointer;
         transition: 0.4s;
+
         span {
             display: none;
         }
+
         &:before {
             content: '\e9d0';
             font-family: $waf-icon;
             line-height: 1;
         }
+
         &.active {
             &:before {
                 transform: rotate(-180deg);
@@ -44,10 +53,12 @@
             }
         }
     }
+
     .gallery-slider {
         position: relative;
         overflow: hidden;
     }
+
     .preview-slider {
         max-width: 1190px;
         padding-right: 10px;
@@ -56,6 +67,7 @@
         margin-left: auto;
         position: relative;
     }
+
     .gallery-slide-count {
         position: absolute;
         top: 0px;
@@ -72,6 +84,7 @@
         /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
         filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00001848', endColorstr='#001848', GradientType=1);
     }
+
     .thumbnail-slider {
         position: absolute;
         bottom: -100%;
@@ -80,20 +93,24 @@
         transition: 0.3s;
         padding: 10px 0;
         background-color: rgba($default-color, 0.7);
+
         /* IE6-9 */
         .slider-nav,
         .gallery-slide-count {
             display: none;
         }
+
         &.active {
             bottom: 0px;
         }
     }
+
     .content-wrap {
         max-width: 1190px;
         margin-right: auto;
         margin-left: auto;
     }
+
     .item-type-icon {
         &:before {
             content: '\e9f7';
@@ -101,8 +118,10 @@
             font-size: 20px;
         }
     }
+
     &.import-original {
         .gallery-slider {
+
             .preview-slider,
             .thumbnail-slider {
                 img {
@@ -113,13 +132,16 @@
                     object-fit: contain;
                     display: block;
                 }
+
                 .slider-item {
                     .img-box {
                         padding-bottom: 0;
                         background-color: transparent;
                     }
                 }
+
                 .slider-nav {
+
                     &.swiper-button-prev,
                     &.swiper-button-next {
                         &:before {
@@ -128,6 +150,7 @@
                     }
                 }
             }
+
             .thumbnail-slider {
                 img {
                     height: 120px;
@@ -147,9 +170,11 @@
 @media screen and (max-width: $media-tablet-max) {
     .waf-detail.widget-layout-16 {
         padding: 0px;
+
         .show-more {
             display: none;
         }
+
         figcaption {
             font-size: 14px;
             position: relative;
@@ -158,29 +183,36 @@
             width: 100%;
             background-color: $primary-color;
         }
+
         .preview-slider {
             padding: 0px;
         }
+
         .thumbnail-slider {
             padding: 10px 0;
         }
+
         .gallery-slide-count {
             right: 0;
             padding: 15px 20px;
             font-size: 14px;
         }
+
         &.import-original {
             .gallery-slider {
                 overflow: visible;
+
                 .preview-slider {
                     img {
                         height: 300px;
                         width: 100%;
                     }
                 }
+
                 .thumbnail-slider {
                     position: relative;
                     bottom: auto;
+
                     img {
                         height: 80px;
                     }
@@ -197,11 +229,13 @@
                 font-size: 16px;
             }
         }
+
         .slider-wrap {
             .slider-nav {
                 top: 50%;
             }
         }
+
         &.import-original {
             .gallery-slider {
                 .preview-slider {
