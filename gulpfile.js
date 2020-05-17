@@ -5,6 +5,7 @@ var watch = require('gulp-watch');
 var uglifycss = require('gulp-uglifycss');
 var run = require('gulp-run-command').default;
 var sourcemaps = require('gulp-sourcemaps');
+var awspublish = require("gulp-awspublish");
 var browserSync = require('browser-sync').create();
 
 // task to convert sass to minifies css and generate map files resp.
