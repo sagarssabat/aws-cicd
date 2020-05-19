@@ -9,13 +9,6 @@ steps:
   commands:
   - npm install
   - npm run test
-#  when:
-#    branch:
-#    - development
-
-#  environment:
-#    MYACCESSKEYID: AKIAIXIN6V3CTWE7WTAA
-#    MYSECRETACCESSKEY: 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
 
 trigger:
   branch:
