@@ -7,7 +7,9 @@ var run = require('gulp-run-command').default;
 var sourcemaps = require('gulp-sourcemaps');
 var awspublish = require("gulp-awspublish");
 var browserSync = require('browser-sync').create();
+var rename = require("gulp-rename");
 
+require('dotenv').config()
 // task to convert sass to minifies css and generate map files resp.
 gulp.task('sass', function () {
     return gulp.src('./static-assets/scss/**/*.scss')
@@ -42,7 +44,7 @@ gulp.task("publish", function (done) {
         accessKeyId: process.env.MYACCESSKEYID,
         secretAccessKey: process.env.MYSECRETACCESSKEY
     });
-    console.log(accessKeyId);
+    // console.log(accessKeyId);
     // define custom headers
     var headers = {
         "Cache-Control": "private"
@@ -50,7 +52,7 @@ gulp.task("publish", function (done) {
     return (
         gulp
         // .src("./static-assets/css/**/*.{css,map}")
-        .src("./static-assets/{css,fonts,images}/**/*")
+        .src("./static-assets/{css,fonts}/**/*")
         .pipe(
             rename(function (path) {
                 path.dirname = '/' + env + '/static-assets/' + path.dirname;
