@@ -22,8 +22,7 @@ gulp.task('sass', function () {
 });
 /* task to deploy on s3 bucket according to environment (dev,beta,prod) */
 gulp.task("publish", function (done) {
-    var env = process.argv[process.argv.length - 1];
-    env = env.replace('--', '');
+    var env = process.env.ENVIRONMENT
     if (env != 'prod' && env != 'beta' && env != 'dev') {
         console.log('unknown environment');
         done();

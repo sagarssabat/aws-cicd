@@ -5,7 +5,8 @@
   "main": "gulpfile.js",
   "scripts": {
     "test": "gulp sass",
-    "start": "gulp cssmaps && gulp serve"
+    "start": "gulp cssmaps && gulp serve",
+    "deploy": "gulp publish"
   },
   "author": "",
   "license": "ISC",
