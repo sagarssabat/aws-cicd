@@ -10,7 +10,7 @@ common_envs: &common_envs
         from_secret: SECRETACCESSKEY
 
 steps:
-- name: autodeploy
+- name: deploybeta
   image: node
   commands:
   - npm install
@@ -24,7 +24,7 @@ steps:
       - beta
 
 steps:
-- name: autodeploy
+- name: deployprod
   image: node
   commands:
   - npm install
