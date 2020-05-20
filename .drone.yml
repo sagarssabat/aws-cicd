@@ -23,6 +23,21 @@ steps:
     branch:
       - beta
 
+steps:
+- name: autodeploy
+  image: node
+  commands:
+  - npm install
+  - npm run deploy
+  environment:
+      << : *common_envs
+      BUCKET: assets-autodeploy
+      ENVIRONMENT: prod
+  when:
+    branch:
+      - master
+
 trigger:
   branch:
   - master
+  - beta
