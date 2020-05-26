@@ -4,9 +4,9 @@ type: docker
 name: default
 
 common_envs: &common_envs
-    ACCESSKEYID:
+    MYACCESSKEYID:
         from_secret: MYACCESSKEYID
-    SECRETACCESSKEY:
+    MYSECRETACCESSKEY:
         from_secret: MYSECRETACCESSKEY
 
 steps:
