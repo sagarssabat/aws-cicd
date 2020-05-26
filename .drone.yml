@@ -30,7 +30,7 @@ steps:
   commands:
   - npm install
   - npm run test
-##  - npm run deploy
+  - npm run deploy
   environment:
       << : *common_envs
       BUCKET: assets-autodeploy
