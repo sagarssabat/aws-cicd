@@ -14,7 +14,8 @@ steps:
   image: node
   commands:
   - npm install
-  - npm run deploy
+  - npm run test
+##  - npm run deploy
   environment:
       << : *common_envs
       BUCKET: assets-autodeploy
@@ -28,7 +29,8 @@ steps:
   image: node
   commands:
   - npm install
-  - npm run deploy
+  - npm run test
+##  - npm run deploy
   environment:
       << : *common_envs
       BUCKET: assets-autodeploy
