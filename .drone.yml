@@ -5,9 +5,9 @@ name: default
 
 common_envs: &common_envs
     ACCESSKEYID:
-        from_secret: ACCESSKEYID
+        from_secret: MYACCESSKEYID
     SECRETACCESSKEY:
-        from_secret: SECRETACCESSKEY
+        from_secret: MYSECRETACCESSKEY
 
 steps:
 - name: deploy-beta
@@ -15,7 +15,7 @@ steps:
   commands:
   - npm install
   - npm run test
-##  - npm run deploy
+  - npm run deploy
   environment:
       << : *common_envs
       BUCKET: assets-autodeploy
